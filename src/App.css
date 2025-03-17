@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+
+
+.border-radius-10px {
+  border-radius: 10px
+}
+
+.input-btns-height-60px {
+  height: 60px
+}
+
+.free-verification-main p {
+  margin: 0 auto;
+  width: 60%
+}
+
+.font-size-9px {
+  font-size: .44vw
+}
+
+.font-size-10px {
+  font-size: .5vw
+}
+
+.font-size-11px {
+  font-size: .54vw
+}
+
+.font-size-12px {
+  font-size: .625vw
+}
+
+.font-size-13px {
+  font-size: .677vw
+}
+
+.font-size-14px {
+  font-size: .729vw
+}
+
+.font-size-15px {
+  font-size: .781vw
+}
+
+.font-size-16px {
+  font-size: .833vw
+}
+
+.font-size-17px {
+  font-size: .885vw
+}
+
+.font-size-18px {
+  font-size: .938vw
+}
+
+.font-size-19px {
+  font-size: .99vw
+}
+
+.font-size-20px {
+  font-size: 1.042vw
+}
+
+.font-size-21px {
+  font-size: 1.094vw
+}
+
+.font-size-22px {
+  font-size: 1.146vw
+}
+
+.font-size-23px {
+  font-size: 1.198vw
+}
+
+.font-size-24px {
+  font-size: 1.25vw
+}
+
+.font-size-25px {
+  font-size: 1.302vw
+}
+
+.font-size-26px {
+  font-size: 1.354vw
+}
+
+.font-size-27px {
+  font-size: 1.406vw
+}
+
+.font-size-28px {
+  font-size: 1.458vw
+}
+
+.font-size-29px {
+  font-size: 29px
+}
+
+.font-size-30px {
+  font-size: 30px
+}
+
+.font-size-31px {
+  font-size: 31px
+}
+
+.font-size-32px {
+  font-size: 32px
+}
+
+.font-size-34px {
+  font-size: 1.771vw
+}
+
+.font-size-35px {
+  font-size: 35px !important
+}
+
+.font-size-36px {
+  font-size: 36px
+}
+
+.font-size-40px {
+  font-size: 40px
+}
+
+.font-size-50px {
+  font-size: 50px
+}
+
+.font-size-72px {
+  font-size: 72px
+}
+
+.font-size-65px {
+  font-size: 65px
+}
+
+.rounded-md {
+  border-radius: calc(var(--radius) - 2px);
+}
