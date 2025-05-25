@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import BsInp from "../Comp/BsInp";
 import BsSelect from "../Comp/BsSelect";
 import BsLabel from "../Comp/BsLable";
 import "./User.css";
-import { formDataPostApi } from "../Helper/ApiHandle/BsApiHandle";
+import { formDataPostApi, GetApi } from "../Helper/ApiHandle/BsApiHandle";
 import { toast, Toaster } from "sonner";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import BsButton from "../Comp/BsButton";
@@ -25,6 +25,32 @@ const TeacherSignUp = () => {
 
   const [file, setFile] = useState<File | null>(null);
   const navigate = useNavigate();
+  const [formOptions, setFormOptions] = useState({
+    departments: [],
+    batches: [],
+    sections: [],
+  });
+
+  useEffect(() => {
+    const fetchAllData = async () => {
+      const [deptRes, batchRes, secRes] = await Promise.all([
+        GetApi<any>('/user/departments'),
+        GetApi<any>('/user/batches'),
+        GetApi<any>('/user/sections'),
+      ]);
+
+      const modifiedBatches = batchRes.data.map((batch: any) => ({
+        ...batch,
+        name: batch.year,
+      }));
+      setFormOptions({
+        departments: deptRes.data,
+        batches: modifiedBatches,
+        sections: secRes.data,
+      });
+    }
+    fetchAllData()
+  }, []);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
@@ -74,14 +100,13 @@ const TeacherSignUp = () => {
     submitData.append("department", formData.department);
     submitData.append("section", formData.section);
     submitData.append("batch", formData.batch);
-    submitData.append("semester", formData.semester);
     submitData.append("role", "teacher");
 
     if (file) {
       submitData.append("image", file);
     }
     try {
-      const response = await formDataPostApi("/user/createUser", submitData, true);
+      const response = await formDataPostApi<any>("/user/createUser", submitData, true);
       setIsLoading(false);
       navigate("/verification");
     } catch (error: any) {
@@ -111,48 +136,17 @@ const TeacherSignUp = () => {
           <BsInp label="Email" type="email" inplabel="Email" name="email" value={formData.email} onChange={handleChange} />
           <BsInp label="Password" icon={showPassword ? faEyeSlash : faEye} inplabel="Password" type={showPassword ? "text" : "password"} name="password" value={formData.password} onChange={handleChange} onClick={() => setShowPassword(!showPassword)} />
           <BsLabel label="Department" />
-          <BsSelect
-            name="department"
-            value={formData.department}
-            onChange={handleChange}
-            data={[
-              { value: '', name: 'Select any one' },
-              { value: 'cs', name: 'Computer Science' },
-              { value: 'ee', name: 'Electrical Engineering' },
-              { value: 'me', name: 'Mechanical Engineering' },
-              { value: 'ce', name: 'Civil Engineering' },
-              { value: 'bt', name: 'Biotechnology' },
-            ]} />
+          <BsSelect name="department" value={formData.department} onChange={handleChange} data={formOptions.departments} />
 
           <BsLabel label="Section" />
-          <BsSelect
-            name="section"
-            value={formData.section}
-            onChange={handleChange}
-            data={[
-              { value: '', name: 'Select any one' },
-              { value: 'A', name: 'Section A' },
-              { value: 'B', name: 'Section B' },
-              { value: 'C', name: 'Section C' },
-            ]} />
+          <BsSelect name="section" value={formData.section} onChange={handleChange} data={formOptions.sections} />
 
           {/* Batch and Semester in a Responsive Flex Container */}
           <div className="flex w-full">
             <div className="">
               <BsLabel label="Batch" />
-              <BsSelect
-                style={"w-55"}
-                name="batch"
-                value={formData.batch}
-                onChange={handleChange}
-                data={[
-                  { value: "2021", name: "2021" },
-                  { value: "2022", name: "2022" },
-                  { value: "2023", name: "2023" },
-                  { value: "2024", name: "2024" },
-                ]} />
+              <BsSelect style={"w-55 "} name="batch" value={formData.batch} onChange={handleChange} data={formOptions.batches} />
             </div>
-
           </div>
 
           {/* File Upload */}

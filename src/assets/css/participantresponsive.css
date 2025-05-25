@@ -1,0 +1,75 @@
+@media only screen and (max-width: 1600px) {
+    .circles-center-participant-compare {
+        width: 9px;
+        height: 9px;
+    }
+    .points-box-comparison-tag {
+        min-width: 200px;
+        height: 38px;
+    }
+    .points-box-after-comparison-points {
+        width: 45px;
+        height: 35px;
+    }
+    .add-user-btn {
+        min-width: 110px;
+        height: 26px;
+    }
+    .comparison-info-img {
+        width: 62px;
+        height: 62px;
+    }
+    .adding-user-box-for-compare {
+        padding: 0.7rem;
+        border-radius: 12px;
+        top: 9rem;
+        /* bottom: -12.5rem; */
+    }
+    .adding-user-box-for-compare-search-bar {
+        height: 30px;
+        border-radius: 4px;
+    }
+    .adding-user-box-for-compare-availaible-img {
+        width: 35px;
+        height: 35px;
+    }
+    .adding-user-box-for-compare-inner {
+        padding-right: 1.25rem;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .points-box-comparison-tag {
+        min-width: 160px;
+        height: 32px;
+    }
+    .points-box-after-comparison-points {
+        width: 40px;
+        height: 30px;
+    }
+    .comparison-info-img {
+        width: 55px;
+        height: 55px;
+    }
+    .add-user-btn {
+        min-width: 90px;
+        height: 23px;
+    }
+    .adding-user-box-for-compare {
+        padding: 0.6rem;
+        border-radius: 10px;
+        top: 8rem;
+        /* bottom: -10rem; */
+    }
+    .adding-user-box-for-compare-search-bar {
+        height: 26px;
+        border-radius: 4px;
+    }
+    .adding-user-box-for-compare-availaible-img {
+        width: 31px;
+        height: 31px;
+    }
+    .adding-user-box-for-compare-inner {
+        padding-right: 1.05rem;
+    }
+}

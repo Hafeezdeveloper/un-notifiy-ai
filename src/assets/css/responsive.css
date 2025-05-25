@@ -1,0 +1,513 @@
+@media only screen and (max-width: 1600px) {
+  /* 1536 */
+  /* .css-hlgwow {
+    height: 56px !important;
+  
+  } */
+
+
+  .post__modal__inner {
+    height: 650px;
+  }
+
+  .slider-main-property img {
+
+    height: 55vh;
+
+  }
+
+  .admin-job-preview-main-calender p {
+    font-size: 9px;
+  }
+
+  .feed-cmnt {
+    padding: 4px 10px;
+  }
+
+  .comment-like-div {
+    transform: translateY(34px);
+    margin-top: -30px;
+  }
+
+  .w-full.mb-5.flex.gap-2.contain-comment-box {
+    margin-bottom: 2.4rem;
+  }
+
+  .schedule-meeting-container .MuiDateCalendar-root {
+    max-height: 316px;
+  }
+
+  .home-nids-video-border-radius-res {
+    height: 415px;
+  }
+
+  .filter-entry .css-h8r9yy-control {
+    height: 36px !important;
+  }
+
+  .polygon {
+
+    top: 13px;
+  }
+
+  .polygon-2 {
+
+    top: 15px;
+  }
+
+}
+
+@media only screen and (max-width: 1440px) {
+
+  .map-modal-2 {
+    height: 43vw;
+  }
+
+  .global-header-hover img {
+    height: 14px;
+  }
+
+ 
+
+  .schedule-meeting-container .MuiDateCalendar-root {
+    height: 304px;
+  }
+
+  .home-nids-video-border-radius-res {
+    height: 344px;
+  }
+
+  .txt-area-h {
+    height: 67px !important;
+  }
+
+  .custom-h-meeting-screen-1 {
+
+    max-height: 340px;
+  }
+
+  .w-full.mb-5.flex.gap-2.contain-comment-box {
+    margin-bottom: 2rem;
+  }
+
+  .comment-like-div {
+    transform: translateY(35px);
+    margin-top: -40px;
+  }
+
+
+  .admin-TodoInp input {
+    border-radius: 5px;
+    padding: 10px;
+  }
+
+  .Active-Box h6 {
+    font-size: 9px;
+  }
+
+  .Active-Box p {
+    font-size: 7px;
+  }
+
+  .og-job-date svg {
+    font-size: 11px;
+  }
+
+  .onhover-schd-clen {
+    width: 480px;
+  }
+
+  .admin-job-preview-main-calender p {
+    font-size: 10px;
+  }
+
+  .schedule-meeting-container .css-dplwbx-MuiPickersCalendarHeader-label {
+    font-size: 0.6rem;
+  }
+
+  .schedule-meeting-container .css-rhmlg1-MuiTypography-root-MuiDayCalendar-weekDayLabel {
+    font-size: 0.6rem;
+  }
+
+  .schedule-meeting-container .css-1wy8uaa-MuiButtonBase-root-MuiPickersDay-root {
+    font-size: 0.6rem;
+    height: 26px !important;
+    /* height:2.7vw !important; */
+  }
+
+  .post__modal__inner {
+    height: 540px;
+  }
+
+  .feed-cmnt {
+    padding: 0px 10px 10px;
+  }
+
+
+}
+
+@media only screen and (max-width: 991px) {
+  .free-verification-main p {
+    width: 60%;
+
+  }
+
+  .schedule-meeting-container .MuiButtonBase-root {
+    height: 26px;
+
+    width: 26px;
+  }
+
+  .font-size-20px {
+    font-size: 15px;
+  }
+
+  .header-main .ndis-logo {
+    width: 100%;
+  }
+
+  .container-1480 {
+    max-width: 92.083vw;
+
+  }
+
+  .home-nids-video-border-radius-2 {
+    border-radius: 0.5rem;
+  }
+
+  .feeds-btn {
+border-radius: 50px;
+    min-width: 5rem;
+  }
+
+  .paid-provider-form {
+    width: 95%;
+    /* width: 100% !important; */
+  }
+
+  .availability .MuiFormControl-root {
+    width: 110px;
+    min-width: 110px;
+    font-size: 9px !important;
+  }
+
+  .schedule-meet .video-main-box.video-main-box-mob {
+    display: none;
+  }
+
+  .availability div#demo-select-small {
+    font-size: 11px !important;
+  }
+}
+
+/* mobile responsive */
+@media only screen and (max-width: 767px) {
+  .container-1480 {
+    max-width: 100vw;
+  }
+  .font-size-17px {
+    font-size: 0.885vw;
+}
+  .free-verification-main p {
+    width: 98%;
+    margin: 0 auto;
+  }
+  .create-post-text-area input{
+    font-size: 11px;
+  }
+  .right-sidebar-feed {
+    display: none;
+  }
+
+  .global-select-2 .css-mmejwr-control {
+    height: 41px !important;
+    min-height: 32px;
+  }
+  .font-size-17px {
+    font-size: 13px;
+}
+  .show-location-detail-mob {
+    width: 100%;
+    transform: translateY(-7px);
+  }
+
+  .admin-searchInp a img {
+    max-width: 80px;
+  }
+
+  a.header-notifi img {
+    max-width: 14px;
+  }
+
+  .font-size-login-32px {
+    font-size: 18px !important;
+  }
+
+  .header-notifi-text,
+  .header-notifi-icon {
+    display: none;
+  }
+
+  .msg-count-main span {
+    display: none;
+  }
+
+  .msg-count-main {
+    height: 8px;
+    width: 8px;
+    top: -5px;
+  }
+
+  .header-glo-set {
+    height: 7.7vw;
+    max-width: 94vw;
+  }
+
+  .globalheader {
+    height: 58px;
+    display: flex;
+    align-items: center;
+  }
+
+  .h-3vw {
+    margin-top: 70px;
+  }
+
+  .admin-header-ask-btn img {
+    width: 12px;
+    height: 12px;
+    object-fit: contain;
+
+  }
+
+  a.admin-header-ask-btn {
+    font-size: 0;
+    background: transparent;
+    height: 100%;
+  }
+
+  .dropdown-profile-view {
+    width: 12rem;
+    top: 11.5vw;
+
+  }
+
+  .container-1480.sm-container {
+    display: block;
+  }
+
+  .admin-header-ask-btn {
+    width: 25px;
+    font-size: 0 !important;
+    height: 20px;
+    gap: 0;
+    border-radius: 2px;
+  }
+  .notifi-back {
+    height: 3vh;
+    width: 8.035vw;
+}
+  .sidebar-gobal-user-details {
+    width: 100% !important;
+    border-radius: 0;
+  }
+
+  .all-menus {
+    flex: 1 1 100%;
+    margin: 0;
+    order: -1;
+  }
+
+  .NewsFeed-sec .container-1480.sm-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-gobal {
+    flex: 1 1 100%;
+    order: -1;
+  }
+
+  .news-feed-post {
+    width: 100%;
+    flex: 1 1 100%;
+    margin: 0;
+  }
+  .header-focused-box-after-search-img {
+    width: 45px;
+    height: 45px;
+}
+  .create-feed button {
+    height: 30px;
+  }
+
+  .sidebar-gobal-user-img img {
+    height: 90px;
+    width: 90px;
+    transform: translateY(2.5rem);
+  }
+
+  .sidebar-gobal-user-img {
+    height: 100px;
+    border-radius: 0;
+  }
+
+  .sidebar-gobal-user-rating svg {
+    font-size: 15px;
+  }
+
+  .see-less-funct {
+    grid-template-columns: 100% !important;
+  }
+
+  .see-less-funct div {
+    justify-content: end;
+  }
+
+  .discusion-comments>img {
+    width: 17px !important;
+  }
+
+  .emoji-section {
+    width: 100%;
+  }
+
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .comment-like-div {
+    transform: translateY(10px);
+    margin: 0;
+}
+
+  .w-full.mb-5.flex.gap-2.contain-comment-box {
+    margin-bottom: 1rem;
+  }
+
+  .demo-mean-screen {
+    grid-template-columns: 100%;
+    margin: 0;
+
+
+  }
+
+  .welcome-ndis-res {
+    gap: 10px;
+  }
+
+
+}
+
+@media only screen and (max-width: 450px) {
+  .schedule-meeting-container .css-1wy8uaa-MuiButtonBase-root-MuiPickersDay-root {
+    height: 20px !important;
+    /* height:2.7vw !important; */
+  }
+
+  .schedule-meeting-container .MuiButtonBase-root {
+    height: 20px !important;
+  }
+
+
+  .lets-meet-img {
+    width: 20vw;
+  }
+
+  .free-demo-main-res {
+    margin-top: 0 !important;
+    min-height: 65vh !important;
+    padding-top: 0px !important;
+  }
+
+  .mob-cont {
+    min-height: 100vh;
+  }
+
+
+
+  .play_button_video_home {
+
+    transform: translate(-50%, -10%);
+  }
+
+  .schedule-meeting-container {
+    height: 375px !important;
+    width: 100%;
+  }
+
+  .showtime-res {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .freedemo-size {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px
+  }
+
+
+
+  .demo-mean-screen-2 video {
+    width: 90%;
+  }
+
+  .demo-mean-screen-step-2 video {
+    width: 100%;
+  }
+
+  .demo-mean-screen-2 .video-main-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .play_button_video_home {
+    opacity: 0 !important;
+  }
+
+  .schedule-meeting-container h4 {
+    margin-top: 10px;
+  }
+
+  .schedule-meeting-container .inner-schedule-meeting {
+    justify-content: initial !important;
+  }
+
+  .welcome-ndis-res {
+    flex-wrap: wrap;
+  }
+
+  .duration-container {
+    height: 210px;
+  }
+  .MuiMenu-list li {
+
+    font-size: 10px;
+}
+  /* .login-btn-home-banner {
+    border-radius: 45px !important;
+  } */
+}
+
+@media only screen and (max-width: 410px) {
+
+  .demo-mean-screen-mob {
+    margin-top: 0;
+  }
+
+  .login-btn-home-banner {
+    width: 40% !important;
+  }
+
+
+}

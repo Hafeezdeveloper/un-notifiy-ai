@@ -1,0 +1,608 @@
+@media only screen and (max-width: 1800px) {
+
+  .history-review-icon {
+    margin-top: -6px;
+  }
+
+  .switches-container-parent>label,
+  .switches-container-parent>div {
+    font-size: 15px;
+
+  }
+
+  .font-size-login-65px {
+    font-size: 55px;
+  }
+
+  .font-size-login-36px {
+    font-size: 25px;
+  }
+
+  .font-size-login-18px {
+    font-size: 15px;
+  }
+
+  .login-box-body-parent {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+  }
+
+  /* .input-btns-height-60px {
+    height: 55px;
+  } */
+
+  .font-size-login-32px {
+    font-size: 30px;
+  }
+
+  .font-size-login-29px {
+    font-size: 20px;
+  }
+
+  .font-size-login-16px {
+    font-size: 13px;
+  }
+
+  .lg-welcome {
+    margin-bottom: 1.5rem;
+  }
+
+  .sub-login-recovery-head {
+    width: 85%;
+    margin: 0 auto;
+  }
+
+  .verification-code :where(.vi__container) {
+    height: 55px !important;
+    width: 21vw;
+  }
+
+  .verification-code :where(.vi__character) {
+    line-height: 50px !important;
+    font-size: 30px !important;
+  }
+
+  .loginform-eyebtn-res svg {
+    top: 19px;
+  }
+
+  .main-free-error-modal {
+    margin: 8px;
+  }
+}
+
+@media only screen and (max-width: 1600px) {
+  .custom-select-mui .css-1oloaxe {
+    width: 31.2vw;
+  }
+  .custom-select-mui input::placeholder{
+    color: #88a8a6;
+     font-size: 15px ;
+   
+   }
+  .custom-select-mui input {
+    border-radius: 10px;
+    font-size: 15px;
+  }
+
+  .custom-select-mui .css-1oloaxe li {
+    font-size: 15px;
+  }
+
+  .history-review-icon {
+    margin-top: -7px;
+  }
+
+  .global-select .css-h7qclv-control {
+    height: 40px;
+  }
+
+  .switches-container {
+    width: 18rem;
+    line-height: 2.5rem;
+
+  }
+
+  .switches-container-parent>label,
+  .switches-container-parent>div {
+    font-size: 12px;
+
+  }
+
+  /* .main-free-error-modal {
+
+      height: 190px !important;
+    } */
+  .play-btn {
+    background-color: #009e92;
+    height: 90px;
+    width: 90px;
+  }
+
+  .play-btn svg {
+    color: #faf9f5;
+    font-size: 3.5rem;
+    position: absolute;
+    left: 30px;
+  }
+
+  .lg-dashboard {
+    margin-top: 6.9vh;
+    border-radius: 2rem;
+  }
+
+  .lg-main-head {
+    margin-bottom: 0.5rem;
+  }
+
+  .lg-welcome {
+    margin-bottom: 0.5rem;
+  }
+
+  .checkbox-custom::before {
+    top: 0px;
+    left: 4px;
+    width: 5px;
+    height: 10px;
+  }
+
+  .home-banner-main-content-inner-right {
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .checkbox-custom {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #FFE175;
+    border-radius: 4px;
+    /* background-color: #FFE175; */
+  }
+
+  .font-size-login-29px {
+    font-size: 18px;
+  }
+
+  .font-size-login-65px {
+    font-size: 40px;
+  }
+
+  .font-size-login-36px {
+    font-size: 20px;
+  }
+
+  /* .input-btns-height-60px {
+    height: 40px;
+  } */
+
+  .font-size-login-32px {
+    font-size: 27px;
+  }
+
+  .font-size-login-23px {
+    font-size: 17px;
+  }
+
+  .font-size-login-28px {
+    font-size: 25px;
+  }
+
+  .font-size-login-25px {
+    font-size: 17px;
+  }
+
+  .font-size-login-72px {
+    font-size: 42px;
+  }
+
+  .border-radius-12px {
+    border-radius: 10px;
+  }
+
+  .access-plan-box-membership-btn {
+    height: 40px;
+
+  }
+
+  .access-plan-box-login-paid {
+    padding: 2.5rem 1rem 1rem 1rem;
+    gap: 2rem;
+  }
+
+  .login-paid-plan-right-side {
+    gap: 1rem;
+  }
+
+  .login-paid-plan-main-content-parent {
+    padding: 0 3rem 2.5rem 3rem;
+  }
+
+  /* .login-right-input {
+    padding: 0 0.75rem;
+  } */
+
+  .login-main-content-left {
+    padding: 3rem 3rem 3rem;
+  }
+
+  .payment-form-ord-sum-para {
+    margin-top: 0.75rem;
+    /* margin-bottom: 0.5rem; */
+  }
+
+  .payment-form-next-btn,
+  .signup-google {
+    height: 40px;
+    min-width: 180px;
+  }
+
+  .signup-google-btn-img {
+    width: 24px;
+    height: 24px;
+    -o-object-fit: contain;
+    object-fit: contain;
+  }
+
+  .numbered-circle {
+    width: 33px;
+    height: 33px;
+    font-size: 17px;
+  }
+
+  .login-video-comp-parent {
+    margin-top: 1rem;
+  }
+
+  .login-right-inputs-parent {
+    gap: 0.5rem;
+  }
+
+  /* .login-page-btn {
+    height: 35px;
+  } */
+}
+
+@media only screen and (max-width: 1400px) {
+  .custom-select-mui .css-1oloaxe li {
+    font-size: 12px;
+  }
+  .custom-select-mui input::placeholder{
+    color: #88a8a6;
+     font-size: 12px ;
+   
+   }
+   .switches-container {
+    width: 15rem;
+    line-height: 2rem;
+
+  }
+  .custom-select-mui .css-1oloaxe {
+    width: 30.6vw;
+  }
+
+  .custom-select-mui input {
+    border-radius: 10px;
+    font-size: 12px;
+    height: 5vh;
+  }
+
+  .reg-comp {
+    gap: 1.8rem;
+  }
+
+  .login-box-body-parent {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+
+  }
+
+  /* .main-free-error-modal {
+      height: 157px !important;
+      width: 450px !important;
+  } */
+  .play-btn {
+    background-color: #009e92;
+    height: 70px;
+    width: 70px;
+  }
+
+  .play-btn svg {
+    color: #faf9f5;
+    font-size: 3rem;
+    position: absolute;
+    left: 21px;
+  }
+
+  .verification-code :where(.vi__character) {
+    line-height: 41px !important;
+    font-size: 25px !important;
+  }
+
+  .verification-code :where(.vi__container) {
+    height: 45px !important;
+    width: 21vw;
+  }
+
+  .input-btns-height-40px {
+    height: 35px;
+  }
+
+  .lg-dashboard {
+    margin-top: 6.9vh;
+    border-radius: 1.7rem;
+  }
+
+  .font-size-login-29px {
+    font-size: 16px;
+  }
+
+  .lg-main-head {
+    margin-bottom: 0.5rem;
+  }
+
+  .lg-welcome {
+    margin-bottom: 0.5rem;
+  }
+
+  .home-banner-main-content-inner-right {
+    gap: 1rem;
+    padding: 0 0rem;
+  }
+
+  .font-size-login-65px {
+    font-size: 33px;
+  }
+
+  .font-size-login-36px {
+    font-size: 18px;
+  }
+
+  .same-btn-for-web {
+    min-width: 122px;
+  }
+
+  /* .input-btns-height-60px {
+    height: 30px;
+  } */
+  .input-btns-height-60px {
+    height: 5vh;
+  }
+
+  .global-select .css-h7qclv-control {
+    height: 30px;
+    font-size: 12px;
+  }
+
+  .font-size-login-32px {
+    font-size: 22px;
+  }
+
+  .font-size-login-23px {
+    font-size: 17px;
+  }
+
+  .login-main-content-right {
+    padding: 2rem 5rem;
+  }
+
+  .login-box-heading {
+    padding: 0.7rem 0;
+  }
+
+  .login-right-inputs-parent {
+    gap: 0.5rem;
+  }
+
+  .login-box-body-parent {
+    gap: 1rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+  }
+
+  /* .login-page-btn {
+    height: 35px;
+  } */
+
+  .BannerBgMapImg {
+    width: 80%;
+    top: -4%;
+  }
+
+  .access-plan-box-login-paid {
+    padding: 2rem 1rem 1rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .font-size-login-25px {
+    font-size: 15px;
+  }
+
+  .font-size-login-72px {
+    font-size: 40px;
+  }
+
+  .font-size-login-18px {
+    font-size: 12px;
+  }
+
+  .font-size-login-16px {
+    font-size: 11px;
+  }
+
+  .font-size-login-28px {
+    font-size: 20px;
+  }
+
+  .access-plan-box-membership-btn {
+    height: 40px;
+    width: 63%;
+  }
+
+  .login-main-content-left {
+    padding: 2rem 3rem 3rem;
+  }
+
+  .payment-form-next-btn,
+  .signup-google {
+    height: 36px;
+    min-width: 130px;
+  }
+
+  .payment-form-page-content-inner-parent {
+    margin-top: 3rem;
+  }
+
+  .radio-of-account-type {
+    width: 14px;
+    height: 14px;
+  }
+
+  .input-field-eye {
+    font-size: 17px;
+  }
+
+  /* .login-page-btn {
+    height: 29px;
+  } */
+
+  .login-paid-plan-main-content-parent {
+    margin-top: 1.5rem;
+  }
+
+  .loginform-eyebtn-res svg {
+    top: 17px;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .login-box-body-parent-2 {
+    background-color: #337671;
+    width: 80%;
+    border-radius: 10px;
+  }
+
+  .free-verification-main p br {
+    display: none !important;
+  }
+
+  section.login-page-parent {
+    height: 100vh;
+  }
+}
+
+/* mobile responsive */
+@media only screen and (max-width: 767px) {
+  /* login page responsive */
+
+  section.login-page-parent .login-main-content-left {
+    width: 100%;
+    border-radius: 0px 0px 20px 20px !important;
+    padding: 1rem 1rem 2rem;
+  }
+
+  section.login-page-parent .login-main-content-right {
+    width: 100%;
+    border-radius: 20px 20px 0px 0px !important;
+    padding: 2rem 1rem;
+  }
+
+
+
+  .login-main-content-parent {
+    flex-flow: column-reverse;
+    margin-top: 5rem !important;
+    height: 100% !important;
+    margin-bottom: 2rem;
+  }
+
+  .home-banner-main-content-parent-padding.lg-dashboard {
+    padding: 8vh 2rem 8vh 2rem;
+    width: 100%;
+  }
+
+  .verification-code :where(.vi__container) {
+    height: 45px !important;
+    width: 70vw;
+  }
+
+  .login-paid-plan-left-right-parent-same {
+    width: 100%;
+  }
+
+  .login-paid-plan-main-content-parent {
+    margin-top: 5.5rem;
+  }
+
+  section.login-page-parent .login-paid-plan-main-content-parent {
+    height: 100%;
+    margin-bottom: 2rem;
+  }
+
+  section.login-page-parent .login-paid-plan-right-button-parent {
+    width: 80%;
+  }
+
+  section.login-page-parent .login-paid-plan-main-content-parent {
+    padding: 2rem 1rem;
+    border-radius: 40px;
+  }
+
+  section.login-page-parent .access-plan-box-membership-btn {
+    height: 40px;
+    width: 83%;
+  }
+
+  .banner-box-border-radius {
+    border-radius: 2.37rem;
+  }
+
+  .payment-form-page-content-parent {
+    padding: 5rem 1rem 2rem 1rem;
+    height: 100%;
+    margin-top: 5rem;
+  }
+
+  .payment-form-page-content-inner-parent {
+    width: 100%;
+
+    flex-direction: column;
+  }
+
+  .payment-form-page-content-left,
+  .payment-form-page-content-right {
+    width: 100%;
+  }
+
+  .payment-form-progress-bar {
+    width: 71%;
+  }
+
+  .loginform-eyebtn-res {
+    height: 36px;
+  }
+
+  .payment-form-page-content-left-coupon {
+    width: 100%;
+  }
+
+  .reg-comp {
+    gap: 1.8rem;
+    padding: 4rem 0;
+  }
+
+
+  .login-box-body-parent-2 {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .login-box-body-parent-2 {
+    width: 100%;
+  }
+
+  section.login-page-parent .login-paid-plan-main-content-parent {
+    border-radius: 25px;
+  }
+}

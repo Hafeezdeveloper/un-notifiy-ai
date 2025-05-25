@@ -1,0 +1,557 @@
+.calendar-header {
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+  background-color: #00a2974b;
+  /* background-color: #F4F2EE;
+  border: 2px solid #004540; */
+}
+
+.calendar-header .react-datepicker {
+  position: absolute;
+  z-index: 999;
+  top: 2.5rem;
+  left: 0;
+}
+.monthly-callender  .more-shift.monthly__grid .drop_down_list {
+  opacity: 0;
+}
+
+.monthly-callender  .more-shift.monthly__grid:hover .drop_down_list {
+  opacity: 1;
+}
+.calendar thead tr th {
+  height: 4vw !important;
+}
+
+.event.Active-Box:hover,
+.event.Disputed-Box:hover,
+.event.Compelete-Box:hover,
+.event.cancelled-Box:hover {
+  /* transform: scale(1.3); */
+  transition: all 0.5s ease-in-out;
+  cursor: pointer;
+  z-index: 99;
+}
+
+.event.Compelete-Box:hover {
+  border: 1px solid #E39800;
+
+}
+
+.date-range-schedular {
+  background-image: linear-gradient(#004540, #00a297);
+  border-radius: 12px;
+  color: #fff;
+  padding: 6px 20px;
+}
+
+/* .event.Disputed-Box:hover {
+  border: 1px solid #a2a237;
+
+}
+
+.event.Active-Box:hover {
+  border: 1px solid green;
+
+}
+
+.event.cancelled-Box:hover {
+  border: 1px solid red;
+
+} */
+
+/* .event.Active-Box:hover {
+  background-color: green;
+}
+
+.event.Active-Box:hover {
+  background-color: green;
+}
+
+.event.Active-Box:hover h6,
+.event.Active-Box:hover p {
+  color: white;
+}
+
+.event.Active-Box:hover span.job__status.capitalize {
+  background-color: white;
+  color: #00443f;
+} */
+
+.schedular-parent-top-padding {
+  margin-top: 3.1vw;
+
+}
+
+.calender-header-grid {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.calender-services-field {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffff;
+  padding: 0 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 5px;
+}
+
+.calender-top-field {
+  padding: 1.2rem 1rem 0.3rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #7070706b;
+}
+
+.calender-top-fields-placeholder {
+  top: 0;
+  left: 0;
+  font-size: 11px;
+  padding-left: 1.3rem;
+  padding-top: 0.35rem;
+  color: #B5B5B5;
+  font-weight: 500;
+}
+
+.height-of-select-input-fields-of-calender {
+  height: 50px;
+}
+
+.calender-top-field-month {
+  border-radius: 5px;
+  border: 1px solid #7070706b;
+  font-weight: 500;
+  padding: 0 1rem;
+}
+
+.top-arrows-of-calender {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 18px;
+}
+
+.top-arrows-of-calender svg {
+  font-size: 14px;
+}
+
+.calendar {
+  /* border-collapse: collapse; */
+  background-color: white;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px 0;
+}
+
+thead tr th:first-child {
+  /* max-width: 11vw !important; */
+}
+
+.calendar th,
+.calendar td {
+  border: 1px solid #00444080;
+  text-align: center;
+  color: #7c7c7c;
+  height: 18vh !important;
+  font-family: "Poppins-SemiBold";
+  font-size: 0.677vw;
+
+}
+
+.calender tbody td:nth-child(1) {
+  width: 120px;
+}
+
+tbody td {
+  border: 1px solid #00444080;
+  width: 150px;
+  text-align: center;
+}
+
+td {
+  position: relative;
+  border: 1px solid #ccc;
+  text-align: center;
+  width: auto;
+  /* Set a fixed width for all td elements */
+}
+
+.day {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.events {
+  list-style-type: none;
+  padding: 0;
+}
+
+.events li {
+  font-size: 12px;
+  color: #666;
+}
+
+.nav-buttons {
+  margin-bottom: 10px;
+}
+
+.nav-buttons button {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+ul li {
+  list-style: none;
+}
+
+.calender-flex-cust {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.event.Active-Box.hovered-class {
+  z-index: initial !important;
+}
+
+.event {
+  color: #000;
+  padding: 4px;
+  font-size: 8px;
+  white-space: pre-wrap;
+  text-overflow: ellipsis;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  /* align-items: center; */
+}
+
+.btn-clander {
+  background-color: #004540;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.clander-handler-head {
+  grid-template-columns: 100%;
+  justify-content: center;
+}
+
+.clender-search {
+  outline: none;
+  border: none;
+  color: #00443f;
+  background-color: transparent;
+}
+
+.clender-search::placeholder {
+  color: #00443f;
+  opacity: 1;
+}
+
+.cl-img {
+  border-radius: 50%;
+  width: 35px;
+  height: 34px;
+}
+
+.cl-main-name {
+  text-align: left;
+  color: #00443f;
+}
+
+.calender-search {
+ padding-left: 10px;
+  height: 7vh !important;
+}
+
+.calender-role {
+  color: #000000;
+}
+
+.admin-job-preview-main-calender {
+
+
+  position: relative;
+  z-index: 9999999;
+}
+
+.admin-job-preview-main-calender>div {
+  position: relative;
+  z-index: 9999999;
+}
+
+.on-hover-not {
+  margin-bottom: -4px;
+  margin-top: 14px;
+  padding: 5px;
+}
+
+.upper-schd-box {
+  position: relative;
+  z-index: 999;
+}
+
+.underline-gray-1 {
+  height: 1px;
+  background-color: #cbcbcbcb;
+  width: 100%;
+  margin-top: 13px;
+  margin-bottom: 13px;
+}
+
+.font-awesome-color svg {
+  color: #00443f;
+}
+
+.upper-schd-box {
+  border: 1px solid #dcdcdcdc;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.select-icon svg {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.select-icon select {
+  -webkit-appearance: none;
+
+}
+
+.og-job-date {
+  color: #de9802;
+}
+
+.Tfilter-main .calender-top-field {
+  padding: 0 14px;
+}
+
+.sch-box {
+  display: grid;
+  grid-template-columns: 54% 42%;
+  justify-content: space-between;
+}
+
+.job-posted-btn-cal {
+  background: #fff;
+  width: max-content;
+  padding: 5px;
+  border-radius: 100px;
+  border: 2px solid #00443f;
+  color: #00443f;
+}
+
+.job-posted-btn-unActive {
+  padding: 6px 17px;
+  border-radius: 100px;
+}
+
+.job-posted-btn-active {
+  background-image: linear-gradient(to right, #004540, #00a297);
+  color: #ffff;
+}
+
+.Compelete-Box .og-job-date {
+  color: #E39800 !important;
+}
+
+.cancelled-Box .og-job-date {
+  color: red !important;
+}
+
+.Disputed-Box .og-job-date {
+  color: #d7d714 !important;
+}
+
+.Active-Box .og-job-date {
+  color: green !important;
+}
+
+.og-job-date svg {
+  font-size: 14px;
+}
+
+table.monthly-callender {
+  border-spacing: 0px 0;
+}
+
+.job-timin-details p {
+  font-size: 0.677vw;
+}
+
+.custom-index {
+  z-index: 99999999 !important;
+}
+
+/* .modal-content-schedular {
+  width: 26% !important;
+  margin: 0 !important;
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  top: 0;
+  border-radius: 0;
+  background-color: #F4F2EE;
+  border: 2px solid #004540;
+  z-index: 99;
+} */
+.modal-content-schedular {
+  width: 100%;
+  margin: 0 !important;
+  position: fixed;
+  right: 0;
+  height: 100vh;
+  top: 0;
+  border-radius: 0;
+  background-color: #F4F2EE;
+  border: 2px solid #004540;
+  z-index: 99;
+  overflow-y:scroll ;
+}
+
+.calendar-container .modal-overlay {
+  background: #0b0b0b7a;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.calendar-header-T {
+  display: grid !important;
+  grid-template-columns:29% 38.5% 32.5%;
+}
+
+.first-col {
+  background-color: #F8F7F5;
+}
+
+.second-col {
+  background-color: #00444013;
+}
+
+.Tfilter-main {
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  border: 2px solid #004540;
+  background-color: #F4F2EE;
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-radius: 5px;
+  width: 30vw;
+  height: 100vh;
+  right: 0;
+  z-index: 99;
+}
+
+.drop_down_list {
+  border: 1px solid var(--theme-green1);
+  background-image: linear-gradient(#004540, #00a297);
+  z-index: 9;
+}
+
+/* Initial state: hidden at the bottom */
+.schd-modal-main {
+  position: fixed !important;
+  bottom: -100% !important; /* Offscreen */
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  transition: bottom 5s ease-in-out, opacity 0.5s ease-in-out !important;
+  opacity: 0 !important; /* Start as invisible */
+  z-index: 1000 !important;
+}
+
+/* Final state: visible at the bottom of the screen */
+.schd-modal-main.active {
+  bottom: 0 !important; /* Fully visible */
+  opacity: 1 !important; /* Fade in */
+}
+
+
+table.monthly-callender td {
+  overflow: hidden;
+}
+
+table.monthly-callender td:hover {
+  overflow: initial;
+}
+
+
+
+
+/* Modal Overlay */
+
+
+/* Modal Overlay Active */
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Modal Content - Open Animation */
+.modal-content {
+  transform: translateY(1000px);
+  opacity: 0;
+  animation: slideUpFadeIn 1s ease forwards;
+}
+
+/* Modal Content - Close Animation */
+.modal-overlay.closing .modal-content {
+  animation: slideDownFadeOut 1s ease forwards;
+}
+
+/* Keyframes for Slide-Up Fade-In Animation */
+@keyframes slideUpFadeIn {
+  from {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Keyframes for Fade-Out Slide-Down Animation */
+@keyframes slideDownFadeOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(1000px);
+    opacity: 0;
+  }
+}
+
+/* Apply the Fade-Out Animation */
+.modal-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content.fade-out {
+  animation: slideDownFadeOut 0.5s ease forwards;
+}
+
+.dark-color{
+  color: #000 !important;
+}
+

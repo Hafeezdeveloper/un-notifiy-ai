@@ -1,0 +1,307 @@
+@media only screen and (max-width: 1600px) {
+  .greyline-view-app {
+    top: 60px;
+  }
+
+  .view-app-btn button {
+    width: 140px;
+  }
+
+  .noti-scroll {
+    max-height: 500px;
+  }
+
+  /* .greyline-view-app {
+  
+    width: 537px;
+} */
+  .briefcase-icon {
+    width: 70px;
+  }
+
+  .paid-provider-connection-ipt input {
+    height: 40px;
+  }
+
+  .noti-spec img {
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+  }
+
+  .didnt-line.mt-2 {
+    width: 532px;
+  }
+
+  .adds-file-input {
+    padding-top: 4.5px !important;
+  }
+
+  .paid-provider-cust-search .css-hlgwow , .paid-provider-cust-search  .css-1dyz3mf {
+    height: 56px !important;
+  }
+
+  .paid-provider-input-two-2 {
+    padding: 1rem 0.75rem 0.9rem 1.5rem !important;
+  }
+
+  .msg-count-main {
+    height: 18px;
+    width: 18px;
+  }
+
+  .msg-count-main span {
+    font-size: 9px;
+  }
+
+  .paid-provider-input-two {
+    width: 9rem;
+    padding: 1rem 0.75rem 0.9rem 1.5rem;
+  }
+
+  .paid-provider-cust-search .css-1fdsijx-ValueContainer {
+    height: 56px;
+  }
+
+  .paid-provider-lokingForSearch {
+    padding: 20px 0;
+    min-height: 300px;
+  }
+
+  .paid-provider-order-li img {
+    width: 19px;
+    height: 19px;
+  }
+
+  .paid-provider-wellcome-hudson {
+    padding: 20px 20px;
+  }
+
+  /* .welcome-hudson-lets img {
+    width: 75%;
+  } */
+
+  .message-chat-parent-main {
+    height: 72%;
+  }
+
+  .paid-provider-get-verified-btn {
+    margin-top: 0.7rem;
+    min-width: 135px;
+    height: 34px;
+  }
+
+  .paid-provider-get-verified-btn-img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .header-focused-box-after-search-img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-focused-box-parent {
+    top: 2.6rem;
+  }
+
+  /* Paid Provider Search Page Responsive */
+  .paidprovider-search-box-btn {
+    min-width: 125px;
+    height: 32px;
+    border-radius: 6px;
+  }
+
+  /* Paid Provider Search Page Responsive */
+  /* Paid Provider Connection page Responsive */
+  .paid-privider-connection-content {
+    padding: 7px;
+  }
+
+  .paid-provider-connection-tabs button {
+    padding: 5px 20px;
+  }
+
+  .paid-provider-connection-ipt input {
+    padding: 8px 10px 8px 34px;
+    width: 290px;
+  }
+
+  .paid-provider-connection-ipt svg {
+    font-size: 15px;
+  }
+
+  .paid-provider-chackicon img {
+    width: 15px;
+    top: 10%;
+  }
+
+  .paid-provider-chackicon p {
+    border-radius: 3px;
+    padding: 2px 5px;
+    left: 20%;
+  }
+
+  /* Paid Provider Connection page Responsive */
+}
+
+@media only screen and (max-width: 1440px) {
+  .noti-scroll {
+    max-height: 440px;
+  }
+
+  .view-app-btn button {
+    width: 110px;
+  }
+
+  /* .greyline-view-app {
+
+    width: 447px;
+} */
+  .all-applicants {
+    padding: 10px;
+  }
+
+  .noti-spec-main {
+    padding: 5px;
+  }
+
+  .noti-spec img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+  }
+
+  .didnt-line.mt-2 {
+    width: 443px;
+  }
+
+  .adds-file-input {
+    font-size: 13px;
+    padding-top: 4px !important;
+  }
+
+  .paid-provider-cust-search .css-hlgwow ,.paid-provider-cust-search  .css-1dyz3mf {
+    height: 45px !important;
+  }
+
+  .paid-provider-input-two-2 {
+    padding: 0.65rem 0.75rem 0.6rem 1.5rem !important;
+  }
+
+  .paid-provider-massage-box {
+    right: 17%;
+  }
+
+  .msg-count-main {
+    height: 11px;
+    width: 11px;
+    top: -1px;
+  }
+
+  .msg-count-main span {
+    font-size: 6px;
+  }
+
+  .paid-provider-order-li img {
+    width: 14px;
+    height: 14px;
+  }
+
+  .paid-provider-order-li-inner {
+    margin-bottom: 1.5rem;
+  }
+
+  .paid-provider-support-box {
+    padding: 7px 12px;
+  }
+
+  .paid-provider-lokingForSearch-res .css-1fdsijx-ValueContainer {
+    height: 45px;
+  }
+
+  .paid-provider-lokingForSearch-res .paid-provider-input-two {
+    padding: 0.63rem 0.75rem 0.6rem 1.5rem;
+  }
+
+  .paid-provider-search-btn {
+    padding: 1rem 2.4rem;
+  }
+
+  .paid-provider-get-verified-btn {
+    margin-top: 0.5rem;
+    min-width: 115px;
+    height: 31px;
+  }
+
+  .paid-provider-get-verified-btn-img {
+    width: 16px;
+    height: 16px;
+  }
+
+  .header-focused-box-after-search-img {
+    width: 45px;
+    /* height: 45px; */
+  }
+
+  .header-focused-box-parent {
+    top: 2.3rem;
+  }
+
+  /* Paid Provider Search Page Responsive */
+  .paidprovider-search-box-btn {
+    min-width: 100px;
+    height: 27px;
+    border-radius: 6px;
+  }
+
+  .VerifiedImg {
+    width: 21px;
+    height: 21px;
+  }
+
+  /* Paid Provider Search Page Responsive */
+
+  /* Paid Provider Connection page Responsive */
+  .paid-provider-connection-ipt input {
+    padding: 8px 10px 8px 30px;
+    width: 230px;
+  }
+
+  .paid-provider-connection-ipt svg {
+    font-size: 13px;
+  }
+
+  .paid-provider-connection-tabs button {
+    padding: 5px 15px;
+  }
+
+  .paid-privider-connection-content {
+    padding: 5px;
+  }
+
+  .paid-provider-remove-con a,
+  .paid-provider-remove-con button {
+    padding: 3px 11px;
+  }
+
+  .paid-provider-connection-head {
+    margin: 20px 0 10px 0;
+  }
+
+  .paid-provider-chackicon img {
+    width: 11px;
+  }
+
+  .paid-provider-chackicon p {
+    left: 15%;
+  }
+
+  /* Paid Provider Connection page Responsive */
+}
+
+@media only screen and (max-width: 767px) {
+  .Toastify__toast-container {
+    top: 0;
+  }
+}

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="94" height="94" viewBox="0 0 94 94">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#004f49"/>
+      <stop offset="1" stop-color="#009b8f"/>
+    </linearGradient>
+  </defs>
+  <g id="sports" transform="translate(-673 -3530)">
+    <g id="Group_13865" data-name="Group 13865" transform="translate(673 3530)">
+      <g id="Group_13859" data-name="Group 13859">
+        <rect id="Rectangle_7561" data-name="Rectangle 7561" width="94" height="94" rx="47" fill="url(#linear-gradient)"/>
+      </g>
+    </g>
+    <g id="tennis" transform="translate(695.051 3547.43)">
+      <g id="Group_13866" data-name="Group 13866">
+        <path id="Path_24490" data-name="Path 24490" d="M6.6,10.082c-1.75-2.947-1.658-7.46,1.013-9.026,2.763-1.566,6.723.737,8.381,3.592a5.171,5.171,0,0,1-1.105,7.092l3.5,5.986h.46a3.227,3.227,0,0,1,2.579,1.289l4.329,5.894c5.618-4.237,7.552-5.434,8.289-5.71,2.947-2.763,5.065-9.21,5.71-11.512a3.189,3.189,0,0,1,3.868-2.3,3.233,3.233,0,0,1,2.3,3.868c-.184.921-2.3,8.749-6.447,13.539,3.776,9.3,7.092,28.735-.092,35.826a3.647,3.647,0,0,1-5.158-5.158c1.566-1.566,2.3-4.881,2.026-9.394a24.784,24.784,0,0,1-8.749,10.5,3.627,3.627,0,0,1-5.065-1.105c-1.842-2.855.829-4.881,2.579-6.263a18.062,18.062,0,0,0,5.618-8.841,11.677,11.677,0,0,0-.368-9.026c-.092.092.46-.368-3.039,2.671a3.206,3.206,0,0,1-4.7-.553l-6.263-8.565a3.344,3.344,0,0,1,.368-4.237l-3.316-6.079c-2.487,1.013-5.065.276-6.723-2.487Z" transform="translate(-5.422 -0.549)" fill="#fff"/>
+      </g>
+      <g id="Group_13867" data-name="Group 13867" transform="translate(17.11 6.77)">
+        <path id="Path_24491" data-name="Path 24491" d="M24,13.794A5.936,5.936,0,0,1,29.894,7.9,5.848,5.848,0,1,1,24,13.794Z" transform="translate(-24 -7.9)" fill="#fff"/>
+      </g>
+      <g id="Group_13868" data-name="Group 13868" transform="translate(42.53 0.691)">
+        <path id="Path_24492" data-name="Path 24492" d="M51.6,4.984a3.684,3.684,0,1,1,3.684,3.684A3.695,3.695,0,0,1,51.6,4.984Z" transform="translate(-51.6 -1.3)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

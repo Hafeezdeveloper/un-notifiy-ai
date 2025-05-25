@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26.846" height="26.846" viewBox="0 0 26.846 26.846">
+  <g id="postcode-icon" transform="translate(0 0)">
+    <g id="Group_14176" data-name="Group 14176" transform="translate(0 14.588)">
+      <g id="Group_14175" data-name="Group 14175">
+        <path id="Path_34022" data-name="Path 34022" d="M6.977,280.356a.827.827,0,0,1-.53,0L0,278.208v4.708a.839.839,0,0,0,.839.839H12.584a.839.839,0,0,0,.839-.839v-4.708Z" transform="translate(0 -278.208)" fill="#202020"/>
+      </g>
+    </g>
+    <g id="Group_14178" data-name="Group 14178" transform="translate(0 11.745)">
+      <g id="Group_14177" data-name="Group 14177">
+        <path id="Path_34023" data-name="Path 34023" d="M12.584,224H.839a.839.839,0,0,0-.839.839v.235l6.711,2.237,6.711-2.237v-.235A.839.839,0,0,0,12.584,224Z" transform="translate(0 -224)" fill="#202020"/>
+      </g>
+    </g>
+    <g id="Group_14180" data-name="Group 14180" transform="translate(3.356 0)">
+      <g id="Group_14179" data-name="Group 14179">
+        <path id="Path_34024" data-name="Path 34024" d="M80.779,6.711H70.711a6.609,6.609,0,0,0-1.678.238V5.034h5.872a.839.839,0,0,0,.839-.839V.839A.839.839,0,0,0,74.906,0H68.195a.839.839,0,0,0-.839.839V7.644a6.829,6.829,0,0,0-2.438,2.423h2.069a4.993,4.993,0,0,1,4.639-1.6,5.2,5.2,0,0,1,4.119,5.185v8.156H64v.839a.839.839,0,0,0,.839.839H79.1v2.517a.839.839,0,0,0,.839.839h1.678a.839.839,0,0,0,.839-.839V23.49h4.195a.839.839,0,0,0,.839-.839V13.423A6.712,6.712,0,0,0,80.779,6.711Z" transform="translate(-64 0)" fill="#202020"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+<svg id="postJob" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="30" viewBox="0 0 40 30">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#004f49"/>
+      <stop offset="1" stop-color="#009b8f"/>
+    </linearGradient>
+  </defs>
+  <rect id="Rectangle_7561" data-name="Rectangle 7561" width="40" height="30" rx="5" fill="url(#linear-gradient)"/>
+  <g id="write" transform="translate(6 1)">
+    <path id="Edit" d="M0,0H27.837V27.837H0Z" fill="none" fill-rule="evenodd"/>
+    <g id="Group_15736" data-name="Group 15736" transform="translate(3.48 3.48)">
+      <path id="Path_35002" data-name="Path 35002" d="M21.4,16.7c0,8.658-.05,8.7-8.7,8.7S4,25.372,4,16.7,4.017,8,12.7,8" transform="translate(-4 -4.52)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1" stroke-width="2" fill-rule="evenodd"/>
+      <path id="Path_35003" data-name="Path 35003" d="M13,14.439v2.61h2.61L26.049,6.61,23.439,4Z" transform="translate(-5.171 -4)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1" stroke-width="2" fill-rule="evenodd"/>
+      <path id="Path_35004" data-name="Path 35004" d="M22.5,7.5l1.74,1.74" transform="translate(-6.407 -4.455)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="1" stroke-width="2" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>

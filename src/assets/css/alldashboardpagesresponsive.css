@@ -1,0 +1,1063 @@
+@media only screen and (max-width: 1600px) {
+  .dollar-sign {
+    top: 51%;
+    left: 1%;
+  }
+
+  .container-1480 {
+    max-width: 82.083vw;
+  }
+
+  .global-select-2 .css-mmejwr-control {
+    height: 34px !important;
+  }
+
+  .modal-two-map {
+    transform: translate(0rem, -10rem);
+  }
+
+  .subcrip-text-area {
+    height: 48vh;
+  }
+
+  .news-feed-post {
+    width: 50.281vw;
+  }
+
+  .mui-tab-selected .MuiBox-root.css-19kzrtu {
+    max-height: 400px;
+    overflow-y: auto;
+    scrollbar-width: 4px;
+  }
+
+  .search-post-child .css-hlgwow {
+    height: 56px;
+  }
+
+  .back-btn-privacy {
+    top: -47px;
+  }
+
+  .connections-img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .total-like span svg {
+    font-size: 7px;
+  }
+
+  .total-like span {
+    width: 14px;
+    height: 14px;
+  }
+
+  li.total-like.flex.gap-1 svg {
+    font-size: 10px;
+  }
+
+  .Compelete-Box h6,
+  .cancelled-Box h6,
+  .Disputed-Box h6,
+  .Active-Box h6 {
+    font-size: 9px;
+  }
+
+  .mui-tab-selected .css-19kzrtu {
+    padding: 15px;
+  }
+
+  .mui-tab-selected button.MuiButtonBase-root {
+    /* font-size: 18px !important; */
+  }
+
+  .profile-page-btn {
+    padding: 0.45rem 1rem;
+  }
+
+  .job-cat-search-main {
+    grid-template-columns: 35% 32% 11%;
+  }
+
+  .askai-search {
+    height: 40px;
+  }
+
+  .sendai-btn {
+    height: 40px;
+  }
+
+  .green-wand {
+    width: 25px;
+  }
+
+  .inbox-icon {
+    width: 23px;
+  }
+
+  .viewattach-box {
+    height: 450px;
+  }
+
+  /* .move-modal-body {
+    min-height: 530px;
+} */
+
+  .detail-length {
+    height: 300px;
+  }
+
+  .flexible-modal.react-draggable {
+    min-width: 400px;
+    min-height: 580px;
+  }
+
+  /* 1536 */
+  .social-main {
+    gap: 5px;
+    padding-bottom: 0.7rem;
+  }
+
+  .social-main-2 {
+    gap: 5px;
+    padding-bottom: 0.7rem;
+    padding-top: 0.7rem;
+  }
+
+  .social-main-3 {
+    gap: 5px;
+    padding-bottom: 0.7rem;
+    padding-top: 0.7rem;
+  }
+
+  .skill-modal-main {
+    margin: 10px 20px;
+  }
+
+  .close-icon {
+    right: -6px;
+    top: -5px;
+    width: 3%;
+  }
+
+  .Change-annual-plan-modl {
+    padding: 10px 30px;
+  }
+
+  .change-mdl-arrow {
+    font-size: 55px;
+  }
+
+  .preferences-box {
+    width: 50px;
+    height: 50px;
+  }
+
+  .changs-mdl-Apply-btn button {
+    padding: 12px 30px;
+  }
+
+  .change-mdl-Sub-Total-main {
+    margin: 20px 0 10px 0;
+  }
+
+  .change-modal-Charging-Today {
+    margin: 10px 0 15px 0;
+  }
+
+  .change-mdl-Pay-with-card {
+    margin: 15px 0 25px 0;
+  }
+
+  .change-mdl-Confirm-pay {
+    margin: 20px 0 0px 0;
+  }
+
+  .all-dashChangesfModal {
+    padding: 10px 0;
+  }
+
+  .Biilling-information-mdl {
+    padding: 5px 40px;
+  }
+
+  .Biilling-information-mdl {
+    padding: 5px 40px;
+  }
+
+  .Biilling-information-mdl input {
+    padding: 2px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .billing-information-md {
+    top: -1%;
+    right: 0.6%;
+  }
+
+  /* Profile Page Responsive */
+  .EditProfileUserImg {
+    width: 80px;
+    height: 80px;
+  }
+
+  .edit-profile-safety-reciept-img {
+    width: 100px;
+    height: 130px;
+  }
+
+  .availiability-day-btn-edit-profile {
+    min-width: 145px;
+    height: 35px;
+    border-radius: 6px;
+  }
+
+  .review-profile-img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .weekdays-btn {
+    width: 124px;
+    height: 31px;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+
+  .post-code-search {
+    height: 3.65vw;
+  }
+
+  .avatar-upload {
+    margin: 20px auto;
+  }
+
+  .profile-back-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .update-payment-Modal {
+    padding: 10px 0;
+  }
+
+  .customer-form-detail-modl4-img2 {
+    top: 16px;
+    left: 62%;
+  }
+
+  .customer-form-detail-modl4-img3 {
+    top: 11px;
+    left: 75%;
+  }
+
+  .change-mdl-x-mark {
+    top: -1%;
+    right: 0.6%;
+  }
+
+  .reg-btn-modal {
+    width: 125px !important;
+    height: 35px !important;
+  }
+
+  /* .home-nids-video-border-radius {
+    height: 320px;
+  } */
+
+  .schedule-meeting-container {
+    height: 410px;
+  }
+
+  .play-img-home-about {
+    width: 50%;
+  }
+
+  .crete-feed-user-img img {
+    width: 50px;
+    height: 50px;
+    max-width: 50px;
+  }
+
+  .status-job-change {
+    font-size: 10px;
+  }
+
+  .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.MuiMenu-paper.MuiMenu-paper.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    /* transform: translate(-55px, 6px) !important; */
+  }
+
+  .admin-support-worker-boxes {
+    /* padding: 14px 15px 0 15px; */
+  }
+
+  .admin-support-worker-boxes {
+    width: 77%;
+  }
+
+  .admin-job-preview {
+    width: 23%;
+    padding-left: 10px;
+  }
+
+  /* Profile Page Responsive */
+}
+
+@media only screen and (max-width: 1440px) {
+  .post-code-search {
+    height: 3.52vw;
+  }
+
+  .dollar-sign {
+    top: 54%;
+  }
+
+  .MuiPaper-root.MuiPaper-elevation.MuiPaper-rounded.MuiPaper-elevation8.MuiPopover-paper.MuiMenu-paper.MuiMenu-paper.css-3dzjca-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+    /* transform: translate(-44px, 6px) !important; */
+  }
+
+  .subcrip-text-area {
+    height: 57vh;
+  }
+
+  .global-select-2 .css-mmejwr-control {
+    height: 29px !important;
+    min-height: 32px;
+  }
+
+  .back-btn-privacy {
+    top: -42px;
+  }
+
+  .paid-provider-form {
+    /* width: 75%; */
+    width: 100%;
+  }
+
+  .search-post-child .css-hlgwow {
+    height: 45px;
+  }
+
+  .status-job-change {
+    font-size: 9px;
+  }
+
+  .green-line {
+    height: 110px;
+  }
+
+  .schedule-meeting-container .MuiButtonBase-root {
+    height: 26px;
+    display: flex;
+    align-items: center;
+  }
+
+  .sidebarusers.MuiBox-root.css-11c1y7m {
+    height: 54px;
+  }
+
+  .recently-connections .MuiSelect-select {
+    font-size: 12px !important;
+  }
+
+  .EditProfileUserImg {
+    width: 110px;
+    height: 110px;
+  }
+
+  .exclamation-mark {
+    width: 12px;
+  }
+
+  .review-modal > h3 {
+    font-size: 19px;
+  }
+
+  .viewattach-box {
+    height: 400px;
+  }
+
+  .mui-tab-selected button.MuiButtonBase-root {
+  }
+
+  .askai-search {
+    height: 35px;
+  }
+
+  .sendai-btn {
+    height: 35px;
+  }
+
+  .green-wand {
+    width: 23px;
+  }
+
+  .inbox-icon {
+    width: 20px;
+  }
+
+  /* .move-modal-body {
+    min-height: 480px;
+} */
+  .detail-length {
+    height: 220px;
+  }
+
+  .flexible-modal.react-draggable {
+    min-width: 330px;
+    min-height: 547px;
+  }
+
+  /* .flexible-modal.react-draggable {
+  min-width: 340px;
+  min-height: 547px;
+} */
+  /* 1366 */
+  .reg-btn-modal {
+    width: 110px !important;
+    height: 30px !important;
+  }
+
+  .social-main {
+    gap: 3px;
+    padding-bottom: 0.4rem;
+  }
+
+  .social-main-2 {
+    gap: 5px;
+    padding-bottom: 0.4rem;
+    padding-top: 0.4rem;
+  }
+
+  .social-main-3 {
+    gap: 3px;
+    padding-bottom: 0.4rem;
+    padding-top: 0.4rem;
+  }
+
+  .skill-modal-main {
+    margin: 7px;
+  }
+
+  .close-icon {
+    right: -4px;
+    top: -5px;
+    width: 3%;
+  }
+
+  .change-mdl-arrow {
+    font-size: 50px;
+  }
+
+  .changs-mdl-Apply-btn input {
+    padding: 4px;
+  }
+
+  .changs-mdl-Apply-btn button {
+    padding: 9px 30px;
+  }
+
+  .Biilling-information-mdl input {
+    padding: 0px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+
+  .edit-profile-save-change {
+    margin-top: 10px;
+  }
+
+  .edit-profile-save-change a {
+    padding: 8px 25px;
+  }
+
+  /* Profile Page Responsive */
+  .review-profile-img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .profile-back-icon {
+    width: 26px;
+    height: 26px;
+  }
+
+  .availiability-day-btn-edit-profile {
+    min-width: 115px;
+    height: 30px;
+    border-radius: 6px;
+  }
+
+  /* Profile Page Responsive */
+  .customer-payment-detail-modl4 {
+    padding: 10px 0;
+    width: 80%;
+  }
+
+  .customer-form-detail-modl4 input {
+    padding: 10px 140px 10px 40px;
+  }
+
+  .customer-form-detail-modl4-img2 {
+    top: 12px;
+    left: 60%;
+  }
+
+  .customer-form-detail-modl4-img3 {
+    top: 8px;
+    left: 74%;
+  }
+
+  .customer-form-detail-modl4-img4 {
+    position: absolute;
+    top: 7px;
+    left: 88%;
+  }
+
+  .customer-form-detail-modl4-img1 {
+    top: 11px;
+  }
+
+  .customer-strip-btn-modl4 img {
+    width: 19%;
+  }
+
+  .customer-card-subcribtion-inp1 {
+    padding: 8px 0 8px 40px;
+  }
+
+  .customer-card-subcribtion-debitcard {
+    top: 9px;
+  }
+
+  .EditProfileUserImg {
+  }
+
+  .schedule-meeting-container {
+    height: 341px;
+  }
+
+  /* .home-nids-video-border-radius {
+    height: 260px;
+  } */
+  .play-img-home-about {
+    width: 30%;
+  }
+
+  .crete-feed-user-img img {
+    width: 40px;
+    height: 40px;
+    max-width: 40px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .header-focused-box-parent {
+    max-height: 473px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0;
+    top: 5.5rem;
+  }
+
+  .Cancellation-modal-content {
+    width: 95%;
+  }
+
+  .all-dashChangesfModal {
+    width: 95%;
+  }
+
+  .icon-size {
+    width: 30px;
+    height: 30px;
+    z-index: 0;
+  }
+
+  .compare-box {
+    padding: 1.5rem 1rem;
+    border-radius: 0;
+  }
+
+  .points-box-participant-compare {
+    padding: 1.5rem 1rem;
+    border-radius: 0;
+  }
+
+  .Invoice-content {
+    padding: 20px 0px;
+  }
+
+  .participant-compare-content-parent {
+    margin-top: 1rem;
+    padding: 0rem;
+    gap: 1rem;
+  }
+
+  .copy-socials-links input {
+    width: 100%;
+    height: 40px;
+    padding: 0 8px;
+  }
+
+  .social-icons-copy img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .copy-socials-links button {
+    width: 60px;
+    height: 40px;
+    transform: translateX(-7px);
+  }
+
+  .globalheader .mobile-only.active-class input {
+    display: flex;
+    position: absolute;
+    top: 40px;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3rem;
+    height: 40px;
+    padding: 0 11px;
+    border-radius: 0;
+    outline: none;
+  }
+
+  .globalheader .mobile-only input {
+    display: none;
+  }
+
+  .globalheader .mobile-only svg {
+    color: white;
+    font-size: 18px;
+    position: relative;
+  }
+
+  .nd-ai-button button {
+    height: 49px;
+
+    width: 30vw;
+  }
+
+  .globalheader .gap-8 {
+    gap: 6px;
+  }
+
+  .dropdown-profile-view {
+    width: 15rem;
+  }
+
+  .admin-searchInp a img {
+    max-width: 75px;
+  }
+
+  .on-hover {
+    margin-top: 10px;
+  }
+
+  .discusion-comments {
+    margin-top: 10px;
+  }
+
+  .sidebar-gobal-user-details.right-bar-option {
+    width: 100% !important;
+    border-radius: 0;
+    padding: 10px 0px;
+  }
+
+  span.menus-gloabal-icon img {
+    width: 7vw;
+    height: 25px;
+  }
+
+  .font-size-13px {
+    font-size: 11px;
+  }
+
+  .createpost-modal {
+    width: 95.802vw !important;
+  }
+
+  .create-post-text-area textarea {
+    font-size: 2.938vw;
+  }
+
+  .cover-img.relative img {
+    height: 31.427vw;
+    border-radius: 0;
+  }
+
+  .profile-img-uploader {
+    width: 25.375vw;
+    height: 25.375vw;
+
+    margin-top: -10vw;
+  }
+
+  .font-size-35px {
+    font-size: 22px;
+  }
+
+  .btn-w {
+    width: 22vw;
+  }
+
+  .edit-pro-icon {
+    width: 4.1vw;
+    height: 4.1vw;
+  }
+
+  .edit-pro-icon img {
+    width: 4.3vw;
+  }
+
+  .Activity-Post-view {
+    grid-template-columns:100% !important;
+  }
+  .user-since-bar img {
+    width: 5vw;
+    height: 5vw;
+}
+  .preferences-box img {
+    width: 4vw;
+  }
+
+  .global-select.css-fyq6mk-container {
+    font-size: 12px;
+  }
+
+  .custom-textarea textarea {
+    font-size: 10px;
+  }
+
+  .preferences-box {
+    width: 50px;
+    height: 50px;
+  }
+
+  .feeds-btn {
+    height: 25px;
+    padding: 0 3.2vw;
+  }
+
+  .col-grid-profile {
+    grid-template-columns: 100%;
+    margin-bottom: 10px;
+  }
+
+  .custom-input input {
+    height: 40px;
+    font-size: 10px;
+  }
+
+  .custom-select select {
+    height: 40px;
+  }
+
+  .font-size-15px {
+    font-size: 12px;
+  }
+
+  .chevron-arrow-down {
+    background-color: white;
+    color: var(--theme-green1);
+    display: block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5%;
+    box-shadow: 1px 1px 4px 0px rgb(0 0 0 / 20%);
+  }
+
+  .chevron-arrow-down-non {
+    display: none;
+  }
+
+  .custom-input .css-13cymwt-control {
+    height: 4.031vh;
+  }
+
+  .custom-input .css-t3ipsp-control {
+    height: 4.031vh;
+  }
+
+  .custom-input .css-qbdosj-Input {
+    height: 4.031vh;
+  }
+
+  .custom-input .css-1fdsijx-ValueContainer {
+    height: 4.031vh;
+  }
+
+  .global-select-2 .css-mmejwr-control {
+    height: 40px !important;
+  }
+
+  .adding-user-box-for-compare {
+    top: 80%;
+    right: 0;
+    width: 60vw;
+  }
+
+  .adding-user-box-for-compare-inner {
+    height: 20vh;
+  }
+
+  .noti-spec-main {
+    border-radius: 0;
+    margin-bottom: 0.8rem;
+  }
+
+  .noti-scroll {
+    max-height: initial !important;
+    padding: 0;
+  }
+
+  .not-found h1 {
+    font-size: 70px;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  .connections-status select {
+    width: 50%;
+    padding: 0.3rem 0.5rem 0 0.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .calender-top-fields-placeholder {
+    top: 15% !important;
+  }
+
+  .paid-provider-connection-ipt input {
+    padding: 0 10px 0 30px;
+    width: 100%;
+  }
+
+  .font-size-36px {
+    font-size: 22px;
+  }
+
+  .back-btn-privacy {
+    width: 6vw;
+  }
+
+  .dropdown-profile-view img {
+    height: 10.414vw;
+    width: 10.514vw;
+  }
+
+  .services-profile-btn {
+    height: 3.5vh;
+  }
+
+  .close-icon-modal {
+    top: 1rem;
+    top: -10px;
+    right: -5px;
+  }
+
+  .close-icon-modal img {
+    width: 20px;
+  }
+
+  .resize-drag {
+    width: 100% !important;
+    height: 500px !important;
+    left: 0 !important;
+    top: 20% !important;
+    border-radius: 0 !important;
+  }
+
+  .user-ai-chat-main img {
+    width: 6rem;
+  }
+
+  .askai-search {
+    border-radius: 5px;
+  }
+
+  .sendai-btn {
+    border-radius: 0 5px 5px 0;
+    position: absolute;
+  }
+
+  .inactive-job-tab-res {
+    width: fit-content;
+  }
+
+  .admin-job-active {
+    grid-template-columns: 100%;
+  }
+
+  .admin-active-job-handler {
+    padding: 0;
+  }
+
+  .active-jobs-tabs {
+    width: 100%;
+  }
+
+  .profile-page-btn {
+    margin: 0.5rem 0 0 0;
+    padding: 0.3rem 1.5rem;
+  }
+
+  .active-jobs-tabs-2 {
+    margin-top: 0.5rem;
+  }
+
+
+
+  .edit-modal-content {
+    width: 95%;
+  }
+
+  .create-job-service-dropdown {
+    max-height: 50%;
+    padding: 20px 10px;
+  }
+
+  .socail-comunity-access-content {
+    column-count: 1;
+    width: 90.1%;
+  }
+
+  .dates-edit-modal {
+    grid-template-columns: 100%;
+  }
+
+  .recur-oneoff-day-2 input {
+    padding-top: 14px;
+  }
+
+  .viewapp-modal {
+    width: 95%;
+  }
+
+  .admin-preview-head {
+    height: 90px;
+  }
+  .font-size-25px {
+    font-size: 15px;
+  }
+  .font-size-34px {
+    font-size: 16px;
+  }
+  .font-size-18px {
+    font-size: 11px;
+  }
+  .font-size-16px {
+    font-size: 11px;
+  }
+  .bg-select-custom {
+    padding: 0.2rem;
+  }
+  .news-feed-post {
+    width: 100%;
+}
+.container-1480 {
+  max-width: 93.083vw;
+}
+.font-size-14px {
+  font-size: 10px !important;
+}
+.feeds-btn {
+  border-radius: 50px;
+      min-width: 6rem;
+    }
+    .schedular-parent-top-padding {
+      margin-top: 3.5rem;
+  }
+  .top-arrows-of-calender {
+
+    width: 20px  !important;
+    height: 20px !important;
+    font-size: 9px;
+}
+.date-range-schedular {
+
+  border-radius: 5px;
+  width: 176px;
+
+}
+.job-posted-btn-unActive {
+  padding: 4px 6px;
+
+}
+.calendar-header {
+  padding: 1rem 0.2rem;
+  gap: 0.3rem;
+}
+.calender-header-grid {
+
+  gap: 18px;
+
+}
+.calendar table.monthly-callender {
+  width: 2301px;
+}
+.calendar table.weekly-calender {
+  width: 1208px;
+}
+.calendar th, .calendar td {
+
+  height: 16vh !important;
+
+}
+.calendar-header   .jobs-apply-btn {
+  display: none;
+}
+.monthly-dropdown .calender-select-drop {
+  width: 20vw;
+}
+.notification .sidebar-gobal-user-details {
+  display: none;
+}
+.review-profile-img {
+  width: 48px;
+  height: 48px;
+}
+.de-activate-account-sett button {
+  width: 170px;
+}
+.activity-log {
+  overflow-x: scroll;
+  width: 1426px;
+  flex-direction: row;
+  justify-content: start;
+}
+.profile-viewer {
+  width: 8vw;
+  height: 8vw;
+
+}
+.acitve-jobs-main {
+  height: 48vh;
+}
+.jobee-detail {
+
+  padding: 69px 4px 4px 4px;
+}
+.acitve-jobs-main {
+  height: 48vh;
+}
+
+.admin-preview-job img {
+  height: 85px;
+  width: 80px;
+}
+.Admin-status-content-Role li {
+  font-size: 11px;
+}
+}

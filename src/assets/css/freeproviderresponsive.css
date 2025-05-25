@@ -1,0 +1,46 @@
+@media only screen and (max-width: 1600px) {
+  .free-provider-main {
+    padding: 1rem 2rem !important;
+  }
+  .paid-provider-massage-box {
+    top: 9%;
+  }
+  .free-provider-welcome-box-main {
+    padding: 2rem 2rem;
+  }
+  .paid-provider-input-two {
+    height: 56px;
+  }
+}
+@media only screen and (max-width: 1440px) {
+  .free-provider-main {
+    padding: 0rem 1rem !important;
+  }
+  .paid-provider-massage-box {
+    top: 9.4%;
+  }
+  .veiw-all-message {
+    padding: 6px 0;
+  }
+  .message-chat-main {
+    padding: 4px 7px;
+  }
+  .header-notification2 {
+    margin: 0 30px;
+  }
+  .login-paid-plan-btn {
+    padding: 0.3rem 0.5rem !important;
+  }
+  .paid-provider-input-two {
+    height: 45px;
+    padding: 0.7rem 0.75rem 0.65rem 1.5rem;
+  }
+  .paid-provider-cust-search .css-1fdsijx-ValueContainer {
+    height: 45px;
+  }
+  .free-provider-access-pass-box {
+    border-radius: 24px;
+    padding: 1rem 1rem 1rem 1rem;
+    gap: 1rem;
+  }
+}

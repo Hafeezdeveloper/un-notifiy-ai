@@ -1,0 +1,34 @@
+@media only screen and (max-width:1600px) {
+    .schedular-parent-top-padding {
+     
+    }
+    .height-of-select-input-fields-of-calender {
+        height: 40px;
+    }
+    .calender-top-field {
+        padding: 1rem 1rem 0.3rem 0.7rem;
+    }
+    
+    .calender-top-fields-placeholder {
+        top: 0;
+        left: 0;
+        font-size: 9px;
+        padding-left: 1rem;
+        padding-top: 0.25rem;
+    }
+    .job-posted-btn-unActive {
+        padding: 4px 10px;
+        border-radius: 100px;
+    }
+}
+
+@media only screen and (max-width:991px) {
+    .calendar {
+        overflow-x: scroll;
+    }
+    
+    .calendar table {
+        width: 1300px;
+    }
+
+}

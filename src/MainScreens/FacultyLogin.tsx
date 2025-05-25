@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import BsInp from "../Comp/BsInp";
 import BsSelect from "../Comp/BsSelect";
 import BsLabel from "../Comp/BsLable";
 import "./User.css";
-import { formDataPostApi } from "../Helper/ApiHandle/BsApiHandle";
+import { formDataPostApi, GetApi } from "../Helper/ApiHandle/BsApiHandle";
 import { toast, Toaster } from "sonner";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import BsButton from "../Comp/BsButton";
@@ -25,6 +25,22 @@ const FacultyLogin = () => {
 
     const [file, setFile] = useState<File | null>(null);
     const navigate = useNavigate();
+    const [formOptions, setFormOptions] = useState({
+        departments: [],
+    });
+
+    useEffect(() => {
+        const fetchAllData = async () => {
+            const [deptRes,] = await Promise.all([
+                GetApi<any>('/user/departments'),
+            ]);
+            setFormOptions({
+                departments: deptRes.data,
+            });
+        }
+        fetchAllData()
+    }, []);
+    console.log(formOptions)
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files) {
@@ -74,11 +90,10 @@ const FacultyLogin = () => {
             submitData.append("image", file);
         }
         try {
-            const response = await formDataPostApi("/user/createUser", submitData, true);
+            const response = await formDataPostApi<any>("/user/createUser", submitData, true);
             console.log("Response:", response.data);
             setIsLoading(false);
             navigate("/verification");
-
         } catch (error: any) {
             console.error("Error submitting form:", error);
             setIsLoading(false);
@@ -108,17 +123,7 @@ const FacultyLogin = () => {
                     <BsInp label="Password" icon={showPassword ? faEyeSlash : faEye} inplabel="Password" type={showPassword ? "text" : "password"} name="password" value={formData.password} onChange={handleChange} onClick={() => setShowPassword(!showPassword)} />
 
                     <BsLabel label="Department" />
-                    <BsSelect
-                        name="department"
-                        value={formData.department}
-                        onChange={handleChange}
-                        data={[
-                            { value: 'cs', name: 'Computer Science' },
-                            { value: 'ee', name: 'Electrical Engineering' },
-                            { value: 'me', name: 'Mechanical Engineering' },
-                            { value: 'ce', name: 'Civil Engineering' },
-                            { value: 'bt', name: 'Biotechnology' },
-                        ]} />
+                    <BsSelect name="department" value={formData.department} onChange={handleChange} data={formOptions.departments} />
                     {/* File Upload */}
                     <div>
                         <BsLabel label="Upload File" />

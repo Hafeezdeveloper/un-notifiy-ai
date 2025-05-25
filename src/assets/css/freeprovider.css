@@ -1,0 +1,118 @@
+/* Free Provider Main Page Styles */
+.free-provider-welcome-box-main {
+  background: linear-gradient(45deg, #004540, #00a297);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.free-provider-looking-for-left {
+  width: 63%;
+  gap: 1.25rem;
+}
+
+.free-provider-join-membership-right {
+  width: 34%;
+}
+
+.select-indivisual-field-grid {
+  display: grid;
+  gap: 2%;
+  grid-template-columns: 82% 16%;
+}
+
+.select-indivisual-field-inner-grid {
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+
+.select-indivisual-field {
+  height: 50px;
+  border: 1px solid var(--theme-green1);
+}
+
+.select-indivisual-search-field {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding: 0 1rem 0 2.75rem;
+}
+
+.select-indivisual-postcode-field {
+  border-left: none;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0 0.5rem 0 2.5rem;
+}
+
+.common-req-btn {
+  padding: 0.4rem 0.5rem;
+  border: 1px solid var(--theme-light-seagreen);
+}
+
+.free-provider-input-btn-box-shadow {
+  box-shadow: 0 3px 6px #0000002e;
+}
+
+.free-provider-join-membership-right {
+  background: linear-gradient(45deg, #004540, #00a297);
+  border-radius: 20px;
+  padding: 1.5rem 1rem;
+  gap: 1.5rem;
+}
+
+
+.free-provider-join-membership-btn-parent {
+  border: 4px solid var(--cream-white);
+  padding: 0.35rem;
+  border-radius: 50px;
+}
+
+.free-provider-access-pass-box {
+  border-radius: 24px;
+  padding: 2rem 1rem 1rem 1rem;
+  gap: 1rem;
+}
+
+.free-provider-access-pass-box-memb-btn {
+  border-radius: 50px;
+  padding: 0.45rem 0;
+}
+
+.free-provider-access-pass-box-right-hang {
+  padding: 0.35rem 0;
+  transform: rotate(45deg);
+  right: -42%;
+}
+
+.free-provider-input-btn-box-shadow {
+  border: 1px solid #004540;
+}
+
+/* .free-provider-main{
+  padding: 1rem 2rem !important;
+} */
+/* Free Provider Main Page Styles */
+.free-provider-join-membership-right .login-paid-plan-right-side h3 {
+  display: none;
+}
+
+.free-provider-join-membership-right .login-paid-plan-right-side {
+  width: 100%;
+}
+
+
+.free-provider-join-membership-right .login-paid-plan-right-button-parent {
+  width: 100%;
+}
+
+.free-provider-join-membership-right .access-plan-box-membership-btn {
+  width: 100%;
+}
+
+.search-post-parent .search-post-child .css-hsfikp-control {
+  border-radius: 0px 60px 60px 0px;
+}
+
+.search-post-parent .search-post-child .css-cb2n6d-control {
+  border-radius: 0 20px 20px 0px !important;
+}

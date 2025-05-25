@@ -1,0 +1,14 @@
+<svg id="Job_board" data-name="Job board" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="30" viewBox="0 0 40 30">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#004f49"/>
+      <stop offset="1" stop-color="#009b8f"/>
+    </linearGradient>
+  </defs>
+  <rect id="Rectangle_7561" data-name="Rectangle 7561" width="40" height="30" rx="5" fill="url(#linear-gradient)"/>
+  <g id="Group_14032" data-name="Group 14032" transform="translate(10.326 6.938)">
+    <path id="Path_23703" data-name="Path 23703" d="M176.31,46.295a.806.806,0,0,1-.806-.806V44.279h-3.225v1.209a.806.806,0,1,1-1.612,0V44.279a1.614,1.614,0,0,1,1.612-1.612H175.5a1.614,1.614,0,0,1,1.612,1.612v1.209A.806.806,0,0,1,176.31,46.295Z" transform="translate(-164.218 -42.667)" fill="#fff"/>
+    <path id="Path_23704" data-name="Path 23704" d="M10.246,250.924a1.661,1.661,0,0,1-.572.1,1.767,1.767,0,0,1-.621-.113L0,247.893v6.151a2.216,2.216,0,0,0,2.217,2.217H17.13a2.216,2.216,0,0,0,2.217-2.217v-6.151Z" transform="translate(0 -240.138)" fill="#fff"/>
+    <path id="Path_23705" data-name="Path 23705" d="M19.347,108.884v1.846l-9.48,3.16a.6.6,0,0,1-.387,0L0,110.73v-1.846a2.216,2.216,0,0,1,2.217-2.217H17.13A2.216,2.216,0,0,1,19.347,108.884Z" transform="translate(0 -104.249)" fill="#fff"/>
+  </g>
+</svg>

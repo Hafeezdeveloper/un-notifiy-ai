@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="40" height="30" viewBox="0 0 40 30">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#004f49"/>
+      <stop offset="1" stop-color="#009b8f"/>
+    </linearGradient>
+  </defs>
+  <g id="house_icon" data-name="house icon" transform="translate(-1375 -617)">
+    <g id="Group_15790" data-name="Group 15790" transform="translate(-3501 1374)">
+      <rect id="Rectangle_7561" data-name="Rectangle 7561" width="40" height="30" rx="5" transform="translate(4876 -757)" fill="url(#linear-gradient)"/>
+    </g>
+    <g id="home" transform="translate(1382.001 575.006)">
+      <g id="Group_15727" data-name="Group 15727" transform="translate(-0.001 46.994)">
+        <path id="Path_34012" data-name="Path 34012" d="M74.657,120.939l-8.943,7.373a.211.211,0,0,1-.008.047.213.213,0,0,0-.008.046v7.466a1.01,1.01,0,0,0,1,1h5.972v-5.973h3.982v5.973h5.972a1.011,1.011,0,0,0,1-1V128.4a.219.219,0,0,0-.016-.093Z" transform="translate(-62.119 -116.911)" fill="#fff"/>
+        <path id="Path_34013" data-name="Path 34013" d="M24.9,56.715,21.5,53.885V47.539a.479.479,0,0,0-.5-.5H18.013a.479.479,0,0,0-.5.5v3.033L13.72,47.4a1.93,1.93,0,0,0-2.364,0L.172,56.715A.452.452,0,0,0,0,57.05a.5.5,0,0,0,.109.366l.964,1.151a.53.53,0,0,0,.327.171.578.578,0,0,0,.373-.109l10.763-8.975L23.3,58.629a.479.479,0,0,0,.327.108h.047A.531.531,0,0,0,24,58.566l.964-1.151a.5.5,0,0,0,.108-.366A.453.453,0,0,0,24.9,56.715Z" transform="translate(0.001 -46.994)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

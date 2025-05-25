@@ -12,7 +12,9 @@ const BsSelect = (props: any) => {
             >
                 {data && Array.isArray(data) && data.map((x, i) => {
                     return (
-                        <option className="font_use " value={x.value}>{x.name}</option>
+                        <>
+                            <option className="font_use " value={x._id}>{x.name}</option>
+                        </>
                     )
                 })}
             </select>

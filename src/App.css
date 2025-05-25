@@ -1,24 +1,7 @@
 @import "tailwindcss";
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
+
 
 @keyframes logo-spin {
   from {
@@ -35,13 +18,24 @@
   }
 }
 
-.card {
+.font_use {
+  font-family: 'Poppins', sans-serif !important;
+}
+
+@media (max-width: 600px) {
+  .custom-icon-pass-position {
+      position: absolute;
+      top: 5px !important;
+  }
+}
+
+/* .card {
   padding: 2em;
 }
 
 .read-the-docs {
   color: #888;
-}
+} */
 
 
 
@@ -184,4 +178,9 @@
 
 .rounded-md {
   border-radius: calc(var(--radius) - 2px);
+}
+
+
+.theme-bg-grey-type {
+  background-color: var(--grey-bg-type-theme);
 }

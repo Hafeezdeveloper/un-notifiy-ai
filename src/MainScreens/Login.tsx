@@ -9,6 +9,14 @@ import BsButton from "../Comp/BsButton";
 import { formDataPostApi, PostApi } from "../Helper/ApiHandle/BsApiHandle";
 
 const Login = () => {
+  interface Paginated {
+    totalItems: number;
+  }
+  interface ApiResponse {
+    documents: any[];
+    token:any
+  }
+
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState<any>(false);
   const navigate = useNavigate();
@@ -31,12 +39,12 @@ const Login = () => {
     setIsLoading(true);
 
     try {
-      const response = await PostApi("/user/login", formData);
+      const response = await PostApi<ApiResponse>("/user/login", formData);
       console.log("Response:", response.data);
       setIsLoading(false);
-      if (response.data.userDetails.role) {
-        navigate("/dashboard");
-        localStorage.setItem("authToken", response.data.token); // Store token
+      if (response.data.token) {
+        localStorage.setItem("authToken", response.data.token);
+        navigate("/feeds");
       }
     } catch (error: any) {
       setIsLoading(false);
@@ -74,7 +82,7 @@ const Login = () => {
   };
 
   return (
-    <div className="container mx-auto px-4 pt-2 pb-1">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <Toaster position="top-right" richColors />
       <div className="flex justify-center items-center shadow-sm rounded  bg-gray-100">
         <div className="bg-white p-8 rounded-xl shadow-md w-lg">
@@ -98,28 +106,15 @@ const Login = () => {
               <BsButton isLoading={isLoading} label="Login" />
             </div>
           </form>
-          {/* <button
-            type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md transition"
-            disabled={isLoading}
-          >
-            {isLoading ? "Signing in..." : "Sign In"}
-          </button> */}
-          {/* <span className="d-flex justify-center w-full font-size-20px text-gray-600 fs ">
-                    Register as a teacher?
-                    <Link to="/teacherSignUp" className="text-blue-500  font-size-21px pl-1 font_use hover:underline">
-                        Register Here
-                    </Link>
-                </span> */}
           <span className="d-block text-center text-gray-600 mt-4">
             Register as a teacher?
-            <Link to="/register" className="text-blue-500 hover:underline ml-1">
+            <Link to="/teacherSignUp" className="text-blue-500 hover:underline ml-1">
               Register
             </Link>
           </span>
-          <span className="text-center text-gray-600 ">
-            Register as a student?
-            <Link to="/register" className="text-blue-500 hover:underline ml-1">
+          <span className="d-flex justify-center w-full font-size-20px text-gray-600 fs ">
+          Register as a student?
+            <Link to="/" className="text-blue-500  font-size-21px pl-1 font_use hover:underline">
               Register
             </Link>
           </span>

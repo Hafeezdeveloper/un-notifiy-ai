@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="58" height="59" viewBox="0 0 58 59">
+  <g id="no-answer" transform="translate(-830 -475)">
+    <rect id="Rectangle_6073" data-name="Rectangle 6073" width="58" height="59" rx="6" transform="translate(830 475)" fill="#ef6277"/>
+    <g id="Page-1" transform="translate(842.004 482)">
+      <g id="_067---missed-call" data-name="067---missed-call" transform="translate(-0.003 7)">
+        <path id="Shape" d="M24.19,38.717,30.093,43a1.07,1.07,0,0,0,1.384-.108l3.536-3.528a1.075,1.075,0,0,0,.194-1.249C32.494,32.771,25.888,29,18.162,29S3.829,32.771,1.117,38.114a1.075,1.075,0,0,0,.192,1.252l3.536,3.526A1.07,1.07,0,0,0,6.23,43l5.9-4.283a1.065,1.065,0,0,0,.414-.631l.71-3.21a1.276,1.276,0,0,1,.93-.953,16.072,16.072,0,0,1,7.942,0,1.274,1.274,0,0,1,.929.953l.71,3.21a1.065,1.065,0,0,0,.422.631Z" transform="translate(-0.997 -11.837)" fill="#fff"/>
+        <path id="Shape-2" data-name="Shape" d="M33.846,0,23.6,1.138l3.3,3.3L21.345,9.99l-9.4-8.357A1.775,1.775,0,1,0,9.585,4.286l10.653,9.469a1.775,1.775,0,0,0,2.435-.072L29.41,6.946l3.3,3.3Z" transform="translate(-4.252)" fill="#fff"/>
+      </g>
+    </g>
+  </g>
+</svg>

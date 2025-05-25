@@ -8,7 +8,7 @@ const BsButton = (props: any) => {
         <>
             <button
                 type="submit"
-                className={`${isLoading ? "flex justify-center" : ""} ${style ? style : "w-full"}  rounded-pill bg-primary  hover:bg-blue-700 text-white py-2 transition`}
+                className={`${isLoading ? "flex justify-center" : ""} ${style ? style : "w-full rounded-pill bg-primary      hover:bg-blue-700 text-white py-2 transition"}  `}
                 disabled={isLoading}
                 onClick={onClick}
             >

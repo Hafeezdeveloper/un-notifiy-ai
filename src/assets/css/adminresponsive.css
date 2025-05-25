@@ -1,0 +1,918 @@
+@media only screen and (max-width: 1600px) {
+  .total_length {
+    position: absolute;
+    bottom: 4rem;
+    right: 3rem;
+  }
+
+  .dispute-search-main-2 select {
+    width: 165px !important;
+  }
+
+  .dispute-search-main select {
+    font-size: 14px;
+    width: 110px;
+  }
+
+  .dispute-search-main-2 select {
+    font-size: 14px;
+  }
+
+  .admin-job-active {
+    grid-template-columns: 33% 66%;
+    gap: 10px;
+  }
+
+  .active-jobs-tabs button {
+
+    padding: 8px 5px;
+  }
+
+  .job-preview-user {
+    margin-bottom: 30px;
+  }
+
+  .job-card-name {
+    margin-top: 0;
+  }
+
+  .jobs-apply-btn-2 {
+    padding: 5px 30px;
+  }
+
+  .edituser-close-icon {
+    top: -0.25rem;
+    right: 0px !important;
+  }
+
+
+  /* ///////////Sidebar css////////////////////// */
+  .Admin-sider-content ul li {
+    margin-bottom: 2rem;
+  }
+
+  /* .header-main .ndis-logo {
+    width: 83px;
+  } */
+
+
+
+
+
+
+  .header-notifi-icon {
+    font-size: 28px;
+  }
+
+  .admin-header-main {
+    padding: 0.7rem 2rem 0.7rem 1rem;
+  }
+
+  .admin-searchInp input {
+    font-size: 15px;
+  }
+
+  .admin-searchInp svg {
+    font-size: 14px;
+  }
+
+  .transaction-chart-first {
+    padding: 0.7rem;
+  }
+
+  .admin-stack-graph {
+    padding: 0.7rem;
+  }
+
+  .outstandingChart {
+    padding: 0.7rem;
+  }
+
+  .admin-Daily-Living {
+    width: 250px;
+    height: 135px;
+
+  }
+
+  .admin-daily-siliding {
+    width: 215px;
+    height: 7px;
+  }
+
+  .admin-slider-para {
+    margin: 20px 0 0 0px;
+  }
+
+  .admin-daily-siliding {
+    margin-top: 2rem;
+  }
+
+  .admin-daily-siliding-green {
+    height: 7px;
+  }
+
+  .NotificationPersonImg img {
+    width: 80%;
+  }
+
+  .Admin-todo-chexkbox {
+    accent-color: #d9d8d8;
+    height: 17px;
+    width: 17px;
+  }
+
+  .adminnotificationParent-serious h4 {
+    margin-bottom: 0;
+  }
+
+  .Main-AdminUsers input {
+    width: 20rem;
+    /* padding: 0.5rem; */
+  }
+
+  .Main-AdminUsers select {
+    width: 20rem;
+    padding-top: 16px;
+  }
+
+  .Admin-Daily-Search-btn {
+    padding: 7px 50px;
+  }
+
+  /* 
+  .main-Admin-status-action {
+    padding: 15px;
+  } */
+  .main-Admin-status-action li {
+    padding: 14px 0 ;
+  }
+
+  /* .main-Admin-status-content {
+    padding: 12px 14px 12px 10px;
+    margin-top: 1rem;
+  } */
+
+  .Admin-Operators-green {
+    font-size: 12px !important;
+  }
+
+  .Admin-support-blue-editor {
+    font-size: 12px !important;
+  }
+
+  .dropDownElipsis {
+    padding: 6px;
+    top: 25px;
+    left: -36px;
+    width: 100px;
+  }
+
+  .Admin-main-operator-parent {}
+
+  li.dropdown-content-admin .dropdown-content a {
+    font-size: 12px;
+  }
+
+
+
+  .select-inner-text span {
+    font-size: 13px;
+  }
+
+  .Main-Admin-paidUsers select {
+    width: 18rem;
+  }
+
+  .Main-Admin-paidUsers input {
+    width: 18rem;
+  }
+
+  .Admin-paid-user-on-off-btn label {
+    width: 55px;
+    height: 20px;
+  }
+
+  .Admin-paid-user-on-off-btn label:after {
+    width: 17px;
+    height: 16px;
+  }
+
+  .Admin-support-blue-Cancelled {
+    font-size: 12px !important;
+  }
+
+  .dropDownElipsis button {
+    font-size: 11px;
+  }
+
+  .dropDownElipsis a {
+    font-size: 11px;
+  }
+
+  .billing-detail-invoice {
+    width: 12px !important;
+  }
+
+  .admin-add-operator-mdl {
+    margin-bottom: 0.5rem;
+  }
+
+  .addStaffModal {
+    padding: 0px 25px;
+  }
+
+  .ModulePermision.border-b-2 {
+    height: 210px;
+  }
+
+  .paid-provider-add-operator {
+    top: 0.5%;
+    right: -4%;
+  }
+
+  .sndInvite button {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .x-icon-admin-opr {
+    padding: 0.3rem 0.4rem;
+    font-size: 9px;
+  }
+
+  .DeleteModal {
+    padding: 10px;
+  }
+
+  .form-group-tick input:checked+label:after {
+    left: 6px;
+    width: 4px;
+    height: 8px;
+  }
+
+  .Admin-sider-content {
+    margin-top: 3rem;
+  }
+
+  .job-preview-user img {
+    height: 90px;
+    width: 90px;
+  }
+
+  /* .job-preview-content {
+    padding: 0px 15px;
+  } */
+
+  .job-pre-apply-connect-btn {
+    padding: 10px 0 20px 0;
+  }
+
+  .admin-box-pending-btn span {
+    padding: 4px 10px;
+  }
+
+  .admin-box-pending-btn {
+    top: -1px;
+  }
+
+
+  .job-req-min-height-box1 p {
+    height: 38px;
+  }
+
+  .admin-box-weekly-cal svg {
+    font-size: 13px;
+  }
+
+  .admin-box-weekly-cal {
+    gap: 0.2rem;
+    margin-bottom: 4px;
+  }
+
+  .admin-box-weekly-date svg {
+    font-size: 9px;
+  }
+
+  .admin-box-declined-btn span {
+    padding: 4px 10px;
+  }
+
+  .admin-box-aprroved-btn span {
+    padding: 6px 10px;
+  }
+
+  .admin-box-aprroved-btn {
+    top: -1px;
+  }
+
+  .admin-box-declined-btn {
+    top: -1px;
+  }
+
+  .admin-box-app-dec {
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+
+  .admin-Service-drop-down-schedular {
+    top: 63px;
+    width: 91% !important;
+  }
+
+  /* //////////////admin-modals//////////////// */
+  .job-pre-edit {
+    right: -9px;
+    top: -9px;
+  }
+
+  .job-pre-edit .x-icon-admin-opr {
+    padding: 0.2rem 0.3rem;
+  }
+
+  .canellation-textarea {
+    /* height: 120px; */
+    margin: 5px 0;
+  }
+
+  .cancellation-envolpe-main {
+    margin-bottom: 5px;
+  }
+
+  .cancellation-envolpe {
+    height: 55px;
+    width: 55px;
+    font-size: 28px;
+  }
+
+  .edit-looking-for select {
+    margin-bottom: 5px;
+    margin-top: 3px;
+  }
+
+  /* .edit-looking-for input {
+  margin-bottom: 5px;
+  margin-top: 3px;
+} */
+
+
+  .edit-modals-Rates textarea {
+    height: 100px;
+  }
+
+  .piechart-admin-parent div {
+    height: 100%;
+    left: 71%;
+    position: absolute;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
+  .edit-modal-content {
+    width: 45%;
+  }
+
+  .start-with::before {
+
+    margin-top: 3px;
+  }
+
+  .end-with::before {
+
+    margin-top: 3px;
+  }
+
+  .edit-looking-for-2 select {
+
+    height: 46.6px;
+  }
+
+  .ends-on-date input {
+
+    height: 46.6px;
+  }
+
+  .admin-job-req-inner {
+
+    padding: 11px;
+  }
+
+  .create-job-service-dropdown {
+    width: 91.1%;
+  }
+
+  img.admin-see-num {
+    width: 45px;
+  }
+
+  .Admin-status-content-Role-2 li {
+    padding: 11px 0;
+  }
+
+  /* //////////////admin-modals//////////////// */
+  .total-user-graph {
+    padding: 1rem;
+  }
+
+
+  .service-provided-graph-box {
+    padding: 1rem;
+    height: 400px;
+  }
+
+  .services-provided-list {
+    height: 240px;
+  }
+
+  .graph-circle-jugar {
+    height: 180px;
+    width: 180px;
+    left: 41%;
+  }
+
+  .total-providers-count {
+    padding: 0.2rem 0.5rem;
+  }
+  .dispute-header {
+
+    gap: 6px;
+
+}
+.admin-header-res{
+  max-width: 100% !important;
+}
+}
+
+
+@media only screen and (max-width: 1440px) {
+  .total-count-inmodal{
+    bottom: 6.5vw !important;
+  }
+  img.admin-see-num {
+    width: 40px;
+  }
+
+  .dispute-search-main-2 select {
+    width: 145px;
+  }
+
+  .dispute-search-main select {
+    font-size: 12px;
+  }
+
+  .dispute-search-main-2 select {
+    font-size: 12px;
+  }
+
+  .admin-box-approval button {
+    max-width: 100%;
+    height: 20px;
+    padding: 0px 23px;
+  }
+
+  .active-jobs-tabs {
+
+    gap: 25px;
+  }
+
+  .mt-8 {
+    margin-top: 1rem;
+  }
+
+  .jobs-apply-btn-2 {
+    padding: 5px 20px;
+  }
+
+  .admin-Service-drop-down-schedular {
+  
+  }
+
+  .create-job-service-dropdown {
+    width: 93.1%;
+  }
+
+  .edit-looking-for-2 select {
+    height: 43.33px;
+  }
+
+  .ends-on-date input {
+    height: 43.33px;
+  }
+
+  .admin-job-req-inner {
+    padding: 10px;
+  }
+
+
+
+  .piechart-admin-parent div {
+    height: 100%;
+    left: 75%;
+    position: absolute;
+    top: 65%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+  }
+
+  .month-week {
+    gap: 10px;
+  }
+
+  .custom-checkBox {
+    height: 11px;
+    width: 11px;
+  }
+
+  /* .admin-job-req{
+padding: 0.5rem;
+} */
+  .UserIconAndNum img {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .UserIconAndNum {
+    display: flex;
+    justify-content: center;
+  }
+
+  span.userReqCount {
+    height: 35px;
+    width: 35px;
+    right: -5px;
+  }
+
+  .Admin-sider-content ul li {
+    margin-bottom: 1.5rem;
+  }
+
+  .Admin-sider-content img {
+    width: 75%;
+  }
+
+  .Admin-sider-content ul li a {
+    gap: 0.5rem;
+  }
+
+
+
+  .admin-searchInp input {
+    font-size: 12px;
+  }
+
+
+
+  .header-notifi-icon {
+    font-size: 20px;
+  }
+
+
+  .admin-Daily-Living {
+    width: 215px;
+    height: 120px;
+  }
+
+  .admin-daily-siliding {
+    width: 170px;
+    height: 5px;
+  }
+
+  .admin-daily-siliding-green {
+    height: 5px;
+  }
+
+  .admin-lorem-padding {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .todo-list-inner {
+    height: 20rem;
+  }
+
+  .adminnotificationParent-serious {
+    height: 23rem;
+  }
+
+  .admin-user-graph {
+    padding: 0.5rem;
+  }
+
+  .admin-finacial-overveiw-graphs-box {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .adminnotificationParent-serious::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  .todo-list-inner::-webkit-scrollbar {
+    width: 7px;
+  }
+
+  .transaction-chart-first {
+    padding: 0.2rem 0.7rem;
+  }
+
+  .transaction-chart {
+    padding: 0.5rem 0.7rem;
+  }
+
+  .MuiBox-root.css-i9gxme {
+    height: 80px;
+  }
+
+  .admin-Renewed-Subscriptions-graphs {
+    padding: 12px;
+  }
+
+  .admin-.New-Subscriptions-graphs {
+    padding: 0.5rem;
+  }
+
+  .admin-user-graph {
+    height: 304px;
+  }
+
+  .ProgressBarTransaction {
+    height: 7px;
+  }
+
+  .ProgressBarTransaction .greenSpanBar {
+    height: 7px;
+  }
+
+  .ModulePermision.border-b-2 {
+    height: 170px;
+  }
+
+  .ModulePermision::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .form-group-tick label:before {
+    padding: 6px;
+  }
+
+  .Main-AdminUsers select {
+    width: 16rem;
+    padding-top: 13px;
+  }
+
+  .Main-AdminUsers input {
+    width: 16rem;
+    /* padding: 0.3rem; */
+  }
+
+  .select-inner-text span {
+    font-size: 11px;
+    top: 4px;
+  }
+
+  .Admin-Daily-Search-btn {
+    padding: 7px 50px;
+  }
+
+  .Admin-Daily-Search-btn-op {
+    padding: 8px 15px;
+  }
+
+  .Admin-Operators-green {
+    font-size: 10px !important;
+  }
+
+  .Admin-support-blue-editor {
+    font-size: 10px !important;
+  }
+
+  .Admin-support-green-editor {
+    font-size: 10px !important;
+  }
+
+
+
+  /* .main-Admin-status-action {
+    padding: 12px;
+  } */
+
+  /* .main-Admin-status-content {
+    margin-top: 0.7rem;
+    padding: 10px 14px 10px 10px;
+  } */
+
+  .Admin-main-operator-parent {}
+
+  .Admin-sidebar-logout-btn svg {
+    font-size: 13px;
+  }
+
+  .admin-header-main {
+    padding: 0.7rem 3rem 0.7rem 1rem;
+  }
+
+  li.dropdown-content-admin .dropdown-content a {
+    font-size: 10px;
+  }
+
+  .border-underline {
+    margin-bottom: 0;
+  }
+
+  .delete-user-btn-responsive {
+    margin-top: 1.5rem;
+  }
+
+  .dropDownElipsis button {
+    font-size: 9px;
+  }
+
+  .dropDownElipsis {
+    padding: 4px;
+    left: -24px;
+    width: 75px;
+  }
+
+  .Main-AdminUsers input {
+    width: 14rem;
+  }
+
+  .Main-AdminUsers select {
+    width: 14rem;
+  }
+
+  .Back-Icon {
+    width: 25px;
+    height: 25px;
+  }
+
+  .admin-download-icon {
+    width: 15px !important;
+  }
+
+  .dropDownElipsis a {
+    font-size: 9px;
+  }
+
+  .dropDownElipsis button {
+    font-size: 9px;
+  }
+
+  .billing-detail-invoice {
+    width: 10px !important;
+  }
+
+  .form-group-tick input:checked+label:after {
+    left: 5px;
+    top: 5px;
+  }
+
+  .Admin-sider-content {
+    margin-top: 2rem;
+  }
+ 
+
+  .Admin-support-blue-Cancelled {
+    font-size: 10px !important;
+  }
+
+  .admin-support-worker-boxes {
+    /* padding: 15px 10px 0 15px; */
+
+  }
+
+  .admin-Cleaning-box1 {
+    padding: 8px 8px 8px 8px;
+  }
+
+  .admin-box-weekly-date svg {
+    font-size: 9px;
+  }
+
+  .admin-box-weekly-date {
+    gap: 0.2rem;
+  }
+
+  .admin-box-inner-main {
+    margin: 10px 0;
+  }
+
+  .admin-box-pending-btn span {
+    padding: 3px 10px;
+  }
+
+  .admin-box-declined-btn span {
+    padding: 3px 10px;
+  }
+
+  .admin-box-aprroved-btn span {
+    padding: 4px 10px;
+  }
+
+  .admin-box-aprroved-btn {
+    top: -5px;
+  }
+
+  .admin-box-declined-btn {
+    top: -5px;
+  }
+
+  .admin-box-pending-btn {
+    top: -5px;
+  }
+
+  .job-req-min-height-box1 p {
+    height: 30px;
+  }
+
+  .admin-box-weekly-cal svg {
+    font-size: 10px;
+  }
+
+  .admin-box-app-dec a,
+  .admin-box-app-dec button {
+    padding: 3px 0;
+  }
+
+  .admin-box-app-dec {
+    margin-top: 10px;
+  }
+
+  .job-preview-user img {
+    height: 80px;
+    width: 80px;
+  }
+
+  .job-preview-user {
+    margin-bottom: 20px;
+  }
+
+  .job-preview-content {
+    padding: 10px;
+  }
+
+  /* ///////////////////////Admin Modals/////////////////// */
+  .approved-modal a {
+    padding: 3px 30px 4px 30px;
+  }
+
+  .approved-modal-content {
+    padding: 10px;
+  }
+
+  .cancellation-envolpe-main {
+    margin-bottom: 5px;
+  }
+
+  .cancellation-envolpe {
+    height: 45px;
+    width: 45px;
+    font-size: 24px;
+  }
+
+  .canellation-textarea {
+    /* height: 100px; */
+    margin: 5px 0;
+  }
+
+  .cancellation-mdl-btn a {
+    padding: 6px 30px 6px 30px;
+  }
+
+  .cancellation-mdl-btn button {
+    padding: 6px 30px 6px 30px;
+  }
+
+  .edit-modal-content {
+    padding: 10px 20px;
+  }
+
+  /* .edit-looking-for input {
+  margin-bottom: 2px;
+  margin-top: 2px;
+} */
+  .edit-looking-for select {
+    margin-bottom: 2px;
+    margin-top: 2px;
+  }
+
+
+
+  .edit-modals-Rates textarea {
+    height: 90px;
+  }
+
+  .edit-modl-updatebtn {
+    border-radius: 5px;
+  }
+
+  .graph-admin {
+    height: 120px;
+  }
+
+  /* ///////////////////////Admin Modals/////////////////// */
+}
+
+/* ///////////Sidebar css////////////////////// */
