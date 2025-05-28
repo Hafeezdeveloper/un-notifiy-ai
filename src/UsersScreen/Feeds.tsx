@@ -50,7 +50,7 @@ const Feeds = () => {
 
   // Reset the Redux store when the component mounts
 
-
+    
 
   return (
     <div>
@@ -60,7 +60,10 @@ const Feeds = () => {
         <div className="news-feed-post">
           <FeedHeader />
           <FeedPostView
-            
+            loader={isLoader}
+            queryParams={queryParams}
+            setQueryParams={setQueryParams}
+            totalPages={totalPages}
           />
         </div>
         <RightSidebarFeed />

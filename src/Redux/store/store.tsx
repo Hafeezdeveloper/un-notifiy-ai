@@ -20,9 +20,9 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
   reducer: {
+    feed: newsFeedSlice,
     auth: persistedReducer,
     userProfile: userProfileReducer,
-    feed: newsFeedSlice
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

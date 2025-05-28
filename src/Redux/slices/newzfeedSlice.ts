@@ -10,15 +10,15 @@ interface CommentType {
 interface PostType {
     _id: string;
     reactionStatus?: boolean;
-    allReacts?: number;
-    allComments?: number;
-    comments?: CommentType[] | null;
+    allReacts?: any;
+    allComments?: any;
+    comments?: any
     [key: string]: any;
 }
 
 // Define the state type
 interface FeedState {
-    isLoader: boolean;
+    isLoader: any;
     isError: boolean;
     allPosts: PostType[];
 }
@@ -114,6 +114,7 @@ export const {
     updateCommentCounter,
     removePostById,
     removeCommentFromPost,
+    
 } = newsFeedSlice.actions;
 
 // Export reducer
