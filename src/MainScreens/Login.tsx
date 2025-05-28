@@ -7,8 +7,11 @@ import { toast, Toaster } from "sonner";
 import { faEye, faEyeSlash, faL } from "@fortawesome/free-solid-svg-icons";
 import BsButton from "../Comp/BsButton";
 import { formDataPostApi, PostApi } from "../Helper/ApiHandle/BsApiHandle";
+import { storeToken } from "../Redux/slices/AuthSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch();
   interface Paginated {
     totalItems: number;
   }
@@ -44,6 +47,7 @@ const Login = () => {
       setIsLoading(false);
       if (response.data.token) {
         localStorage.setItem("authToken", response.data.token);
+        dispatch(storeToken(response.data.token));
         navigate("/feeds");
       }
     } catch (error: any) {

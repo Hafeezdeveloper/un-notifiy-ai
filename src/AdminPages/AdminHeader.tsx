@@ -18,7 +18,7 @@ const AdminHeader = () => {
     };
     //   const { unReadNotifications } = useSelector((store:RootState) => store.notification);
     return (
-        <section style={{ backgroundColor: "#0274be", alignItems:"center",  }} className=" admin-header   flex  justify-end   z-10  h-5">
+        <section style={{ backgroundImage: "linear-gradient(180deg, #0072b5, #005a92)", alignItems: "center", }} className=" admin-header   flex  justify-end   z-10  h-5">
             <div className=" header-glo-set     top-0 z-99  ">
                 <span className="w-full text-white pe-2 "> Admin</span>
             </div>

@@ -11,6 +11,8 @@ import Skeleton from "@mui/material/Skeleton";
 import Isverified from "../../../assets/img/isMember.svg";
 import IsFivityVerfied from "../../../assets/img/50member.svg";
 import qs from "qs";
+import { RootState } from "../../Redux/store/store";
+import { isNotEmpty } from "../../Helper/constants";
 
 interface IApiResponse {
     totalResults: number;
@@ -21,11 +23,12 @@ interface paginated {
     [key: string]: any;
 }
 function LeftSidebar() {
-
+    const personalData = useSelector((store: RootState) => store.userProfile);
+    const [isLoading, setIsLoading] = useState<any>(true)
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-
+    console.log(personalData)
     const leftSideData: any = {
         student: [
             {
@@ -60,45 +63,51 @@ function LeftSidebar() {
     };
     const roleData =
         leftSideData["student"] || [];
+
+
+
+    useEffect(() => {
+        if (isNotEmpty(personalData)) {
+            setIsLoading(false);
+        }
+    }, [personalData]);
+
     return (
         <div className="sidebar-gobal mb-2">
             <div className="sidebar-gobal-user-details  allside_shadow pb-2">
-
-                <div
-                    className="sidebar-gobal-user-img"
-                    style={{
-                        backgroundImage: `https://ndisync-stage.s3.us-east-1.amazonaws.com/profile-67fa153b53554f4352fd20d2.png?t=1748200785001`,
-                    }}
-                >
-
-                    <img
-                        src={`https://ndisync-stage.s3.us-east-1.amazonaws.com/profile-67fa153b53554f4352fd20d2.png?t=1748200785001`}
-                        // src={`${process.env.REACT_APP_BASE_URL_IMAGE}${personalData?.profileImageUrl}?t=${Date.now()}`}
-                        alt="user"
+                {isLoading ? (
+                    <Skeleton
+                        variant="rounded"
+                        className="w-full mb-2 skeleton-sidebar-global"
+                        style={{ borderRadius: 6 }}
                     />
-                </div>
+                ) : (
+                    <div
+                        className="sidebar-gobal-user-img"
+                        style={{
+                            backgroundImage: `${personalData?.data?.profileImageUrl}`,
+                        }}
+                    >
+                        <img
+                            src={`${personalData?.data?.profileImageUrl}`}
+                            alt="user"
+                        />
+                    </div>
+                )}
                 {/* image */}
                 <div className="sidebar-gobal-user-rating flex justify-center items-center">
 
-                    {/* <div className="text-yellow-400 flex gap-1 ">
-                                {[1, 2, 3, 4, 5].map((v) => (
-                                    <FontAwesomeIcon
-                                        key={v}
-                                        fontSize="20px"
-                                        icon={faStar}
-                                        color="#FF9B29"
-                                        className={
-                                            calculateRating(
-                                                personalData?.totalRatings,
-                                                personalData?.totalReviews
-                                            ) >= v
-                                                ? "active"
-                                                : "nonActiveStar"
-                                        }
-                                    />
-                                ))}
-                            </div>
-                     */}
+                    <div className="text-yellow-400 flex gap-1 ">
+                        {[1, 2, 3, 4, 5].map((v) => (
+                            <FontAwesomeIcon
+                                key={v}
+                                fontSize="20px"
+                                icon={faStar}
+                                color="#FF9B29"
+                                className={personalData.data?.isVerified ? "active" : ""}
+                            />
+                        ))}
+                    </div>
                 </div>{" "}
                 {/* rating star */}
                 <div className="sidebar-gobal-user-name text-center">
@@ -110,7 +119,7 @@ function LeftSidebar() {
                                 to={`/publicprofile`}
                                 className="font-size-20px font-Poppins-SemiBold theme-color-green text-center   on-hover-underline capitalize "
                             >
-                                {`${"awdawd"} ${"addawda"} `}
+                                {`${personalData?.data?.fullName} `}
                             </Link>
 
                         </div>
@@ -119,7 +128,7 @@ function LeftSidebar() {
                         {/* {personalData?.role !== "company" &&
                             !personalData?.employeeRole && ( */}
                         <p className="font-size-13px  theme-color-green font-Poppins-Medium text-center capitalize-first-letter">
-                            {"student"}
+                            {personalData?.data?.role}
                         </p>
                         {/* // )} */}
                         {/* {personalData?.companyFirstName && (

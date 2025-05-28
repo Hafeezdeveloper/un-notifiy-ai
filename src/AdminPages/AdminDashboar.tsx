@@ -121,12 +121,11 @@ export default function AdminSidebar(props: Props) {
     <Box sx={{ display: 'flex', }}>
       <CssBaseline />
       <AppBar
-        style={{ backgroundColor: "linear-gradient(180deg, #0274be, #003f7f)" }}
+        style={{ backgroundImage: "linear-gradient(180deg, #0072b5, #005a92)",  }}
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
-
         }}
       >
         <Toolbar>
@@ -156,9 +155,11 @@ export default function AdminSidebar(props: Props) {
           open={mobileOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
+          
           sx={{
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
+            
           }}
           slotProps={{
             root: {
@@ -170,6 +171,7 @@ export default function AdminSidebar(props: Props) {
         </Drawer>
         <Drawer
           variant="permanent"
+          
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },

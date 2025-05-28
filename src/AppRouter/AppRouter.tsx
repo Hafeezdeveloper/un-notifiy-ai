@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import UserSignUp from '../MainScreens/StudentSignUp'
 import TeacherSignUp from '../MainScreens/TeacherSignUp'
@@ -12,8 +12,26 @@ import UsersRequest from '../AdminPages/UsersRequest'
 import ChatPage from '../MainScreens/Chatot/Chatbot'
 import PrivateRoute from '../Helper/ApiHandle/ProtectedRoute'
 import Feeds from '../UsersScreen/Feeds'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../Redux/store/store'
+import { GetApi } from '../Helper/ApiHandle/BsApiHandle'
+import { fetchProfileSuccess } from '../Redux/slices/userProfileSlice'
 
 const AppRouter = () => {
+  const { token } = useSelector((store: RootState) => store.auth); // Select authentication token from Redux store
+  const dispatch = useDispatch(); // Redux dispatch function
+
+  const getData = async () => {
+    // let ApiPath = `/api/user/my-profile`;
+    const response = await GetApi<any>(`/user/my-profile`);
+    console.log(response?.data.document )
+    dispatch(fetchProfileSuccess(response?.data.document));
+  }
+  useEffect(() => {
+    if (token) {
+      getData()
+    }
+  }, [token]);
   return (
     <div>
       <BrowserRouter>
@@ -31,12 +49,15 @@ const AppRouter = () => {
               </PrivateRoute>
             }
           />
-          <Route path='/otp-verification' element={<OtpVerify />} />
-          <Route path='/feeds'
+          <Route
+            path='/feeds'
             element={
               <PrivateRoute>
                 <Feeds />
-              </PrivateRoute>} />
+              </PrivateRoute>
+            }
+          />
+          <Route path='/otp-verification' element={<OtpVerify />} />
           <Route path='/admin/login' element={<AdminLogin />} />
           <Route path='/login' element={<Login />} />
           <Route path='/' element={<UserSignUp />} />
