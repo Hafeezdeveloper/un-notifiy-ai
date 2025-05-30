@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, ChangeEvent } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown, faTimes } from "@fortawesome/free-solid-svg-icons";
 import closeIcon from "../../assets/img/closeIcon.svg";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Skeleton } from "@mui/material";
 import "../../assets/css/responsive.css";
 import "../../assets/css/adminresponsive.css";
@@ -10,6 +10,7 @@ import { RootState } from "../../Redux/store/store";
 import { isNotEmpty } from "../../Helper/constants";
 import { formDataPostApi, PostApi } from "../../Helper/ApiHandle/BsApiHandle";
 import { toast, Toaster } from "sonner";
+import { createNewPost } from "../../Redux/slices/newzfeedSlice";
 
 interface PersonalData {
     profileImageURL?: string;
@@ -29,6 +30,7 @@ const FeedHeader: React.FC = () => {
     const [previewImages, setPreviewImages] = useState<string[]>([]);
     const [isLoader, setIsLoader] = useState<boolean>(false);
     const [tempPrivacy, setTempPrivacy] = useState<string>("anyone");
+    const dispatch = useDispatch();
 
     useEffect(() => {
         if (isNotEmpty(personalData)) {
@@ -114,6 +116,7 @@ const FeedHeader: React.FC = () => {
             // Here you would make your API call
             const response = await formDataPostApi<any>("/posts/create", formData, true);
             console.log(response.data)
+            dispatch(createNewPost(response.data.document || {}));
             toast.success("Post created successfully!");
             setCaption("");
             setFiles([]);

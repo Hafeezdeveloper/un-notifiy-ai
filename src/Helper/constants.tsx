@@ -1,4 +1,6 @@
+import moment from 'moment';
 // Mock data for departments
+
 export const Departments = [
   { value: 'cs', name: 'Computer Science' },
   { value: 'ee', name: 'Electrical Engineering' },
@@ -21,3 +23,10 @@ export const truncateString = (str: string = '', maxLength: number = 10): string
   }
   return str;
 };
+
+export const postTimeDifference = (data: string) => {
+  const targetTime = moment(data);
+
+  if (!targetTime.isValid()) {
+    return '0';
+  }}

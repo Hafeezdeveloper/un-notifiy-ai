@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../Redux/store/store";
 import reactStringReplace from "react-string-replace";
-import { truncateString } from "../Helper/constants";
-
+import { postTimeDifference, truncateString } from "../Helper/constants";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEarthAmericas, faEllipsis, faUserGroup } from "@fortawesome/free-solid-svg-icons";
+import PostCommentSection from "./PostCommentSection";
 interface PostContainerProps {
   item: any; // Replace 'any' with a specific type if you have a type definition for item
   index?: number;
@@ -168,6 +170,7 @@ const PostContainer: React.FC<PostContainerProps> = ({
       }
     };
   }, [selectedPost, item]);
+
   return (
     <>
       {/* {selectedPost?._id === item?._id && (
@@ -197,14 +200,19 @@ const PostContainer: React.FC<PostContainerProps> = ({
                 alt="user"
                 className="rounded-full"
               />
-          
+
             </div>{" "}
-            {/* <div className="sidebar-gobal-user-name w-full">
+            <div className="sidebar-gobal-user-name w-full">
               <div className="flex flex-row justify-between items-center">
                 <div className="flex flex-row gap-2 username-box">
-            
-
-                  <div className=" feed-hover-box bg-white rounded-none lg:rounded-lg  py-3 px-3 flex gap-2 items-center ">
+                  <Link
+                    to={`/public-profile/${item?.userId}/view`}
+                    className="font-size-16px font-Poppins-SemiBold theme-color-green capitalize on-hover-underline"
+                  >
+                    {" "}
+                    {`${item?.fullName || ""} `}
+                  </Link>{" "}
+                  {/* <div className=" feed-hover-box bg-white rounded-none lg:rounded-lg  py-3 px-3 flex gap-2 items-center ">
                     <div className="crete-feed-user-img flex ">
                       <img
                         width={100}
@@ -239,41 +247,63 @@ const PostContainer: React.FC<PostContainerProps> = ({
                       </div>
                     </div>
 
-                  </div>
+                  </div> */}
 
 
                 </div>
-                {/* {(UserRole === "participant" || UserRole === "provider" || UserRole === "company") && (
-                  <FontAwesomeIcon
-                    icon={faEllipsis}
-                    onClick={() => setFeedControlMenu(item?._id)}
-                  />
-                )} */}
-              {/* </div>
-              <p className="font-size-13px  theme-color-green font-Poppins-Regular  capitalize">
-                {item?.connections || 0}  {(item?.connections || 0) > 1 ? "Connections " : "Connection"}
+              </div>
+              {/* Modified connection/privacy display */}
+              <div className="flex items-center gap-1">
+                <p className="font-size-13px theme-grey-type font-Poppins-Regular">
+                  {item?.isSponsered ? "Sponsored" : postTimeDifference(item?.createdAt)}
+                </p>
+                <span className="flex items-center gap-1">
+                  <span className="text-xs text-gray-500">•</span>
+                  {item?.privacy === "myConnections" ? (
+                    <>
+                      <FontAwesomeIcon
+                        icon={faUserGroup}
+                        className="text-gray-500 text-xs"
+                      />
+                      <span className="font-size-13px theme-grey-type font-Poppins-Regular">
+                        {item?.connections || 0} {(item?.connections || 0) > 1 ? "Connections" : "Connection"}
+                      </span>
+                    </>
+                  ) : (
+                    <>
+                      <FontAwesomeIcon
+                        icon={faEarthAmericas}
+                        className="text-gray-500 text-xs"
+                      />
+                      <span className="font-size-13px theme-grey-type font-Poppins-Regular">
+                        Public
+                      </span>
+                    </>
+                  )}
+                </span>
+              </div>
+            </div>
 
-              </p>{" "}
-              {/* <p className="font-size-13px theme-grey-type  font-Poppins-Regular  flex flex-row gap-1 items-center">
-                {item?.isSponsered ?
-                  "Sponsored"
-                  :
-                  postTimeDifference(item?.createdAt)
-                }
-                {item?.privacy === "myConnections" ? (
-                  <img
-                    src={MyconnectionIcon}
-                    className="con-only-img"
-                    alt="my-connections"
-                  />
-                ) : (
-                  <FontAwesomeIcon icon={faEarthAmericas} />
-                )}
-              </p>{" "} */}
-
-            {/* </div> */}
-
+            <FontAwesomeIcon
+              icon={faEllipsis}
+            // onClick={() => setFeedControlMenu(item?._id)}
+            />
           </div>
+
+          {/* Removed old connection display */}
+          {/* <p className="font-size-13px  theme-color-green font-Poppins-Regular  capitalize">
+            {item?.connections || 0}  {(item?.connections || 0) > 1 ? "Connections " : "Connection"}
+          </p>{" "}
+          <p className="font-size-13px theme-grey-type  font-Poppins-Regular  flex flex-row gap-1 items-center">
+            {item?.isSponsered ?
+              "Sponsored"
+              :
+              postTimeDifference(item?.createdAt)
+            }
+
+            <FontAwesomeIcon icon={faEarthAmericas} />
+          </p> */}
+
 
           <div>
             {/* {feedControlMenu === item?._id && (
@@ -321,28 +351,24 @@ const PostContainer: React.FC<PostContainerProps> = ({
               </div>
             )} */}
           </div>
-        </div>
+        </div >
 
         <CaptionComponent text={item?.caption} />
+        {
+          item?.attachments && (
+            <div className=" pt-3 image-control-height">
+              <img
+                src={`${item?.attachments[0]?.url}`}
+                className="w-full cursor-pointer"
 
-        {/* {item?.attachments && (
-          <div className=" pt-3 image-control-height">
-            <img
-              src={`${item?.attachments[0]?.url}`}
-              className="w-full cursor-pointer"
-              onClick={() => {
-                if (isNavigationDisabled(personalData?.approvalStage)) {
-                  return
-                }
-                setSelectedPost(item)
-              }}
-              alt=""
-            />
-          </div>
-        )}
+                alt=""
+              />
+            </div>
+          )
+        }
 
 
-        {(item?.userId === userId && personalData?.profileVerified) && (
+        {/* {(item?.userId === userId && personalData?.profileVerified) && (
           <div>
             <div className="flex flex-end justify-end px-2 mt-2">
 
@@ -382,13 +408,13 @@ const PostContainer: React.FC<PostContainerProps> = ({
         )} */}
 
         <div className="relative  px-2">
-          {/* <PostCommentSection
+          <PostCommentSection
             commentData={item}
             key={item?._id}
             activityPage={activityPage}
             category={category}
             isPromotedId={isPromotedId}
-          /> */}
+          />
         </div>
         {/* {reportModal && (
           <ReportOptions
@@ -406,8 +432,8 @@ const PostContainer: React.FC<PostContainerProps> = ({
             category="post"
           />
         )} */}
-       
-      </div>
+
+      </div >
 
     </>
   );

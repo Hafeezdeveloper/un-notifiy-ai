@@ -52,7 +52,7 @@ const newsFeedSlice = createSlice({
 
         toogleLikedPost: (
             state,
-            { payload }: PayloadAction<{ postId: string; status: boolean }>
+            { payload }: PayloadAction<{ postId: any; status: boolean }>
         ) => {
             const { postId, status } = payload;
             state.allPosts = state.allPosts.map((post) =>
@@ -68,7 +68,7 @@ const newsFeedSlice = createSlice({
             );
         },
 
-        updateCommentCounter: (state, { payload }: PayloadAction<string>) => {
+        updateCommentCounter: (state, { payload }: PayloadAction<any>) => {
             state.allPosts = state.allPosts.map((post) =>
                 post._id === payload
                     ? {
@@ -79,11 +79,11 @@ const newsFeedSlice = createSlice({
             );
         },
 
-        removePostById: (state, { payload }: PayloadAction<string>) => {
+        removePostById: (state, { payload }: PayloadAction<any>) => {
             state.allPosts = state.allPosts.filter((post) => post._id !== payload);
         },
 
-        removeCommentFromPost: (state, { payload }: PayloadAction<string>) => {
+        removeCommentFromPost: (state, { payload }: PayloadAction<any>) => {
             state.allPosts = state.allPosts.map((post) => {
                 if (Array.isArray(post.comments)) {
                     const updatedComments = post.comments.filter(
