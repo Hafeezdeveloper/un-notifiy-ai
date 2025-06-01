@@ -53,13 +53,18 @@ const initialState: UserProfileState = {
   loading: false,
   error: null
 };
-
+interface SetPublicProfilePayload {
+  profile: PublicDataType;
+  services: Array<string>;
+  connectionStatus: string;
+  [key: string]: any;
+}
 export const userProfileSlice = createSlice({
   name: 'userProfile',
   initialState,
   reducers: {
     fetchProfileStart(state) {
-      state.loading = true;
+      state.loading = true; 
       state.error = null;
     },
     fetchProfileSuccess(state, action: PayloadAction<UserProfile>) {
@@ -79,11 +84,23 @@ export const userProfileSlice = createSlice({
       state.data = null;
       state.loading = false;
       state.error = null;
-    }
+    },
+    setPublicProfile(state:any, action: PayloadAction<any>) {
+      state.publicData = action.payload.profile; // Ensure this is correctly set
+      state.publicServices = action.payload.services;
+      state.connectionStatus = action.payload.connectionStatus;
+    },
+    removePublicProfile(state:any) {
+      state.publicData = {};
+      state.publicServices = [];
+      state.connectionStatus = "default";
+    },
   }
 });
 
 export const { 
+  removePublicProfile,
+  setPublicProfile,
   fetchProfileStart, 
   fetchProfileSuccess, 
   fetchProfileFailure,

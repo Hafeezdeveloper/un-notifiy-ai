@@ -19,7 +19,7 @@ const Feeds = () => {
   const [queryParams, setQueryParams] = useState({
     page: 1,
     limit: 10,
-    sort: "top",
+    sort: "top", 
   });
   // Functionality: API call to get the news feed posts
   const fetchNewsFeed = async () => {

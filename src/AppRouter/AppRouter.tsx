@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../Redux/store/store'
 import { GetApi } from '../Helper/ApiHandle/BsApiHandle'
 import { fetchProfileSuccess } from '../Redux/slices/userProfileSlice'
+import UserProfile from '../UsersScreen/userProfile'
 
 const AppRouter = () => {
   const { token } = useSelector((store: RootState) => store.auth); // Select authentication token from Redux store
@@ -54,6 +55,14 @@ const AppRouter = () => {
             element={
               <PrivateRoute>
                 <Feeds />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/public-profile/:uid/view'
+            element={
+              <PrivateRoute>
+                <UserProfile />
               </PrivateRoute>
             }
           />

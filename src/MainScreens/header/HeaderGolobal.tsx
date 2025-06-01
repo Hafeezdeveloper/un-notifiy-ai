@@ -42,7 +42,7 @@ const HeaderGlobal: React.FC = () => {
                             </span>
                         </Link>
 
-                        {/* Network Icon */}
+                        {/* Network Icon        */}
                         <Link
                             to={"/network"}
                             style={{textDecoration:"none"}}

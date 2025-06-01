@@ -30,3 +30,28 @@ export const postTimeDifference = (data: string) => {
   if (!targetTime.isValid()) {
     return '0';
   }}
+
+  export function createMessageWithLinks(text: any): (JSX.Element | string)[] {
+    if (!text) return [''];
+  
+    return text.split(" ").map((word: any, i: any) => {
+      // Define the regex inside the loop
+      const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i;
+  
+      // Check if the word is a URL using regex
+      if (urlRegex.test(word)) {
+        return (
+          <a
+            key={i}
+            href={word}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: 'blue', textDecoration: 'underline' }}
+          >
+            {word}
+          </a>
+        );
+      }
+      return word + " ";  // Return the word with a space
+    });
+  }
