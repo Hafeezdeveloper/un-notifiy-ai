@@ -1,16 +1,35 @@
-import React, { useState, useRef, useEffect, ChangeEvent } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import {
   faCamera,
-  faStar,
   faPenToSquare,
-  faUserGroup,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
-import { CircularProgress } from "@mui/material";
+import {
+  Skeleton,
+  CircularProgress,
+  Avatar,
+  Button,
+  IconButton,
+  Typography,
+  Box,
+  Divider,
+  Stack
+} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-
+import AvatarEditor from "react-avatar-editor";
+import { FaCamera, FaTimes, FaShare, FaChevronLeft } from "react-icons/fa";
+import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
+import EmailIcon from '@mui/icons-material/Email';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import BusinessIcon from '@mui/icons-material/Business';
+import { RootState } from "../Redux/store/store";
+import { PublicDataType, updateProfile } from "../Redux/slices/userProfileSlice";
+import { toast } from "sonner";
+import { formDataPostApi, PostApi } from "../Helper/ApiHandle/BsApiHandle";
+import BsButton from "../Comp/BsButton";
+import ConnectionStatusButton from "../Comp/ConnectionStatusButton";
 
 interface IProfileUserDetailDashboardProps {
   bool: boolean;
@@ -21,37 +40,32 @@ interface IProfileUserDetailDashboardProps {
 interface IApiResponse {
   message: string;
 }
-const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = ({ bool, setBool, unpaidModalShow, isPromoted }) => {
-  const editorRef = useRef<AvatarEditor>(null); // reference of avatar editor
+const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = ({ setBool }) => {
+
+  const editorRef = useRef<AvatarEditor>(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const location = useLocation()
-  const isPublicProfileBase = location.pathname.startsWith("/public-profile");
-  const doecoded = getRole();
-  const UserRole = doecoded?.role;
-  const userId = doecoded?.userId;
-  // const isMember = doecoded?.isMember
+  const location = useLocation();
 
-  // const { role, userId, isMember } = getRole(); // get user role
+  const publicProfile = useSelector((store: RootState) => store.userProfile.publicData);
+  const ShowData = useMemo(() => {
+    return publicProfile as PublicDataType;
+  }, [publicProfile]);
 
-  // const { publicData, connectionStatus } = useSelector((store: RootState) => store.userProfile) as { publicData: PublicDataType; connectionStatus: boolean };
-  const { personalData, connectionStatus, publicData } = useSelector((store: RootState) => store.userProfile)
-  const ShowData = location.pathname.startsWith("/public-profile") ? (publicData as PublicDataType) : (personalData as PublicDataType);
+  const UserRole = useSelector((store: RootState) => store.userProfile.data?.role);
+  const connectionStatus = useSelector((store: RootState) => store.userProfile.connectionStatus);
+  const userId = useSelector((store: RootState) => store.userProfile.data?._id);
 
-  const [promoteModal, setPromoteModal] = useState<boolean>(false)
-
-  const [isImageModal, setIsImageModal] = useState<string | false>(false); // upload image modal
+  const [isImageModal, setIsImageModal] = useState<string | false>(false);
   const [isLoader, setIsLoader] = useState<boolean>(false);
   const [displayImage, setDisplayImage] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  console.log(connectionStatus,"connectionStatus")
+
   useEffect(() => {
-    if (isNotEmpty(ShowData)) {
+    if (ShowData) {
       setIsLoading(false);
     }
   }, [ShowData]);
-
-  // cover image change
   const handleCoverImageChange = (event: React.ChangeEvent<HTMLInputElement>, category: string) => {
     const file = event.target.files?.[0];
     const maxSize = 5 * 1024 * 1024; // 5 MB in bytes
@@ -59,9 +73,8 @@ const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = (
     if (file) {
       if (file.size > maxSize) {
         // File size exceeds the maximum allowed size
-        toast(
+        toast.error(
           "File size exceeds the maximum allowed size (5 MB). Please choose a smaller file.",
-          { type: "error" }
         );
         return; // Stop further execution
       }
@@ -79,7 +92,6 @@ const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = (
     }
   };
 
-  const coverImageUrl = `${process.env.REACT_APP_BASE_URL}/${ShowData?.coverImageUrl}`;
 
   const handleNavigateToCompare = () => {
     navigate(`/participant-compare`, {
@@ -106,7 +118,7 @@ const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = (
         const file = new File([blob], "image.png", { type: "image/png" });
         handleImageUpload(file);
       } else {
-        toast("Failed to convert canvas to blob", { type: "error" });
+
       }
     }
   };
@@ -116,496 +128,312 @@ const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = (
     setIsLoader(true);
     const formData = new FormData();
     formData.append("image", BlobFile);
-    const { res, err } = await httpRequest<IApiResponse>({ method: "post", path: `/api/user/${isImageModal === "cover" ? "cover-image" : "profile-image"}`, params: formData, header: { 'Content-Type': 'multipart/form-data' } });
+    const res = await formDataPostApi<any>(`/user/${isImageModal === "cover" ? "cover-image" : "profile-image"}`, formData, true);
+
     if (res) {
       dispatch(updateProfile());
       setBool((prev) => !prev);
-      toast(res?.message || "success", { type: "success" }); // api success message
       handleCloseImageModal()
     } else {
-      toast(err?.message, { type: "error" });
     }
     setIsLoader(false);
   };
   return (
-    <>
-
-      <h1 className="hidden">{bool ? "TRUE" : "FALSE"}</h1>
-      <div className="shadow-lg bg-white rounded-none lg:rounded-xl mb-2 pb-3 ">
-        {" "}
-
-        {unpaidModalShow ?
-
-          (
-            <>
-              <div className="cover-img relative">
-                <Skeleton variant="rounded" className="w-full" style={{ borderRadius: 13 }} height={274} />
-              </div>
-
-            </>
-
-          )
-          :
-
-          isLoading ? (
-            <div className="cover-img relative">
-              <Skeleton variant="rounded" className="w-full" style={{ borderRadius: 13 }} height={274} />
-            </div>
-          )
-            :
-            (
-              <div className="cover-img relative">
-                <img
-                  // src={`${process.env.REACT_APP_BASE_URL_IMAGE}${ShowData?.coverImageUrl}?t=${Date.now()}`}
-                  src={`${ShowData?.coverImageUrl}?t=${Date.now()}`}
-                  onError={(e) => (e.currentTarget.src = DefaultCoverImage)}
-                  alt=""
-                  width={"100%"}
-                />
-                {userId === ShowData?._id && (
-                  <label
-                    htmlFor="imageInput"
-                    className="absolute icon-size right-5 top-5 z-10 bg-white rounded-full flex items-center justify-center w-8 h-8 "
-                  >
-                    <FontAwesomeIcon icon={faCamera} color="#21948C" />
-                  </label>
-                )}
-                {/* Hidden input field for file upload */}
-                <input
-                  id="imageInput"
-                  type="file"
-                  // accept="image/*"
-                  accept=".jpg, .jpeg, .png, .webp, .apng, .ico, .avif"
-                  onChange={(e) => handleCoverImageChange(e, "cover")}
-                  style={{ display: "none" }}
-                />
-              </div>
-            )
-        }
-        {/* cover upload */}
-
-        <div className="px-6 flex justify-center lg:justify-between md:justify-between">
-          <div className="profile-img-uploader relative">
-            {isLoading ?
-              (
-                null
-              )
-              :
-              (
-                <img
-                  src={`${ShowData?.profileImageUrl}?t=${Date.now()}`}
-                  // src={`${process.env.REACT_APP_BASE_URL_IMAGE}${ShowData?.profileImageUrl}?t=${Date.now()}`}
-                  onError={(e) => (e.currentTarget.src = DefaultProfileImage)}
-                  alt=""
-                  className="rounded-full"
-                />
-              )}
+    <Box sx={{
+      bgcolor: 'background.paper',
+      borderRadius: 2,
+      boxShadow: 1,
+      mb: 2,
+      overflow: 'hidden'
+    }}>
+      {/* Back Button */}
 
 
-            {/* profile image */}
+      {/* Cover Photo */}
+      {isLoading ? (
+        <Skeleton variant="rectangular" width="100%" height={200} />
+      ) : (
+        <Box sx={{
+          position: 'relative',
+          height: 200,
+          bgcolor: 'grey.200'
+        }}>
+          <div className="cover-img relative">
+            <img
+              // src={`${process.env.REACT_APP_BASE_URL_IMAGE}${ShowData?.coverImageUrl}?t=${Date.now()}`}
+              src={`${ShowData?.coverImageUrl}?t=${Date.now()}`}
+              alt=""
+              width={"100%"}
+            />
             {userId === ShowData?._id && (
               <label
-                htmlFor="imageInput2"
-                className="absolute -right-2 bottom-5  rounded-full flex items-center justify-center w-8 h-8  z-0"
+                htmlFor="imageInput"
+                className="absolute icon-size right-5 top-5 z-10 bg-white rounded-full flex items-center justify-center w-8 h-8 "
               >
-                <img src={camraicon} alt="" className="icon-size" />
+                <FontAwesomeIcon icon={faCamera} color="#21948C" />
               </label>
             )}
             {/* Hidden input field for file upload */}
             <input
-              id="imageInput2"
+              id="imageInput"
               type="file"
               // accept="image/*"
               accept=".jpg, .jpeg, .png, .webp, .apng, .ico, .avif"
-
-              onChange={(e) => handleCoverImageChange(e, "profile")}
+              onChange={(e) => handleCoverImageChange(e, "cover")}
               style={{ display: "none" }}
             />
           </div>
-          {userId === ShowData?._id && (
+          {userId == ShowData?._id && (
             <>
-              <Link to="/user-profile-edit" className="mt-5 edit-pro-icon  absolute right-8 lg:right-0 md:right-0 lg:relative md:relative">
-              <FontAwesomeIcon icon={faPenToSquare} />
-              </Link>
-
-
+              <label
+                htmlFor="imageInput"
+                className="absolute icon-size right-5 top-5 z-10 bg-white rounded-full flex items-center justify-center w-8 h-8 "
+              >
+                <FontAwesomeIcon icon={faCamera} color="#21948C" />
+              </label>
+              <input
+                id="imageInput"
+                type="file"
+                // accept="image/*"
+                accept=".jpg, .jpeg, .png, .webp, .apng, .ico, .avif"
+                onChange={(e) => handleCoverImageChange(e, "cover")}
+                style={{ display: "none" }}
+              />
             </>
           )}
-        </div>
-        <div className="flex justify-center lg:justify-between md:justify-between items-center px-6 flex-col  md:flex-row lg:flex-row">
+          <input
+            id="imageInput"
+            type="file"
+            accept=".jpg, .jpeg, .png"
+            style={{ display: "none" }}
+          />
+        </Box>
+      )}
 
-          {unpaidModalShow ?
-
-            (
-              <>
-                <div className="cover-img relative">
-                  <Skeleton variant="rounded" className="w-[55.5vw] my-4" style={{ borderRadius: 13 }} height={15} />
-                  <Skeleton variant="rounded" className="w-[55.5vw] my-4" style={{ borderRadius: 13 }} height={15} />
-                  <Skeleton variant="rounded" className="w-[55.5vw] my-4" style={{ borderRadius: 13 }} height={15} />
-                </div>
-
-              </>
-
+      {/* Profile Header */}
+      <Box sx={{ px: 3, pt: 2, pb: 3 }}>
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'flex-start',
+          mb: 2
+        }}>
+          {/* Profile Picture */}
+          <Box sx={{
+            position: 'relative',
+            mt: -6,
+            mb: 1
+          }}>
+            {isLoading ? (
+              <Skeleton variant="circular" width={100} height={100} />
             )
-            :
-            isLoading ?
-              (
-                <>
-                  <div className="flex justify-between flex-col w-full">
-                    <div className="cover-img relative flex flex-row justify-between items-center mt-4">
-                      <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                      <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                    </div>
-                    <div className="cover-img relative flex flex-row justify-between items-center mt-4">
-                      <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                      <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                    </div>
-
-                  </div>
-                </>
-              )
               : (
                 <>
-                  <div className=" user-name flex gap-3 items-center">
-                    <div className="flex flex-col lg:flex-row md:flex-row gap-2 items-center">
-                      <div className="flex gap-2 items-center">
-                        <h4 className="font-size-20px font-Poppins-SemiBold theme-color-green capitalize">
-                          {`${ShowData?.firstName || ""} ${ShowData?.lastName || ""}`}
-                        </h4>
-
-                        {ShowData?.freeUser === false && (
-                          // <img src={ShowData?.isFounder ? IsFivityVerfied : Isverified} alt="Verified-Icon" />
-                          <img src={ShowData?.isFounder ? "https://ndisync-stage.s3.amazonaws.com/Founding+member+badge.svg" : "https://ndisync-stage.s3.amazonaws.com/Premium+badge.svg"} alt="Verified-Icon" />
-
-                        )}
-                      </div>
-                      {/* {
-                        location.pathname === "/publicprofile" &&
-                        userId === ShowData?._id && (
-                          !ShowData?.profileVerified ? (
-                            <>
-                              <div className="flex flex-row gap-2 items-center ">
-
-                                
-                                <Link to="http://vetting.com/" target="_blank" className="font-size-15px font-Poppins-Medium verify-btn b-1-[#004182] text-[#004182] flex flex-row gap-2 items-center verify-btn">
-                                  <img className="verify-icon-shield" src={VerficationSheild} /> Verify now
-                                </Link>
-                              </div>
-                            </>
-                          ) : ShowData?.profileVerified ? (
-                            <button className="font-size-14px font-Poppins-Medium verified-btn bg-[#B2D8D5] text-[#007E76] flex flex-row gap-2 items-center">
-                              Verified
-                            </button>
-                          ) : null
-                        )
-                      } */}
-
-                      {/* {
-
-                        isPublicProfileBase &&
-                        (
-                          !ShowData?.profileVerified ? (
-                            <>
-                              <div className="flex flex-row gap-2 items-center">
-                                {userId !== ShowData?._id ?
-
-                                  (
-                                    <button className="font-size-15px font-Poppins-Medium bg-[#FFB2B2] text-[#980000] non-verify-btn cursor-default">
-                                      Non-Verified
-                                    </button>
-                                  )
-                                  :
-                                  (
-                                    <Link to="http://vetting.com/" target="_blank" className="font-size-15px font-Poppins-Medium verify-btn b-1-[#004182] text-[#004182] flex flex-row gap-2 items-center verify-btn">
-                                      <img className="verify-icon-shield" src={VerficationSheild} /> Verify now
-                                    </Link>
-                                  )
-                                }
-
-
-
-                              </div>
-                            </>
-                          ) : ShowData?.profileVerified ? (
-                            <button className="font-size-14px font-Poppins-Medium verified-btn bg-[#B2D8D5] text-[#007E76] flex flex-row gap-2 items-center">
-                              Verified
-                            </button>
-                          ) : null
-                        )
-                      } */}
-
-
-
-
-                    </div>
-
-                  </div>
-                </>
-              )}
-
-          {!unpaidModalShow && (
-            !isLoading && (
-              <div className="flex gap-1 my-3 md:my-0 lg:my-0">
-                {[1, 2, 3, 4, 5].map((v) => (
-                  <FontAwesomeIcon
-                    key={v}
-                    fontSize="20px"
-                    icon={faStar}
-                    style={{
-                      color:
-                        calculateRating(
-                          ShowData?.totalRatings,
-                          ShowData?.totalReviews
-                        ) >= v
-                          ? "#FF9B29"
-                          : "#b8b8b8",
+                  <Avatar
+                    src={`${ShowData?.profileImageUrl}?t=${Date.now()}`}
+                    sx={{
+                      width: 100,
+                      height: 100,
+                      border: '3px solid',
+                      borderColor: 'background.paper'
                     }}
                   />
-                ))}
-              </div>
-            )
-
-          )}
-          {/* rating star */}
-        </div>
-        {!unpaidModalShow && (
-          !isLoading ? (
-            <>
-              <div className="flex justify-between items-center px-6 flex-col  md:flex-row lg:flex-row">
-                <div className="w-[90%] text-center lg:text-left md:text-left ">
-                  <p className="font-size-16px  theme-color-green font-Poppins-Regular capitalize-first-letter ">
-                    {ShowData?.roleCategory || ShowData?.role || ""}
-                  </p>{" "}
-                  {ShowData?.abn &&
-                    <p className="font-size-16px  theme-color-green font-Poppins-Regular capitalize-first-letter my-2">
-                      <span className="bg-[#FFE175] rounded-md p-1 font-Poppins-SemiBold capitalize"><i>ABN</i></span> {ShowData?.abn || ""}
-
-                    </p>
-                  }
-                  {/* role */}
-
-                  <p className="font-size-16px theme-grey-type  font-Poppins-Regular w-full lg:w-3/4 md:w-3/4 my-2 md:my-auto lg:my-auto">
-                    {truncateString(ShowData?.profileSummary, 100)}
-                  </p>
-
-                  {/* profile summary */}
-                </div>
-                <div>
-                  {(UserRole === "superAdmin" || UserRole || "admin" || UserRole === "editor") ?
-                    <span className="font-size-16px theme-grey-type  font-Poppins-Medium ">
-                      <span className="font-size-16px font-Poppins-Medium theme-color-green">
-                        {ShowData?.totalReviews || 0}{" "}
-                      </span>
-                      Reviews
-                    </span>
-                    :
-                    <Link to={`/reviews/${ShowData?._id}/published`} className="font-size-16px theme-grey-type  font-Poppins-Medium c">
-                      <span className="font-size-16px font-Poppins-Medium theme-color-green">
-                        {ShowData?.totalReviews || 0}{" "}
-                      </span>
-                      Reviews
-                    </Link>
-
-                  }
-
-                </div>
-              </div>
-              <div className="flex justify-center lg:justify-between md:justify-between  items-center px-6 py-1 flex-col   md:flex-row lg:flex-row my-2 md:my-auto lg:my-auto">
-                <div>
-                  <p className="font-size-16px theme-grey-type  font-Poppins-Regular">
-                    {`${ShowData?.suburb ? capitalizeFirstLetter(ShowData?.suburb) :  ""}, ${ShowData?.state || ""}`}
-                  </p>
-                </div>{" "}
-                {/* city & state */}
-                <div>
-                  <p className="font-size-16px theme-grey-type  font-Poppins-Medium  ">
-                    <span className="font-size-16px font-Poppins-Medium theme-color-green">
-                      {ShowData?.completedJobs || 0}{" "}
-                    </span>{" "}
-                    Jobs completed
-                  </p>
-                </div>{" "}
-                {/* completed jobs */}
-              </div>
-              <div className="flex justify-center lg:justify-between md:justify-between  items-center px-6 pt-1 flex-col  md:flex-row lg:flex-row">
-                <div>
-                  <p className="font-size-16px font-Poppins-Medium theme-color-green text-center">
-                    {/* {ShowData?.connections || 0} Connections */}
-                    {ShowData?.connections || 0}  {(ShowData?.connections || 0) > 1 ? "Connections " : "Connection"}
-
-                  </p>
-                </div>{" "}
-                {/* connection length */}
-                {/* <div>
-                  <p className="font-size-16px theme-grey-type  font-Poppins-Medium  ">
-                    <span className="font-size-16px font-Poppins-Medium theme-color-green">
-                      {CalculateCancellationRate(
-                        ShowData?.cancelledJobs,
-                        ShowData?.completedJobs
-                      )}{" "}
-                    </span>{" "}
-                    Cancellation rate
-                  </p>
-                </div> */}
-                {/* cancellation rate */}
-              </div>
-              <div className="flex justify-between items-start px-6 pt-1 mt-3 ">
-                {UserRole !== "superAdmin" &&
-                  <div className="flex items-center gap-4 justify-center">
-                    {!(userId === ShowData?._id) ? (
-                      <>
-                        <ConnectionStatusButton
-                          key={Math.random()}
-                          status={connectionStatus}
-                          uId={ShowData?._id}
-                          showMessageButton={true}
-                          isPromotedId={isPromoted}
-                        />
-                      </>
-                    )
-                      :
-                      (
-                        <div className="flex flex-end justify-end px-2">
-
-                          {ShowData?.promotionId ? (
-                            <button className="bg-[#007e7661] no-border font-Poppins-Medium font-size-14px px-5 py-1 rounded-3xl feeds-btn text-[#007E76] flex flex-row gap-2 items-center">
-                              Promoted
-                            </button>
-                          ) : ShowData?.promotionStatus === "in-review" ? (
-                            <button className="bg-[#fff4b3] no-border text-[#a48e05] font-Poppins-Medium font-size-14px px-5 py-1 rounded-3xl feeds-btn flex flex-row gap-2 items-center">
-                              Promotion in review
-                            </button>
-                          ) :
-                            ShowData?.promotionStatus === "paused" ?
-                              (
-                                <button className="bg-[#fff4b3] text-[#a48e05] font-Poppins-Medium font-size-14px px-5 py-1 rounded-3xl feeds-btn flex flex-row gap-2 items-center">
-                                  Promotion paused
-                                </button>
-                              )
-                              :
-                              (ShowData?.profileVerified && !ShowData?.promotionId) ?
-
-                                <button onClick={() => setPromoteModal(true)} className="theme-bg-green font-Poppins-Medium font-size-14px px-5 py-1 rounded-3xl feeds-btn text-[#ffffff] flex flex-row gap-2 items-center">
-                                  <img src={PromoteIcon} alt="promote" />
-                                  Promote your profile
-                                </button>
-                                :
-                                null
-
-                          }
-
-                          {/* {(ShowData?.profileVerified || ShowData?.promotionStatus === "completed") && (
-                         
-                          )} */}
-                        </div>
-
-                      )
-
-
-                    }
-                  </div>
-                }
-                {(UserRole === "participant" || UserRole === "provider" || UserRole === "company") && (
-
-
-                  <div>
-                    <button
-                      onClick={handleNavigateToCompare}
-                      className="font-size-14px theme-color-green font-Poppins-Medium feeds-btn  flex items-center gap-1 hover:text-white hover:bg-[#00443F] btn-w"
+                  {userId == ShowData?._id && (
+                    <label
+                      htmlFor="imageInput2"
+                      className="absolute -right-2 bottom-0  rounded-full flex items-center justify-center w-8 h-8"
                     >
-                      <FontAwesomeIcon icon={faUserGroup} />
-                      Compare
-                    </button>
-                  </div>
-                )}
+                      <FontAwesomeIcon icon={faCamera} color="linear-gradient(180deg, #0072b5, #005a92)" />
+                    </label>
+                  )}
+                  <input
+                    id="imageInput2"
+                    type="file"
+                    // accept="image/*"
+                    accept=".jpg, .jpeg, .png, .webp, .apng, .ico, .avif"
 
-              </div>
-            </>
-          )
-            :
-            (
-              <>
-                <div className="cover-img relative flex flex-row justify-between items-center px-6 mt-4">
-                  <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                  <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                </div>
-                <div className="cover-img relative flex flex-row justify-between items-center px-6 mt-4">
-                  <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                  <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                </div>
-                <div className="cover-img relative flex flex-row justify-between items-center px-6 mt-4">
-                  <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                  <Skeleton variant="rounded" className="w-[10.5vw] mb-2" style={{ borderRadius: 13 }} height={15} />
-                </div>
-              </>
-            )
+                    onChange={(e) => handleCoverImageChange(e, "profile")}
+                    style={{ display: "none" }}
+                  />
+
+                </>
+              )}
+          </Box>
+
+          {/* Edit Profile Button */}
+          {userId === ShowData?._id && (
+            <Link to="/user-profile-edit">
+              <Button
+                variant="outlined"
+                size="small"
+                startIcon={<FontAwesomeIcon icon={faPenToSquare} />}
+              >
+                Edit
+              </Button>
+            </Link>
+          )}
+        </Box>
+
+        {/* User Info */}
+        <Box>
+          <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+            <Typography variant="h5" className="capitalize-first-letter" sx={{ fontWeight: 'bold', mr: 1 }}>
+              {ShowData?.fullName || "User Name"}
+            </Typography>
+            <VerifiedUserIcon color="primary" fontSize="small" />
+          </Box>
+
+          <Typography className="capitalize-first-letter" variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+            {ShowData?.role || "Role not specified"}
+          </Typography>
+
+          {ShowData?.abn && (
+            <Typography variant="body2" sx={{ mb: 1 }}>
+              <Box component="span" sx={{
+                bgcolor: 'warning.light',
+                px: 1,
+                py: 0.5,
+                borderRadius: 1,
+                mr: 1
+              }}>
+                ABN
+              </Box>
+              {ShowData.abn}
+            </Typography>
+          )}
+        </Box>
+
+        {/* Stats */}
+        <Box sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          my: 2
+        }}>
+          <Typography variant="body2">
+            <Box component="span" sx={{ fontWeight: 'bold' }}>
+              {ShowData?.connections || 0}
+            </Box> Connections
+          </Typography>
+
+        </Box>
+
+        {/* Connect Button */}
+        {userId !== ShowData?._id && (
+          // <div className="w-22">
+          // <BsButton isLoading={isLoading} label="Connect" />
+          // </div>
+          <ConnectionStatusButton
+          key={Math.random()}
+          status={connectionStatus}
+          uId={ShowData?._id}
+          showMessageButton={true}
+        />
         )}
-      </div >
 
+        <Divider sx={{ my: 2 }} />
+
+        {/* Contact Info */}
+        <Stack spacing={1}>
+          {ShowData?.email && (
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <EmailIcon color="action" sx={{ mr: 1 }} />
+              <Typography variant="body2">
+                {ShowData.email}
+              </Typography>
+            </Box>
+          )}
+
+          {(ShowData?.suburb || ShowData?.state) && (
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <LocationOnIcon color="action" sx={{ mr: 1 }} />
+              <Typography variant="body2">
+                {`${ShowData?.suburb || ''}, ${ShowData?.state || ''}`}
+              </Typography>
+            </Box>
+          )}
+
+          {ShowData?.dateJoined && (
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <CalendarTodayIcon color="action" sx={{ mr: 1 }} />
+              <Typography variant="body2">
+                User since {new Date(ShowData.dateJoined).toLocaleDateString()}
+              </Typography>
+            </Box>
+          )}
+
+          {ShowData?.company && (
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+              <BusinessIcon color="action" sx={{ mr: 1 }} />
+              <Typography variant="body2">
+                {ShowData.company}
+              </Typography>
+            </Box>
+          )}
+        </Stack>
+      </Box>
+
+      {/* Image Editor Modal */}
       {isImageModal && (
-        <div className="ovrlayModal modal">
-          <div
-            className="createpost-modal absolute z-20"
-            style={isImageModal === "cover" ? { width: "70vw" } : {}}
-          >
-            <button
-              className="absolute close-icon-modal -top-5 font-size-24px"
-              style={{ right: "-10px" }}
-              disabled={isLoader}
-              onClick={handleCloseImageModal}
-            >
-              <img className="" src={closeIcon} alt="" />
-            </button>{" "}
-            {/* close post modal */}
-            <div className="mb-3">
-              <h1 className="font-size-20px font-Poppins-SemiBold theme-color-green capitalize-first-letter">
-                {isImageModal} photo
-              </h1>
-              <hr />
-            </div>
+        <Box sx={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          bgcolor: 'rgba(0,0,0,0.5)',
+          zIndex: 1300,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}>
+          <Box sx={{
+            bgcolor: 'background.paper',
+            p: 3,
+            borderRadius: 2,
+            width: isImageModal === "cover" ? '70%' : 'auto'
+          }}>
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              mb: 2
+            }}>
+              <Typography variant="h6">
+                Edit {isImageModal} photo
+              </Typography>
+              <IconButton >
+                <FaTimes />
+              </IconButton>
+            </Box>
+
             {displayImage && (
               <AvatarEditor
-                className="m-auto"
                 ref={editorRef}
                 image={displayImage}
-                width={isImageModal === "cover" ? 700 : 220}
-                height={isImageModal === "cover" ? 280 : 220}
+                width={isImageModal === "cover" ? 500 : 200}
+                height={isImageModal === "cover" ? 200 : 200}
                 border={20}
-                borderRadius={isImageModal === "cover" ? 0 : 125}
-                color={[255, 255, 255, 0.4]} // RGBA
+                borderRadius={isImageModal === "cover" ? 0 : 100}
+                color={[255, 255, 255, 0.6]}
                 scale={1}
                 rotate={0}
-                disableBoundaryChecks={false}
-                disableHiDPIScaling={true}
               />
             )}
-            <div className="flex justify-end mt-3">
-              <button
+
+            <Box sx={{ mt: 2, display: 'flex', justifyContent: 'flex-end' }}>
+              <Button
                 onClick={handleImageResize}
+                variant="contained"
                 disabled={isLoader}
-                className="theme-bg-green font-Poppins-Medium border-2 border-lime-500 font-size-14px px-5 py-1 inline-table rounded-3xl deleteModal-btn loader-btn"
-                style={{ color: "#fff" }}
+                startIcon={isLoader && <CircularProgress size={14} />}
               >
-                Update{" "}
-                {isLoader && (
-                  <CircularProgress
-                    style={{ width: 14, height: 14, color: "#fff" }}
-                  />
-                )}
-              </button>
-            </div>
-          </div>
-        </div>
-      )
-      }
-      {
-        promoteModal && (
-          <PromoteModal refType="profile"
-            refId={userId || ""}
-            onClose={() => setPromoteModal(false)} />
-        )
-      }
-    </>
+                Update
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      )}
+    </Box>
   );
 };
 

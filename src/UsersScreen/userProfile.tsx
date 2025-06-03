@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import { useParams, useNavigate, useLocation, data } from "react-router-dom";
 import { useSelector, useDispatch } from 'react-redux';
@@ -18,6 +18,7 @@ const UserProfile: React.FC = () => {
     // let { UserRole = "provider" } = getRole();
     const dispatch = useDispatch();
     const { uid } = useParams<{ uid: string }>();
+    console.log(uid)
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -34,52 +35,50 @@ const UserProfile: React.FC = () => {
         setScreenWidth(window.innerWidth)
     }, [window.innerWidth])
 
-    const personalData = useSelector((store: RootState) => store.userProfile);
-    // const { personalData, connectionStatus, publicData } = useSelector((store: RootState) => store.userProfile)
+    const publicProfile = useSelector((store: RootState) => store.userProfile.publicData);
+    const personalData= useSelector((store: RootState) => store.userProfile)
     const [isLoader, setIsLoader] = useState(false);
 
     // Functionality: API call for get public profile data for public profile
-    const fetchUserData = async () => {
+    // In UserProfile.tsx
+    const fetchUserData = useCallback(async () => {
         setIsLoader(true);
-        const res = await GetApi<any>(`/api/search/view/${uid}`);
-        // let path = "";
-        // if (UserRole === "admin" || UserRole === "superAdmin" || UserRole === "editor") {
-        //     path = `/api/admin/user/profile/${uid}`;
-        // }
-        // else {
-        // path = `/api/search/view/${uid}?promotionId=${isPromoted ?? ""}`
-        // }
-        // const { res, err } = await httpRequest<ApiResponse>({ path: path, navigate });
-        // const { res, err } = await httpRequest<ApiResponse>({ path: `/api/search/view/${uid}`, navigate });
-        if (res) {
-            const profile = res?.data.document || res?.data?.documents || [];
-            const services = profile?.services || [];
-            const connectionStatus = profile?.connectionStatus || "default";
+        try {
+            const res = await GetApi<any>(`/search/view/${uid}`);
+            console.log(res, "Ree")
+            if (res?.data?.documents || res?.data?.document) {
+                const profile = res.data.document || res.data.documents;
+                const connectionStatus = profile?.connectionStatus || "default";
 
-            const clonedProfile = JSON.parse(JSON.stringify(profile)); // Deep clone the profile
-
-            dispatch(setPublicProfile({
-                profile: clonedProfile,
-                services: services,
-                connectionStatus: connectionStatus
-            }));
+                dispatch(setPublicProfile({
+                    profile: profile,
+                    connectionStatus: connectionStatus
+                }));
+            } else {
+                toast.error("Failed to fetch profile data");
+            }
+        } catch (error) {
+            toast.error("An error occurred");
+        } finally {
+            setIsLoader(false);
         }
-        else {
-          
-            toast.error("error");
-        }
-        setIsLoader(false);
-    };
-    console.log("AWDAW" ,personalData)
-    useEffect(() => {
-        fetchUserData();
-    }, [uid, personalData]);
+    }, [uid, dispatch]);
 
     useEffect(() => {
-        return () => {
-            dispatch(removePublicProfile());
-        };
-    }, [navigate]);
+        if (uid) {
+            fetchUserData();
+        }
+    }, [fetchUserData, uid]);
+    console.log(personalData)
+
+    // useEffect(() => {
+    //     fetchUserData();
+    // }, [uid]); // Only run when uid changes
+    // useEffect(() => {
+    //     return () => {
+    //         dispatch(removePublicProfile());
+    //     };
+    // }, [navigate]);
     // const hasTruePreference = publicData?.preferences &&
     //     Object.values(publicData.preferences).some((value) => value === true);
 
@@ -97,14 +96,14 @@ const UserProfile: React.FC = () => {
 
                 </>
                 : */}
-                <HeaderGlobal />
+            <HeaderGlobal />
             {/* } */}
 
 
             <div className='container-1480 flex justify-between h-3vw'>
 
                 <div className="w-full md:w-3/4 lg:w-3/4">
-                    <ProfileUserDetailDashboard bool={false} setBool={() => { }} unpaidModalShow={unpaidModalShow}  />
+                    <ProfileUserDetailDashboard bool={false} setBool={() => { }} unpaidModalShow={unpaidModalShow} />
                     {/* {screenWidth < 450 && (
 
                         // <AddressSocialDetail
@@ -141,7 +140,7 @@ const UserProfile: React.FC = () => {
                         <>
                             {/* only for provider */}
 
-                            {/* {uid === userId ?
+                    {/* {uid === userId ?
 
                                 (
                                     <Availability />
@@ -178,7 +177,7 @@ const UserProfile: React.FC = () => {
                                     <WorkHistory /> 
                                 </>
                             } */}
-{/* 
+                    {/* 
                             {uid === userId ?
 
                                 (
@@ -198,13 +197,13 @@ const UserProfile: React.FC = () => {
 
 
                             <ServicesProfile /> {/* only for provider */}
-                            {/* <HourlyRate />  
+                    {/* <HourlyRate />  
                             <WorkLocation /> */}
-                        {/* </>
+                    {/* </>
                         : null
                     } */}
 
-{/* 
+                    {/* 
                     {uid === userId ?
 
                         (
@@ -225,13 +224,13 @@ const UserProfile: React.FC = () => {
                     }
 
                     <ReviewProfile unpaidModalShow={unpaidModalShow} /> */}
-                {/* </div>  */}
+                    {/* </div>  */}
 
-                {/* <AddressSocialDetail
+                    {/* <AddressSocialDetail
                     userId={uid}
                     unpaidModalShow={unpaidModalShow}
                 /> */}
-             {/* {screenWidth > 450 && (
+                    {/* {screenWidth > 450 && (
 
                     <AddressSocialDetail
                         unpaidModalShow={false}
@@ -240,9 +239,9 @@ const UserProfile: React.FC = () => {
 
                     />
                 )} */}
-                
+
                 </div>
-                </div>
+            </div>
 
         </>
     );

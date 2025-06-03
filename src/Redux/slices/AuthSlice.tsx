@@ -33,6 +33,16 @@ const authSlice = createSlice({
       state.loading = false;
       state.error = null;
     },
+    storeTwoFactor: (
+      state :any,
+      action: PayloadAction<{ time: number | string | undefined; email: string; admin: boolean; keepMeloggedIn: boolean }>
+    ) => {
+      const { time, email, admin, keepMeloggedIn } = action.payload;
+      state.towFactorEmail = email;
+      state.twoFactorDuration = time || '';
+      state.admin = admin;
+      state.keepMeloggedIn = keepMeloggedIn;
+    },
     loginFailure(state, action: PayloadAction<string>) {
       state.error = action.payload;
       state.loading = false;
@@ -42,6 +52,7 @@ const authSlice = createSlice({
       state.isAuthenticated = false;
     }
   },
+  
   extraReducers: (builder) => {
     builder.addCase(PURGE, () => initialState);
   }
@@ -49,6 +60,6 @@ const authSlice = createSlice({
 
 export const {
   storeToken,
-
+  storeTwoFactor
 } = authSlice.actions;
 export default authSlice.reducer;

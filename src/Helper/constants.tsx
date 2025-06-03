@@ -31,7 +31,7 @@ export const postTimeDifference = (data: string) => {
     return '0';
   }}
 
-  export function createMessageWithLinks(text: any): (JSX.Element | string)[] {
+  export function createMessageWithLinks(text: any) {
     if (!text) return [''];
   
     return text.split(" ").map((word: any, i: any) => {
@@ -55,3 +55,15 @@ export const postTimeDifference = (data: string) => {
       return word + " ";  // Return the word with a space
     });
   }
+
+  export function capitalizeFirstLetter(string: string): string {
+    if (!string) return '';
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+
+  
+export const validatePassword = (password: string): boolean => {
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;
+  return passwordRegex.test(password);
+};

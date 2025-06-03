@@ -12,6 +12,7 @@ import qs from "qs";
 import { setAllPosts } from '../Redux/slices/newzfeedSlice';
 import FeedPostView from '../MainScreens/feedHeader/FeedPostView';
 
+
 const Feeds = () => {
   const dispatch = useDispatch();
   const [isLoader, setIsLoader] = useState<boolean>(false);

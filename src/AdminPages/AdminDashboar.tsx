@@ -29,6 +29,10 @@ import adminlogo from "../assets/duet_logo-300x227.png";
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import UsersRequest from './UsersRequest';
 import AdminUserList from './AdminUserList';
+import AdminInvitation from './AdminInvitation';
+import SendInvitationForm from './AddInvitaion';
+import UserAnalysis from './UserAnalysis';
+import AdminDashboard from './Admin';
 const drawerWidth = 240;
 
 interface Props {
@@ -76,6 +80,14 @@ export default function AdminSidebar(props: Props) {
       color: '#00c689',
       isDisabled: false,
       path: "/admin/userList"
+    },
+    {
+      icon: adminUsericon,
+      total: 0.00,
+      title: "Invitation Send",
+      color: '#00c689',
+      isDisabled: false,
+      path: "/admin/user-invitation"
     },
 
   ]
@@ -187,9 +199,11 @@ export default function AdminSidebar(props: Props) {
       >
         <Toolbar />
         <Routes>
-          {/* <Route path='/UsersRequest' element={<DefaultDashboardOpen />} /> */}
+          <Route path='/dashboard' element={<AdminDashboard />} />
           <Route path="/UsersRequest" element={<UsersRequest />} />
           <Route path="/userList" element={<AdminUserList />} />
+          <Route path="/user-invitation" element={<AdminInvitation />} />
+          <Route path="/send-invitation" element={<SendInvitationForm />} />
         </Routes>
       </Box>
     </Box>

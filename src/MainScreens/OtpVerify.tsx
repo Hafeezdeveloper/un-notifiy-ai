@@ -32,6 +32,18 @@ const OtpVerify = () => {
         }
       } else {
         // Handle user OTP login here
+        const response = await PostApi<any>("/user/verify-otp", {
+          email: userName,
+          otp,
+        });
+      
+        if (response?.data?.success) {
+          // localStorage.setItem("authToken", response.data.token);
+          navigate("/confirm-password", {
+            state: { email: userName, otp: otp },
+          });
+          // navigate("/feeds"); // Adjust the route to your user dashboard
+        }
       }
     } catch (error: any) {
       setIsLoading(false);

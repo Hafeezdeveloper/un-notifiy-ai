@@ -43,7 +43,7 @@ const Login = () => {
 
     try {
       const response = await PostApi<ApiResponse>("/user/login", formData);
-      console.log("Response:", response.data);
+      console.log("Response:", response);
       setIsLoading(false);
       if (response.data.token) {
         localStorage.setItem("authToken", response.data.token);
@@ -51,9 +51,14 @@ const Login = () => {
         navigate("/feeds");
       }
     } catch (error: any) {
+      console.log(error)
       setIsLoading(false);
       if (error.status == 409) {
         toast.error(`Email already exists`);
+        return;
+      }
+      if (error.status == 405) {
+        toast.error(`Please wait for admin approval`);
         return;
       }
       if (error.status == 404) {

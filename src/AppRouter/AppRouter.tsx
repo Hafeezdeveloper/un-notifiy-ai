@@ -17,20 +17,43 @@ import { RootState } from '../Redux/store/store'
 import { GetApi } from '../Helper/ApiHandle/BsApiHandle'
 import { fetchProfileSuccess } from '../Redux/slices/userProfileSlice'
 import UserProfile from '../UsersScreen/userProfile'
+import Loginrecovery from '../UsersScreen/RecoveryPassword'
+import Loginwelcomeback from '../UsersScreen/ConfirmPassword'
+import UserNotification from '../UsersScreen/UserNotification'
+import { setNotifications, SetNotificationsPayload, toogleNotificationLoader } from '../Redux/slices/notificationsSlice'
 
 const AppRouter = () => {
   const { token } = useSelector((store: RootState) => store.auth); // Select authentication token from Redux store
   const dispatch = useDispatch(); // Redux dispatch function
-
+  const notification = useSelector((store: RootState) => store.notification);
   const getData = async () => {
     // let ApiPath = `/api/user/my-profile`;
     const response = await GetApi<any>(`/user/my-profile`);
-    console.log(response?.data.document )
+    console.log(response?.data.document)
     dispatch(fetchProfileSuccess(response?.data.document));
   }
+  const fetchNotifications = async () => {
+    dispatch(toogleNotificationLoader(true)); // Toggle loader state for notifications
+    // const { res, err } = await httpRequest({ path: `/api/notifications/all?page=${currentPage}&pageSize=${pageSize}` });
+    const res = await GetApi<any>(`/notifications/all?page=${notification?.currentPage}&limit=${notification?.currentPage}`);
+    if (res) {
+      const payload: SetNotificationsPayload = {
+        unreadCount: res.data.unreadCount || 0, // Ensure this matches the response structure
+        Notification: res.data?.documents, // Ensure res.documents is an array of Notification
+        totalCount: res.data?.paginated?.totalItems,
+        totalPages: res.data?.paginated?.totalPages || 1, // Ensure this matches the response structure
+      };
+      dispatch(setNotifications(payload));
+      // Dispatch action to set notifications in Redux store
+    } else {
+      console.error("ERROR", res); // Log error if API request fails
+    }
+    dispatch(toogleNotificationLoader(false)); // Toggle loader state for notifications
+  };
   useEffect(() => {
     if (token) {
       getData()
+      fetchNotifications()
     }
   }, [token]);
   return (
@@ -58,6 +81,7 @@ const AppRouter = () => {
               </PrivateRoute>
             }
           />
+          <Route path='/notification' element={<PrivateRoute> <UserNotification /></PrivateRoute>} />
           <Route
             path='/public-profile/:uid/view'
             element={
@@ -66,7 +90,9 @@ const AppRouter = () => {
               </PrivateRoute>
             }
           />
+          <Route path='/forgot-password' element={<Loginrecovery />} />
           <Route path='/otp-verification' element={<OtpVerify />} />
+          <Route path='/confirm-password' element={<Loginwelcomeback />} />
           <Route path='/admin/login' element={<AdminLogin />} />
           <Route path='/login' element={<Login />} />
           <Route path='/' element={<UserSignUp />} />

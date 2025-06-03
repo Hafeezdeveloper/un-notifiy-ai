@@ -8,6 +8,7 @@ import "../index.css"
 import { toast, Toaster } from "sonner";
 import BsInp from '../Comp/BsInp';
 import { CircularProgress } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 interface Paginated {
     totalItems: number;
@@ -19,7 +20,8 @@ interface ApiResponse {
     documents: any[];
 }
 
-const AdminUserList = () => {
+const AdminInvitation = () => {
+    const navigate = useNavigate()
     const [data, setData] = useState<any[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [totalPage, setTotalPage] = useState<number>(1);
@@ -34,17 +36,16 @@ const AdminUserList = () => {
     const fetchAllData = async () => {
         try {
             setIsLoading(true);
-            
+
             // Prepare API parameters
             const apiParams = {
                 page: queryParams.page,
                 pageSize: queryParams.pageSize,
-                ...(queryParams.type !== "all user" && { type: queryParams.type }),
                 ...(queryParams.search && { search: queryParams.search })
             };
 
-            const response = await GetApi<ApiResponse>('/user/all', apiParams);
-            
+            const response = await GetApi<ApiResponse>('/user/all/invitations', apiParams);
+
             setData(response.data.documents || []);
             const count = response.data.paginated?.totalItems || 0;
             setTotalPage(Math.ceil(count / queryParams.pageSize));
@@ -73,47 +74,42 @@ const AdminUserList = () => {
             <Toaster position="top-right" richColors />
             <div style={{ width: '100%' }}>
                 <div className="pt-2">
+                    
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+
+                        
                         <div>
-                            <p className="font-size-34px">Users request</p>
+                            <p className="font-size-34px">Send Invitation</p>
                             <p className="font-size-16px">
                                 <strong className="font-bold">
-                                    <span className="font-size-18px">Dashboard</span> / All User
+                                    <span className="font-size-18px">Dashboard</span> / Send Invitation
                                 </strong>
                             </p>
                         </div>
-                        <div>
-                            <BsInp 
-                                label="Search User name" 
-                                type="text" 
+                        <div style={{ display: 'flex',  alignItems: 'center' }}>
+
+                        <div className='me-3' style={{ display: 'flex',  alignItems: 'center' }}>
+                            <BsInp
+                                label="Search User name"
+                                type="text"
                                 name="search"
                                 value={queryParams.search}
                                 onChange={handleSearchChange}
                                 placeholder="Search by name or email"
-                            />
+                                />
+                        </div>
+                        <div>
+                            <button onClick={() => navigate("/admin/send-invitation")}>
+                                <span  style={{backgroundImage: "linear-gradient(180deg, #0072b5, #005a92)", color:"white"}}  className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-semibold rounded-pill ">
+                                    {"Send Invitation"}
+                                </span>
+                            </button>
+
+                                </div>
                         </div>
                     </div>
 
                     <div className="theme-bg-grey-type my-1">
-                        <div className="flex gap-2 mb-3">
-                            {['All user', 'Student', "Teacher", "Faculty"].map((status, index) => (
-                                <BsButton
-                                    key={index}
-                                    label={status}
-                                    style={`p-1 w-22 font-size-20px rounded-pill capitalize-first-letter
-                                        ${queryParams.type.toLowerCase() === status.toLowerCase() 
-                                            ? 'bg-primary text-white' 
-                                            : 'text-primary-700 border border-primary'}`}
-                                    onClick={() => {
-                                        setQueryParams(prev => ({
-                                            ...prev,
-                                            page: 1,
-                                            type: status.toLowerCase()
-                                        }));
-                                    }}
-                                />
-                            ))}
-                        </div>
 
                         {isLoading ? (
                             <div className="flex justify-center items-center py-8">
@@ -124,11 +120,9 @@ const AdminUserList = () => {
                                 <BsTable
                                     data={data}
                                     headers={[
-                                        { name: 'Name', key: 'fullName' },
+                                        { name: 'Full Name', key: 'fullName' },
                                         { name: 'Email', key: 'email' },
-                                        { name: 'Type', key: 'role' },
-                                        { name: 'Department', key: 'departmentDetails.name' },
-                                        { name: 'Status', key: 'status' },
+                                        { name: 'Send At', key: 'createdAt' },
                                     ]}
                                 />
 
@@ -150,4 +144,4 @@ const AdminUserList = () => {
     );
 };
 
-export default AdminUserList;
+export default AdminInvitation;

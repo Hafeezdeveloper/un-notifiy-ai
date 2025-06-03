@@ -1,6 +1,7 @@
 import React from 'react';
 import { FiCheckCircle, FiXCircle } from "react-icons/fi";
 import BsVerifired from './BsVerifired';
+import moment from 'moment';
 
 const BsTable = (props: any) => {
   let { data, headers } = props
@@ -42,7 +43,7 @@ const BsTable = (props: any) => {
                         {value}
                       </span>
                     ) : (
-                      value
+                      key.key == "createdAt" ? moment(value).format('MMM Do YY'): value
                     )}
                   </td>
                   
