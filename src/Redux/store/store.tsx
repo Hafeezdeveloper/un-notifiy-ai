@@ -10,6 +10,7 @@ import userProfileReducer from '../slices/userProfileSlice';
 import newsFeedSlice from '../slices/newzfeedSlice';
 import connectionsSlice from '../slices/connectionsSlice';
 import notificationsSlice from '../slices/notificationsSlice';
+import IndicatorSlice from "../slices/IndicatorSlice";
 
 const persistConfig = {
   key: 'token',
@@ -27,6 +28,8 @@ export const store = configureStore({
     userProfile: userProfileReducer,
     connection: connectionsSlice,
     notification: notificationsSlice,
+    indicator: IndicatorSlice,
+
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

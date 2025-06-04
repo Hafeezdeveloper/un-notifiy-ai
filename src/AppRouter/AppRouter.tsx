@@ -21,6 +21,7 @@ import Loginrecovery from '../UsersScreen/RecoveryPassword'
 import Loginwelcomeback from '../UsersScreen/ConfirmPassword'
 import UserNotification from '../UsersScreen/UserNotification'
 import { setNotifications, SetNotificationsPayload, toogleNotificationLoader } from '../Redux/slices/notificationsSlice'
+import { initializeSocket, turnOffSocket, turnOnSocket } from '../Sockets/socket'
 
 const AppRouter = () => {
   const { token } = useSelector((store: RootState) => store.auth); // Select authentication token from Redux store
@@ -56,53 +57,82 @@ const AppRouter = () => {
       fetchNotifications()
     }
   }, [token]);
-  return (
-    <div>
-      <BrowserRouter>
-        <Routes>
-          {/* <Route path='/*' element={<MainDashboard />} /> */}
-          {/* {/* <Route path='' element={<MainDashboard />} /> */}
-          <Route path='/chatbot' element={<ChatPage />} />
+  // Function to handle socket initialization
+  const initializeSockets = async () => {
+    await initializeSocket(dispatch);
+    // await initializeChatSocket(dispatch);
+    await turnOnSocket();
+  };
 
-          {/* ✅ Protected route example */}
-          <Route
-            path='/admin/*'
-            element={
-              <PrivateRoute>
-                <AdminSidebar />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path='/feeds'
-            element={
-              <PrivateRoute>
-                <Feeds />
-              </PrivateRoute>
-            }
-          />
-          <Route path='/notification' element={<PrivateRoute> <UserNotification /></PrivateRoute>} />
-          <Route
-            path='/public-profile/:uid/view'
-            element={
-              <PrivateRoute>
-                <UserProfile />
-              </PrivateRoute>
-            }
-          />
-          <Route path='/forgot-password' element={<Loginrecovery />} />
-          <Route path='/otp-verification' element={<OtpVerify />} />
-          <Route path='/confirm-password' element={<Loginwelcomeback />} />
-          <Route path='/admin/login' element={<AdminLogin />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/' element={<UserSignUp />} />
-          <Route path='/verification' element={<VerificationPage />} />
-          <Route path='/teacherSignUp' element={<TeacherSignUp />} />
-          <Route path='/facultyLogin' element={<FacultyLogin />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  )
+  const disconnectSockets = async () => {
+    await turnOffSocket();
+  };
+
+
+  useEffect(() => {
+    const manageSocketConnections = async () => {
+      if (token ) {
+        await disconnectSockets();
+        await initializeSockets();
+      } else {
+        await turnOffSocket();
+      }
+    };
+
+    manageSocketConnections();
+
+    return () => {
+      // Clean up socket connections when component unmounts (if needed)
+      turnOffSocket();
+    };
+  }, [token]);
+return (
+  <div>
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path='/*' element={<MainDashboard />} /> */}
+        {/* {/* <Route path='' element={<MainDashboard />} /> */}
+        <Route path='/chatbot' element={<ChatPage />} />
+
+        {/* ✅ Protected route example */}
+        <Route
+          path='/admin/*'
+          element={
+            <PrivateRoute>
+              <AdminSidebar />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/feeds'
+          element={
+            <PrivateRoute>
+              <Feeds />
+            </PrivateRoute>
+          }
+        />
+        <Route path='/notification' element={<PrivateRoute> <UserNotification /></PrivateRoute>} />
+        <Route
+          path='/public-profile/:uid/view'
+          element={
+            <PrivateRoute>
+              <UserProfile />
+            </PrivateRoute>
+          }
+        />
+        <Route path='/forgot-password' element={<Loginrecovery />} />
+        <Route path='/otp-verification' element={<OtpVerify />} />
+        <Route path='/confirm-password' element={<Loginwelcomeback />} />
+        <Route path='/admin/login' element={<AdminLogin />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/' element={<UserSignUp />} />
+        <Route path='/verification' element={<VerificationPage />} />
+        <Route path='/teacherSignUp' element={<TeacherSignUp />} />
+        <Route path='/facultyLogin' element={<FacultyLogin />} />
+      </Routes>
+    </BrowserRouter>
+  </div>
+)
 }
 
 export default AppRouter

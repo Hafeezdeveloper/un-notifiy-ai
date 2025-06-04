@@ -131,6 +131,7 @@ export const userProfileSlice = createSlice({
 
 export const {
   removePublicProfile,
+  updateConnectionStatus,
   setPublicProfile,
   fetchProfileStart,
   fetchProfileSuccess,

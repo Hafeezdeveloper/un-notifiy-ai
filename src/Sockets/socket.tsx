@@ -1,9 +1,14 @@
 
 import { io, ManagerOptions, SocketOptions, Socket } from "socket.io-client";
 import { Dispatch } from "redux";
+import { useEffect } from "react";
+import { addNewNotifications } from "../Redux/slices/notificationsSlice";
+import { updateConnectionStatus, updateProfile } from "../Redux/slices/userProfileSlice";
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
 
 // const SOCKET_URL = process.env.REACT_APP_SOCKET_URL as string; // server URL
-const SOCKET_URL = `${process.env.REACT_APP_SOCKET_URL}?token=${token}` as string; // server URL
+const token = localStorage.getItem("authToken");
+const SOCKET_URLs = `${SOCKET_URL}?token=${token}` as string; // server URL
 
 
 
@@ -38,8 +43,8 @@ const commonOptions: Partial<ManagerOptions & SocketOptions> = {
 // Function to initialize the socket connection
 const initializeSocket = (dispatch: Dispatch): Promise<void> => {
     return new Promise((resolve) => {
-        const latestToken = getLatestToken();
-        const SOCKET_URL = process.env.REACT_APP_SOCKET_URL as string;
+        const latestToken = token
+        const SOCKET_URL = SOCKET_URLs
 
 
         socket = io(SOCKET_URL, {
@@ -47,7 +52,7 @@ const initializeSocket = (dispatch: Dispatch): Promise<void> => {
 
             autoConnect: false,
             auth: {
-                token: getCookie() as string // Assuming getCookie returns a string token
+                token: SOCKET_URLs as string // Assuming getCookie returns a string token
             },
 
             extraHeaders: {
@@ -70,41 +75,33 @@ const initializeSocket = (dispatch: Dispatch): Promise<void> => {
                 previousNotificationId = data?._id;
             }
         });
-        socket.on("adminStats", (data: any) => {
-            console.log("adminStats=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
+        // socket.on("adminStats", (data: any) => {
+        //     console.log("adminStats=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
 
-            dispatch(fetchCountsSuccess(data))
-        });
-        socket.on("newReview", (data: any) => {
-            console.log("newReview=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
+        //     dispatch(fetchCountsSuccess(data))
+        // });
+        // socket.on("newReview", (data: any) => {
+        //     console.log("newReview=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
 
-            dispatch(fetchCountsSuccess(data))
-        });
+        //     dispatch(fetchCountsSuccess(data))
+        // });
         socket.on("newConnection", (data: any) => {
             console.log("newConnection=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
 
             dispatch(fetchCountsSuccess(data))
         });
-        socket.on("unviewedNetworkRequests", (data: any) => {
-            console.log("unviewedNetworkRequests=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
+        // socket.on("unviewedNetworkRequests", (data: any) => {
+        //     console.log("unviewedNetworkRequests=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
 
-            dispatch(fetchCountsSuccess(data))
-        });
-        socket.on("userUpdate", (data: any) => {
-            console.log("userUpdate>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
+        //     dispatch(fetchCountsSuccess(data))
+        // });
+        // socket.on("userUpdate", (data: any) => {
+        //     console.log("userUpdate>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
 
-            dispatch(fetchCountsSuccess(data))
-        });
+        //     dispatch(fetchCountsSuccess(data))
+        // });
 
-        socket.on("profile_promotion", (data) => {
-
-            dispatch(updateProfile());
-            dispatch(updateConnectionStatus(data.nextStatus));
-
-
-
-
-        })
+       
         socket.on("connectionUpdate", (data) => {
             console.log(data,"aaaaaaaaaaaaaaaaaaaaaa")
             // dispatch(updateProfile());
@@ -114,10 +111,10 @@ const initializeSocket = (dispatch: Dispatch): Promise<void> => {
 
 
         })
-        socket.on("receiveMessage", (data: any) => {
-            console.log("event==>receive-message", data);
-            dispatch(updateUnReadMessages());
-        });
+        // socket.on("receiveMessage", (data: any) => {
+        //     console.log("event==>receive-message", data);
+        //     dispatch(updateUnReadMessages());
+        // });
         // Add event listeners for socket disconnect
         socket.on("disconnect", () => {
             console.log("Disconnected from server");
@@ -134,7 +131,7 @@ const initializeSocket = (dispatch: Dispatch): Promise<void> => {
 // Function to initialize the chat socket connection
 const initializeChatSocket = (dispatch: Dispatch): Promise<void> => {
     return new Promise((resolve) => {
-        const SOCKET_URL = process.env.REACT_APP_SOCKET_URL as string;
+        const SOCKET_URL = SOCKET_URLs
 
 
         chatSocket = io(SOCKET_URL, {
@@ -142,7 +139,7 @@ const initializeChatSocket = (dispatch: Dispatch): Promise<void> => {
 
             autoConnect: false,
             auth: {
-                token: getCookie() as string // Assuming getCookie returns a string token
+                token: token as string // Assuming getCookie returns a string token
             },
 
             extraHeaders: {
@@ -159,10 +156,10 @@ const initializeChatSocket = (dispatch: Dispatch): Promise<void> => {
             resolve();
         });
 
-        chatSocket.on("receiveMessage", (data: any) => {
-            console.log("event==>receive-message", data);
-            dispatch(updateUnReadMessages());
-        });
+        // chatSocket.on("receiveMessage", (data: any) => {
+        //     console.log("event==>receive-message", data);
+        //     dispatch(updateUnReadMessages());
+        // });
 
         // chatSocket.on("notification", (data: any) => {
         //     console.log("notification==>notification", data);
