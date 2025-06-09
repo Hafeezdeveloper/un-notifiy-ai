@@ -4,13 +4,11 @@ import { Dispatch } from "redux";
 import { useEffect } from "react";
 import { addNewNotifications } from "../Redux/slices/notificationsSlice";
 import { updateConnectionStatus, updateProfile } from "../Redux/slices/userProfileSlice";
-const SOCKET_URL = import.meta.env.VITE_SOCKET_URL;
-
+const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || '192.168.0.107:80';
 // const SOCKET_URL = process.env.REACT_APP_SOCKET_URL as string; // server URL
 const token = localStorage.getItem("authToken");
-const SOCKET_URLs = `${SOCKET_URL}?token=${token}` as string; // server URL
-
-
+const SOCKET_URLs = `ws://${SOCKET_URL}`;
+console.log("Socket Connection URL:", SOCKET_URL);
 
 
 // let socket: Socket | null = null;
@@ -24,9 +22,7 @@ let previousNotificationId = "";
 const commonOptions: Partial<ManagerOptions & SocketOptions> = {
     transports: ['websocket', 'polling'],
 
-    auth: {
-        token: token,
-    },
+    auth: { token },
     reconnection: true,
     reconnectionAttempts: Infinity,
     reconnectionDelay: 1000,
@@ -45,24 +41,16 @@ const initializeSocket = (dispatch: Dispatch): Promise<void> => {
     return new Promise((resolve) => {
         const latestToken = token
         const SOCKET_URL = SOCKET_URLs
-
+        console.log(token, ";aettst")
 
         socket = io(SOCKET_URL, {
-            transports: ['websocket', 'polling'],
-
-            autoConnect: false,
-            auth: {
-                token: SOCKET_URLs as string // Assuming getCookie returns a string token
-            },
-
-            extraHeaders: {
-                'X-Ping-Interval': '5000',
-                'X-Ping-Timeout': '10000',
-            },
+            ...commonOptions,
+            path: '/socket.io' // Ensure this matches your backend
         });
 
+
         socket.on("connect", () => {
-            // console.log("Connected to server:");
+            console.log("Connected to server:");
 
             resolve();
         });
@@ -88,7 +76,7 @@ const initializeSocket = (dispatch: Dispatch): Promise<void> => {
         socket.on("newConnection", (data: any) => {
             console.log("newConnection=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
 
-            dispatch(fetchCountsSuccess(data))
+            // dispatch(fetchCountsSuccess(data))
         });
         // socket.on("unviewedNetworkRequests", (data: any) => {
         //     console.log("unviewedNetworkRequests=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
@@ -101,9 +89,9 @@ const initializeSocket = (dispatch: Dispatch): Promise<void> => {
         //     dispatch(fetchCountsSuccess(data))
         // });
 
-       
+
         socket.on("connectionUpdate", (data) => {
-            console.log(data,"aaaaaaaaaaaaaaaaaaaaaa")
+            console.log(data, "aaaaaaaaaaaaaaaaaaaaaa")
             // dispatch(updateProfile());
             dispatch(updateConnectionStatus(data.nextStatus));
 

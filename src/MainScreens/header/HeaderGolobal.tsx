@@ -1,5 +1,5 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import homeicon from "../../assets/img/home.svg";
 import Netwrok from "../../assets/img/network.svg";
 import DuetLogo from "../../assets/duet_logo_new.png";
@@ -7,9 +7,52 @@ import "../../assets/css/adminresponsive.css";
 import "../../assets/css/alldashboardpages.css";
 import bell from "../../assets/img/bell.svg";
 import HeaderSearchInput from "./HeaderSearchInput";
+import { RootState } from "../../Redux/store/store";
+import { useSelector } from "react-redux";
+import { turnOffSocket } from "../../Sockets/socket";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSortDown } from "@fortawesome/free-solid-svg-icons";
+import { truncateString } from "../../Helper/constants";
 
 const HeaderGlobal: React.FC = () => {
+    const personalData = useSelector((store: RootState) => store.userProfile);
+    const { unReadNotifications } = useSelector(
+        (store: RootState) => store.notification
+    );
+    const [isBoxVisible1, setIsBoxVisible1] = useState<any>(false);
+    const navigate = useNavigate()
     const location = useLocation();
+    const ref = useRef<HTMLDivElement>(null);
+    const [isBoxVisible, setIsBoxVisible] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    const toggleBoxVisibility1 = () => {
+        setIsBoxVisible1((prev: any) => !prev);
+    };
+    const handleLogOut = () => {
+        localStorage.removeItem("authToken")
+        turnOffSocket();
+        navigate("/login");
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            // Check if click is outside both dropdown and the toggle button
+            if (
+                dropdownRef.current &&
+                !dropdownRef.current.contains(event.target as Node) &&
+                buttonRef.current &&
+                !buttonRef.current.contains(event.target as Node)
+            ) {
+                setIsBoxVisible1(false);
+            }
+        };
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
 
     return (
         <header className="globalheader fixed w-full z-10" style={{
@@ -68,15 +111,15 @@ const HeaderGlobal: React.FC = () => {
                         </Link>
                         <Link
                             to={"/notification"}
-                            className="header-notifi text-white relative flex items-center flex-col "
+                            className="header-notifi text-white relative flex items-center flex-col relative global-header-hover "
                         >
-                            {/* {unReadNotifications ? (
+                            {unReadNotifications ? (
                                 <div className="msg-count-main">
                                     <span className="msg-count-specific">
                                         {unReadNotifications}
                                     </span>
                                 </div>
-                            ) : null} */}
+                            ) : null}
                             <div
                                 className={` global-header-hover flex flex-col items-center gap-[2px]  `}
                             >
@@ -87,8 +130,149 @@ const HeaderGlobal: React.FC = () => {
                             </div>
                         </Link>
                     </div>
+
                     <div className="Admin-user-header">
-                        {/* User profile section would go here */}
+                        <div className="admin-header-user-img flex jsutify-center flex-col items-center relative">
+                            <img
+                                src={`${personalData?.data?.profileImageUrl}?t=${Date.now()}`}
+                                // src={`${personalData?.profileImageUrl}`}
+                                // src={`${process.env.REACT_APP_BASE_URL_IMAGE}${personalData?.profileImageUrl}?t=${Date.now()}`}
+                                alt="user"
+                            />
+                            {/* {isValidProfileImageUrl ? (
+                  <img
+                    src={`${personalData?.profileImageUrl}?t=${Date.now()}`}
+                    onError={(e) => (e.currentTarget.src = DefaultProfileImage)}
+                    alt="user"
+                  />
+                ) : (
+                  <img src={DefaultProfileImage} alt="Default user" />
+                )} */}
+                        </div>
+                        {personalData?.data?.role &&
+                            <div className="flex  items-baseline">
+                                <h4 className="font-size-20px font-Poppins-SemiBold text-white"></h4>
+                                <button
+                                    ref={buttonRef}
+                                    className="font-Poppins-Regular text-white font-size-13px flex  items-baseline gap-2 justify-center"
+                                    onClick={toggleBoxVisibility1}
+                                >
+                                    Me <FontAwesomeIcon icon={faSortDown} />
+                                </button>
+                            </div>
+                        }
+                        {isBoxVisible1 && (
+                            <div ref={dropdownRef} className="dropdown-profile-view py-3 z-10">
+                                <div className="flex gap-2 items-center px-4">
+                                    <img
+                                        src={`${personalData?.data?.profileImageUrl}`}
+                                        // src={`${process.env.REACT_APP_BASE_URL_IMAGE}${personalData?.profileImageUrl}`}
+                                        alt="user"
+                                    />
+                                    <div className="sidebar-gobal-user-name ">
+                                        <p className="font-size-20px font-Poppins-SemiBold theme-color-green  hover-underline capitalize">
+                                            {personalData?.data
+                                                ? `${personalData?.data.fullName}`
+                                                : ""}
+                                        </p>
+                                        <p className="font-size-16px  theme-color-green font-Poppins-Regular  capitalize-first-letter">
+                                            {personalData?.data ? personalData?.data?.role : ""}
+                                        </p>
+                                        <p className="font-size-16px theme-grey-type  font-Poppins-Regular  ">
+                                            {personalData
+                                                ? truncateString(personalData?.data?.profileSummary || "", 50)
+                                                : ""}
+                                        </p>
+                                    </div>
+                                </div>
+                                <div className="px-4">
+                                    <Link
+                                        to="/publicprofile"
+                                        className=" font-size-14px theme-color-green flex font-Poppins-Medium feeds-btn mt-3 w-full hover:text-white hover:bg-[#00443F]"
+                                    >
+                                        View profile
+                                    </Link>
+                                </div>
+                                <hr className="my-1 lg:my-2" />
+                                <div className="px-4 ">
+                                    <p className="font-size-16px font-Poppins-SemiBold theme-color-green  capitalize mb-2">
+                                        Account
+                                    </p>
+                                    <ul>
+                                        <li className="pb-2 mb-2">
+                                            <Link
+                                                to={"/setting"}
+                                                className={` font-size-16px theme-grey-type font-Poppins-Medium on-hover-bg px-2`}
+                                            >
+                                                Account settings
+                                            </Link>
+                                        </li>
+                                        <li className="mb-3">
+                                            <Link
+                                                to={"/privacy"}
+                                                className={` font-size-16px theme-grey-type font-Poppins-Medium on-hover-bg px-2`}
+                                            >
+                                                Privacy settings
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr color=" #004540 " className="my-1 lg:my-2" />
+                                <div className="px-4 ">
+                                    <p className="font-size-16px font-Poppins-SemiBold theme-color-green capitalize mb-2">
+                                        Manage
+                                    </p>
+                                    <ul>
+                                        <li className="pb-2 mb-2">
+                                            <Link
+                                                to={"/activity"}
+                                                className={` font-size-16px theme-grey-type font-Poppins-Medium  on-hover-bg px-2 `}
+                                            >
+                                                Activity log
+                                            </Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <hr color=" #004540 " className="my-1 lg:my-2" />
+                                {/* <div className="px-4 ">
+                  <p className="font-size-16px font-Poppins-SemiBold theme-color-green capitalize ">
+                    Ads
+                  </p>
+                  <ul >
+                    <li className="pb-2">
+                      <Link
+                        to="/ads-manager"
+                        className="font-size-16px theme-grey-type font-Poppins-Medium  on-hover-bg px-2"
+                      >
+                        Ads manager
+                      </Link>
+                    </li>
+                    <li className="">
+                      <Link
+                        to="/bill-payment"
+                        className="font-size-16px theme-grey-type  font-Poppins-Medium  on-hover-bg  px-2"
+                      >
+                        Billing & payments
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+                <hr color="#707070 " className="my-1 lg:my-2" /> */}
+
+                                <div className="px-4">
+                                    <ul>
+                                        <li>
+                                            <button
+                                                onClick={handleLogOut}
+                                                className="font-size-16px theme-grey-type font-Poppins-Medium  on-hover-bg px-2"
+                                            >
+                                                Sign out
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
                     </div>
                 </div>
             </div>

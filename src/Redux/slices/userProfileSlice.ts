@@ -41,6 +41,7 @@ interface UserProfile {
   batch: Batch | null;
   profileImageUrl: string;
   connectionStatus: string;
+  profileSummary?: string | null
 }
 
 interface UserProfileState {

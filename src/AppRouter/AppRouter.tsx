@@ -71,7 +71,7 @@ const AppRouter = () => {
 
   useEffect(() => {
     const manageSocketConnections = async () => {
-      if (token ) {
+      if (token) {
         await disconnectSockets();
         await initializeSockets();
       } else {
@@ -86,53 +86,53 @@ const AppRouter = () => {
       turnOffSocket();
     };
   }, [token]);
-return (
-  <div>
-    <BrowserRouter>
-      <Routes>
-        {/* <Route path='/*' element={<MainDashboard />} /> */}
-        {/* {/* <Route path='' element={<MainDashboard />} /> */}
-        <Route path='/chatbot' element={<ChatPage />} />
+  return (
+    <div>
+      <BrowserRouter>
+        <Routes>
+          {/* <Route path='/*' element={<MainDashboard />} /> */}
+          {/* {/* <Route path='' element={<MainDashboard />} /> */}
+          <Route path='/chatbot' element={<ChatPage />} />
 
-        {/* ✅ Protected route example */}
-        <Route
-          path='/admin/*'
-          element={
-            <PrivateRoute>
-              <AdminSidebar />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/feeds'
-          element={
-            <PrivateRoute>
-              <Feeds />
-            </PrivateRoute>
-          }
-        />
-        <Route path='/notification' element={<PrivateRoute> <UserNotification /></PrivateRoute>} />
-        <Route
-          path='/public-profile/:uid/view'
-          element={
-            <PrivateRoute>
-              <UserProfile />
-            </PrivateRoute>
-          }
-        />
-        <Route path='/forgot-password' element={<Loginrecovery />} />
-        <Route path='/otp-verification' element={<OtpVerify />} />
-        <Route path='/confirm-password' element={<Loginwelcomeback />} />
-        <Route path='/admin/login' element={<AdminLogin />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/' element={<UserSignUp />} />
-        <Route path='/verification' element={<VerificationPage />} />
-        <Route path='/teacherSignUp' element={<TeacherSignUp />} />
-        <Route path='/facultyLogin' element={<FacultyLogin />} />
-      </Routes>
-    </BrowserRouter>
-  </div>
-)
+          {/* ✅ Protected route example */}
+          <Route
+            path='/admin/*'
+            element={
+              <PrivateRoute>
+                <AdminSidebar />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/feeds'
+            element={
+              <PrivateRoute>
+                <Feeds />
+              </PrivateRoute>
+            }
+          />
+          <Route path='/notification' element={<PrivateRoute> <UserNotification /></PrivateRoute>} />
+          <Route
+            path='/public-profile/:uid/view'
+            element={
+              <PrivateRoute>
+                <UserProfile />
+              </PrivateRoute>
+            }
+          />
+          <Route path='/forgot-password' element={<Loginrecovery />} />
+          <Route path='/otp-verification' element={<OtpVerify />} />
+          <Route path='/confirm-password' element={<Loginwelcomeback />} />
+          <Route path='/admin/login' element={<AdminLogin />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/' element={<UserSignUp />} />
+          <Route path='/verification' element={<VerificationPage />} />
+          <Route path='/teacherSignUp' element={<TeacherSignUp />} />
+          <Route path='/facultyLogin' element={<FacultyLogin />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
+  )
 }
 
 export default AppRouter
