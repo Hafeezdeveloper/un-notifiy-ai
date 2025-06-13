@@ -88,13 +88,13 @@ const HeaderGlobal: React.FC = () => {
 
                         {/* Network Icon        */}
                         <Link
-                            to={"/network"}
+                            to={"/MyAnnoucenment"}
                             style={{ textDecoration: "none" }}
                             className="header-notifi text-white relative flex items-center flex-col  global-header-hover px-2"
                         >
                             <img src={Netwrok} className="header_icon w-6 h-6" alt="Network" />
                             <span className="font-Poppins-Medium text-xs block header-notifi-text">
-                                My network
+                                My Annoucenment
                             </span>
                         </Link>
 

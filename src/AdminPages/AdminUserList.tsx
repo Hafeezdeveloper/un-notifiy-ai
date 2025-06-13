@@ -75,7 +75,7 @@ const AdminUserList = () => {
                 <div className="pt-2">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div>
-                            <p className="font-size-34px">Users request</p>
+                            <p className="font-size-34px">All  Users </p>
                             <p className="font-size-16px">
                                 <strong className="font-bold">
                                     <span className="font-size-18px">Dashboard</span> / All User

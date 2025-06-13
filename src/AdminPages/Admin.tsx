@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import UserAnalysis from "./UserAnalysis";
 import MyBarChart from "../Comp/myLineChart";
+import DepartmentGraph from "../Comp/DepartmentGraph";
 
 
 // import { RootState } from "../../config/Store/store";
@@ -92,8 +93,9 @@ const AdminDashboard: React.FC = () => {
                 <MyBarChart />
               </div>
               <div className="total-provider-graph ">
-                <h2 className="font-Poppins-SemiBold text-[#232323] font-size-20px mb-2">Users categories</h2>
+                <h2 className="font-Poppins-SemiBold text-[#232323] font-size-20px mb-2">Department Categories</h2>
                 {/* <ProvidersChart /> */}
+                <DepartmentGraph/>
               </div>
             </div>
 

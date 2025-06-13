@@ -8,6 +8,14 @@ export const Departments = [
   { value: 'ce', name: 'Civil Engineering' },
   { value: 'bt', name: 'Biotechnology' },
 ];
+
+export const PortalRoleOptions = [
+  { key: 'all', name: 'All' },           // 👈 Add this line
+  { key: 'student', name: 'Student' },
+  { key: 'teacher', name: 'Teacher' },
+  { key: 'faculty', name: 'Faculty' },
+];
+
 export const isNotEmpty = (data: any): boolean => {
   if (Array.isArray(data)) {
     return data.length > 0;
@@ -29,39 +37,40 @@ export const postTimeDifference = (data: string) => {
 
   if (!targetTime.isValid()) {
     return '0';
-  }}
-
-  export function createMessageWithLinks(text: any) {
-    if (!text) return [''];
-  
-    return text.split(" ").map((word: any, i: any) => {
-      // Define the regex inside the loop
-      const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i;
-  
-      // Check if the word is a URL using regex
-      if (urlRegex.test(word)) {
-        return (
-          <a
-            key={i}
-            href={word}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ color: 'blue', textDecoration: 'underline' }}
-          >
-            {word}
-          </a>
-        );
-      }
-      return word + " ";  // Return the word with a space
-    });
   }
+}
 
-  export function capitalizeFirstLetter(string: string): string {
-    if (!string) return '';
-    return string.charAt(0).toUpperCase() + string.slice(1);
-  }
+export function createMessageWithLinks(text: any) {
+  if (!text) return [''];
 
-  
+  return text.split(" ").map((word: any, i: any) => {
+    // Define the regex inside the loop
+    const urlRegex = /(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/i;
+
+    // Check if the word is a URL using regex
+    if (urlRegex.test(word)) {
+      return (
+        <a
+          key={i}
+          href={word}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: 'blue', textDecoration: 'underline' }}
+        >
+          {word}
+        </a>
+      );
+    }
+    return word + " ";  // Return the word with a space
+  });
+}
+
+export function capitalizeFirstLetter(string: string): string {
+  if (!string) return '';
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+
 export const validatePassword = (password: string): boolean => {
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+])[A-Za-z\d!@#$%^&*()_+]{8,}$/;

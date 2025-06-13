@@ -52,7 +52,7 @@ const formDataPostApi = <T>(
 const PutApi = <T>(
     endPoint: string, 
     body: unknown, 
-    id: string | number
+    id: any
 ): Promise<AxiosResponse<T>> => {
     return apiHandle.put<T>(`${endPoint}/${id}`, body);
 };

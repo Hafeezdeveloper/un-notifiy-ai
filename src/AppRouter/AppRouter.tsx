@@ -22,6 +22,7 @@ import Loginwelcomeback from '../UsersScreen/ConfirmPassword'
 import UserNotification from '../UsersScreen/UserNotification'
 import { setNotifications, SetNotificationsPayload, toogleNotificationLoader } from '../Redux/slices/notificationsSlice'
 import { initializeSocket, turnOffSocket, turnOnSocket } from '../Sockets/socket'
+import MyAnnoucenment from '../UsersScreen/MyAnnoucenment'
 
 const AppRouter = () => {
   const { token } = useSelector((store: RootState) => store.auth); // Select authentication token from Redux store
@@ -112,6 +113,7 @@ const AppRouter = () => {
             }
           />
           <Route path='/notification' element={<PrivateRoute> <UserNotification /></PrivateRoute>} />
+          <Route path='/MyAnnoucenment' element={<PrivateRoute> <MyAnnoucenment /></PrivateRoute>} />
           <Route
             path='/public-profile/:uid/view'
             element={
@@ -128,6 +130,7 @@ const AppRouter = () => {
           <Route path='/' element={<UserSignUp />} />
           <Route path='/verification' element={<VerificationPage />} />
           <Route path='/teacherSignUp' element={<TeacherSignUp />} />
+          <Route path='/facultyLogin' element={<FacultyLogin />} />
           <Route path='/facultyLogin' element={<FacultyLogin />} />
         </Routes>
       </BrowserRouter>

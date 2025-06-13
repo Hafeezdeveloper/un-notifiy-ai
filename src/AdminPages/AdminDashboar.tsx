@@ -12,10 +12,15 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import MailIcon from '@mui/icons-material/Mail';
-import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-
+import {
+  Dashboard as DashboardIcon,
+  People as PeopleIcon,
+  PersonAdd as PersonAddIcon,
+  ListAlt as ListAltIcon,
+  Menu as MenuIcon
+} from '@mui/icons-material'
 import dashbaordicon from "../assets/img/Icon material-dashboard.png";
 import adminOperatorsicon from "../assets/img/Admin-operators.png";
 import adminUsericon from "../assets/img/Admin-user-icon.png";
@@ -33,6 +38,12 @@ import AdminInvitation from './AdminInvitation';
 import SendInvitationForm from './AddInvitaion';
 import UserAnalysis from './UserAnalysis';
 import AdminDashboard from './Admin';
+import DepartmentList from './DepartmentList';
+import AddAnnoucenement from './AddAnnoucenement';
+import SendAnnoucenment from './SendAnnoucenment';
+import EditAnnoucenment from './EditAnnoucenment';
+import AddDepartment from './AddDepartment';
+import EditDepartment from './EditDepartment';
 const drawerWidth = 240;
 
 interface Props {
@@ -58,7 +69,7 @@ export default function AdminSidebar(props: Props) {
   };
   let data = [
     {
-      icon: dashbaordicon,
+      icon: <DashboardIcon sx={{ color: '#fff' }} />,
       total: 60.00,
       title: "Dashboard",
       color: '#6610f2',
@@ -66,7 +77,7 @@ export default function AdminSidebar(props: Props) {
       path: "/admin/dashboard"
     },
     {
-      icon: adminUsericon,
+      icon: <PeopleIcon sx={{ color: '#fff' }} />,
       total: 10.00,
       title: "User request",
       color: '#ff8952',
@@ -74,7 +85,7 @@ export default function AdminSidebar(props: Props) {
       path: "/admin/UsersRequest"
     },
     {
-      icon: adminUsericon,
+      icon: <PeopleIcon sx={{ color: '#fff' }} />,
       total: 0.00,
       title: "All Users",
       color: '#00c689',
@@ -82,14 +93,23 @@ export default function AdminSidebar(props: Props) {
       path: "/admin/userList"
     },
     {
-      icon: adminUsericon,
+      icon: <PersonAddIcon sx={{ color: '#fff' }} />,
       total: 0.00,
       title: "Invitation Send",
       color: '#00c689',
       isDisabled: false,
       path: "/admin/user-invitation"
     },
-
+    {
+      icon: <ListAltIcon sx={{ color: '#fff' }} />,
+      title: "Department List",
+      path: "/admin/department-list"
+    },
+    {
+      icon: <ListAltIcon sx={{ color: '#fff' }} />,
+      title: "Annoucenment",
+      path: "/admin/accoucenment"
+    }
   ]
 
   const handleDrawerToggle = () => {
@@ -110,11 +130,16 @@ export default function AdminSidebar(props: Props) {
         {data && data.map((text: any, index: any) => (
           <ListItem key={text} onClick={() => clkBtn(text.path)} disablePadding>
             <ListItemButton>
-              <ListItemIcon style={{
-                zIndex: "100",
-              }}  >
-                <img src={text.icon
-                } alt="" />
+              <ListItemIcon sx={{
+                minWidth: '40px',
+                background: 'linear-gradient(180deg, #0072b5, #005a92)',
+                borderRadius: '4px',
+                marginRight: '10px',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}>
+                {text?.icon}
               </ListItemIcon>
               <ListItemText primary={text.title} />
             </ListItemButton>
@@ -133,7 +158,7 @@ export default function AdminSidebar(props: Props) {
     <Box sx={{ display: 'flex', }}>
       <CssBaseline />
       <AppBar
-        style={{ backgroundImage: "linear-gradient(180deg, #0072b5, #005a92)",  }}
+        style={{ backgroundImage: "linear-gradient(180deg, #0072b5, #005a92)", }}
         position="fixed"
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
@@ -167,11 +192,11 @@ export default function AdminSidebar(props: Props) {
           open={mobileOpen}
           onTransitionEnd={handleDrawerTransitionEnd}
           onClose={handleDrawerClose}
-          
+
           sx={{
             display: { xs: 'block', sm: 'none' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
-            
+
           }}
           slotProps={{
             root: {
@@ -183,7 +208,7 @@ export default function AdminSidebar(props: Props) {
         </Drawer>
         <Drawer
           variant="permanent"
-          
+
           sx={{
             display: { xs: 'none', sm: 'block' },
             '& .MuiDrawer-paper': { boxSizing: 'border-box', width: drawerWidth },
@@ -204,6 +229,12 @@ export default function AdminSidebar(props: Props) {
           <Route path="/userList" element={<AdminUserList />} />
           <Route path="/user-invitation" element={<AdminInvitation />} />
           <Route path="/send-invitation" element={<SendInvitationForm />} />
+          <Route path="/department-list" element={<DepartmentList />} />
+          <Route path="/add-department" element={<AddDepartment />} />
+          <Route path="/edit-department/:id" element={<EditDepartment  />} />
+          <Route path="/accoucenment" element={<AddAnnoucenement />} />
+          <Route path="/send-Annoucenment" element={<SendAnnoucenment />} />
+          <Route path="/edit-annoucenment/:id" element={<EditAnnoucenment />} />
         </Routes>
       </Box>
     </Box>
