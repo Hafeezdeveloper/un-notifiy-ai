@@ -19,6 +19,8 @@ const HeaderGlobal: React.FC = () => {
     const { unReadNotifications } = useSelector(
         (store: RootState) => store.notification
     );
+    const counts = useSelector((state: RootState) => state.indicator);
+
     const [isBoxVisible1, setIsBoxVisible1] = useState<any>(false);
     const navigate = useNavigate()
     const location = useLocation();
@@ -34,7 +36,8 @@ const HeaderGlobal: React.FC = () => {
         turnOffSocket();
         navigate("/login");
     };
-
+    console.log(":aw", counts?.annoucenment)
+    console.log(":aw", counts)
     useEffect(() => {
         const handleClickOutside = (event: MouseEvent) => {
             // Check if click is outside both dropdown and the toggle button
@@ -87,14 +90,22 @@ const HeaderGlobal: React.FC = () => {
                         </Link>
 
                         {/* Network Icon        */}
+
                         <Link
                             to={"/MyAnnoucenment"}
                             style={{ textDecoration: "none" }}
                             className="header-notifi text-white relative flex items-center flex-col  global-header-hover px-2"
                         >
+                            {(counts?.annoucenment > 0) ? (
+                                <div className="msg-count-main ">
+                                    <span className="msg-count-specific">
+                                        {counts?.annoucenment}
+                                    </span>
+                                </div>
+                            ) : null}
                             <img src={Netwrok} className="header_icon w-6 h-6" alt="Network" />
                             <span className="font-Poppins-Medium text-xs block header-notifi-text">
-                                My Annoucenment
+                                Annoucenment
                             </span>
                         </Link>
 

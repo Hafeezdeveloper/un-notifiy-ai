@@ -10,7 +10,7 @@ import userProfileReducer from '../slices/userProfileSlice';
 import newsFeedSlice from '../slices/newzfeedSlice';
 import connectionsSlice from '../slices/connectionsSlice';
 import notificationsSlice from '../slices/notificationsSlice';
-import IndicatorSlice from "../slices/IndicatorSlice";
+import IndicatorSlice from '../slices/IndicatorSlice';
 
 const persistConfig = {
   key: 'token',

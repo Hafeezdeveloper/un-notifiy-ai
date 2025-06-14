@@ -23,6 +23,7 @@ import UserNotification from '../UsersScreen/UserNotification'
 import { setNotifications, SetNotificationsPayload, toogleNotificationLoader } from '../Redux/slices/notificationsSlice'
 import { initializeSocket, turnOffSocket, turnOnSocket } from '../Sockets/socket'
 import MyAnnoucenment from '../UsersScreen/MyAnnoucenment'
+import { fetchCountsStart } from '../Redux/slices/IndicatorSlice'
 
 const AppRouter = () => {
   const { token } = useSelector((store: RootState) => store.auth); // Select authentication token from Redux store
@@ -87,6 +88,25 @@ const AppRouter = () => {
       turnOffSocket();
     };
   }, [token]);
+
+  // useEffect(() => {
+  //   const fetchCounts = async () => {
+  //     dispatch(fetchCountsStart());
+  //     try {
+  //       const res = await GetApi<any>(`/notifications/all?page=${notification?.currentPage}&limit=${notification?.currentPage}`);
+  //       if (res) {
+  //         dispatch(fetchCountsSuccess(res));
+  //       } else {
+  //         dispatch(fetchCountsFailure(err.message));
+  //       }
+  //     } catch (err: any) {
+  //       // dispatch(fetchCountsFailure(err.message));
+  //     }
+
+
+  //   };
+  //   fetchCounts();
+  // }, [token]);
   return (
     <div>
       <BrowserRouter>

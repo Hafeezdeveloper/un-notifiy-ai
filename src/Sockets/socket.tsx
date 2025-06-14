@@ -4,6 +4,7 @@ import { Dispatch } from "redux";
 import { useEffect } from "react";
 import { addNewNotifications } from "../Redux/slices/notificationsSlice";
 import { updateConnectionStatus, updateProfile } from "../Redux/slices/userProfileSlice";
+import { fetchCountsSuccess } from "../Redux/slices/IndicatorSlice";
 const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || '192.168.0.107:80';
 // const SOCKET_URL = process.env.REACT_APP_SOCKET_URL as string; // server URL
 const token = localStorage.getItem("authToken");
@@ -41,7 +42,6 @@ const initializeSocket = (dispatch: Dispatch): Promise<void> => {
     return new Promise((resolve) => {
         const latestToken = token
         const SOCKET_URL = SOCKET_URLs
-        console.log(token, ";aettst")
 
         socket = io(SOCKET_URL, {
             ...commonOptions,
@@ -68,6 +68,11 @@ const initializeSocket = (dispatch: Dispatch): Promise<void> => {
 
         //     dispatch(fetchCountsSuccess(data))
         // });
+        socket.on("annoucenment", (data: any) => {
+            console.log("annoucenment=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
+
+            dispatch(fetchCountsSuccess(data))
+        });
         // socket.on("newReview", (data: any) => {
         //     console.log("newReview=>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>", data);
 
