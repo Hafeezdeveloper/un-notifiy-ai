@@ -20,6 +20,10 @@ interface Batch {
   _id: string;
   name: string;
 }
+interface UpdateImagePayload {
+  imageType: 'profile' | 'cover';
+  imageUrl: string;
+}
 
 interface UserProfile {
   _id: string;
@@ -127,6 +131,14 @@ export const userProfileSlice = createSlice({
       console.log(action.payload, "action.payloadaction.payloadaction.payload")
       state.connectionStatus = action.payload;
     },
+    updateImageUrl(state:any, action: PayloadAction<UpdateImagePayload>) {
+      const { imageType, imageUrl } = action.payload;
+      if (imageType === 'profile') {
+        state.profile.profileImageUrl = imageUrl;
+      } else {
+        state.profile.coverImageUrl = imageUrl;
+      }
+    },
   }
 });
 
@@ -138,7 +150,8 @@ export const {
   fetchProfileSuccess,
   fetchProfileFailure,
   updateProfile,
-  clearProfile
+  clearProfile,
+  updateImageUrl
 } = userProfileSlice.actions;
 
 export default userProfileSlice.reducer;

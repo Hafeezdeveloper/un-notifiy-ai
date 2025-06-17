@@ -48,7 +48,7 @@ const AddAnnoucenement = () => {
                 ...(queryParams.search && { search: queryParams.search })
             };
 
-            const response = await GetApi<ApiResponse>('/announcements/all', apiParams);
+            const response = await GetApi<ApiResponse>('/announcements/all-admin', apiParams);
 
             setData(response.data.documents || []);
             const count = response.data.paginated?.totalItems || 0;

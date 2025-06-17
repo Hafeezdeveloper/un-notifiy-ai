@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 
 const initialState = {
@@ -44,7 +44,7 @@ const initialState = {
     shortlist_applicant: 0,
     quotation_sent: 0,
     declined_jobs: 0,
-    annoucenment:0,
+    annoucenment: 0,
     loading: false,
     error: null,
 };
@@ -58,7 +58,7 @@ const countsSlice = createSlice({
             state.error = null;
         },
         fetchCountsSuccess: (state: any, action: any) => {
-            console.log("awdwad",action.payload )
+            console.log("awdwad", action.payload)
             if (Object.keys(action.payload).length === 1) {
                 const key = Object.keys(action.payload)[0]; // Get the single key in the payload
                 if (state[key] !== undefined) {
@@ -109,25 +109,24 @@ const countsSlice = createSlice({
                 state.approved_jobs = action.payload.approved_jobs;
                 state.all_jobs = action.payload.all_jobs;
                 state.shortlist_applicant = action.payload.shortlist_applicant;
-           
+
             }
         },
-        fetchCountsFailure: (state: any, action:any) => {
+        fetchCountsFailure: (state: any, action: any) => {
             state.loading = false;
             state.error = action.payload;
         },
-        resetCount: (state :any, action: any) => {
-            const key = action.payload; // Get the key from the action payload
-            if (state[key] !== undefined) {
-                state[key] = 0; // Reset the matching count to 0
+        resetCount: (state:any, action: PayloadAction<keyof typeof initialState>) => {
+            const key = action.payload;
+            if (state[key] !== undefined && typeof state[key] === "number") {
+                state[key] = 0;
             }
         }
 
 
 
 
-
-    }
+}
 });
 
 export const { fetchCountsStart, fetchCountsSuccess, fetchCountsFailure, resetCount } = countsSlice.actions;

@@ -13,6 +13,7 @@ import { turnOffSocket } from "../../Sockets/socket";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSortDown } from "@fortawesome/free-solid-svg-icons";
 import { truncateString } from "../../Helper/constants";
+import { decodeToken } from "../../Helper/ApiHandle/BsApiHandle";
 
 const HeaderGlobal: React.FC = () => {
     const personalData = useSelector((store: RootState) => store.userProfile);
@@ -20,6 +21,8 @@ const HeaderGlobal: React.FC = () => {
         (store: RootState) => store.notification
     );
     const counts = useSelector((state: RootState) => state.indicator);
+    const token = localStorage.getItem("authToken");
+    const decodedUser = token ? decodeToken(token) : null;
 
     const [isBoxVisible1, setIsBoxVisible1] = useState<any>(false);
     const navigate = useNavigate()
@@ -198,7 +201,7 @@ const HeaderGlobal: React.FC = () => {
                                 </div>
                                 <div className="px-4">
                                     <Link
-                                        to="/publicprofile"
+                                        to={`/public-profile/${decodedUser?.userId}/view`}
                                         className=" font-size-14px theme-color-green flex font-Poppins-Medium feeds-btn mt-3 w-full hover:text-white hover:bg-[#00443F]"
                                     >
                                         View profile

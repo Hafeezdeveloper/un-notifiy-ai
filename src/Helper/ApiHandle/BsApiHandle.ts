@@ -1,5 +1,6 @@
 import qs from "qs";
 import axios, { AxiosResponse } from "axios";
+import { jwtDecode } from "jwt-decode";
 
 let apiHandle = axios.create({
     baseURL: "http://192.168.0.107:80/api"
@@ -37,8 +38,8 @@ const PostApi = <T>(endPoint: string, body: unknown): Promise<AxiosResponse<T>> 
 
 // FormData POST with typed response
 const formDataPostApi = <T>(
-    endPoint: string, 
-    body: FormData | unknown, 
+    endPoint: string,
+    body: FormData | unknown,
     isFormData = false
 ): Promise<AxiosResponse<T>> => {
     const config = {
@@ -50,8 +51,8 @@ const formDataPostApi = <T>(
 
 // PUT request with typed response
 const PutApi = <T>(
-    endPoint: string, 
-    body: unknown, 
+    endPoint: string,
+    body: unknown,
     id: any
 ): Promise<AxiosResponse<T>> => {
     return apiHandle.put<T>(`${endPoint}/${id}`, body);
@@ -59,17 +60,30 @@ const PutApi = <T>(
 
 // DELETE request with typed response
 const DeleteApi = <T>(
-    endPoint: string, 
+    endPoint: string,
     id: string | number
 ): Promise<AxiosResponse<T>> => {
     return apiHandle.delete<T>(`${endPoint}/${id}`);
 };
+// utils/decodeToken.ts
 
-export { 
-    GetApi, 
-    PostApi, 
-    PutApi, 
-    DeleteApi, 
-    GetApiForSingle, 
-    formDataPostApi 
+
+const decodeToken = (token: any) => {
+    try {
+        return jwtDecode<any>(token);
+    } catch (error) {
+        console.error("Invalid token:", error);
+        return null;
+    }
+}
+
+
+export {
+    decodeToken,
+    GetApi,
+    PostApi,
+    PutApi,
+    DeleteApi,
+    GetApiForSingle,
+    formDataPostApi
 };

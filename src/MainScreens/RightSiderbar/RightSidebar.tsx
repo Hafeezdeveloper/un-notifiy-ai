@@ -55,132 +55,120 @@ function RightSidebarFeed({ jobSectionHide = false }) {
 
 
 
-        const permissionMap: Record<string, string> = {
-            Quotations: "quotation",
-            Clients: "client",
-            "My jobs": "myJobs",
-            Shifts: "shift",
-            Timesheets: "timeSheet",
-            Invoices: "clientInvoice",
-            "Custom forms": "customForm",
-            Templates: "template",
-            "Organizational structure": "organizationStructure",
-            // "Employee management": "employeeManagment",
-            "Documents management": "documentManagment",
-            "Payroll management": "payrollManagment",
-        };
+    const permissionMap: Record<string, string> = {
+        Quotations: "quotation",
+        Clients: "client",
+        "My jobs": "myJobs",
+        Shifts: "shift",
+        Timesheets: "timeSheet",
+        Invoices: "clientInvoice",
+        "Custom forms": "customForm",
+        Templates: "template",
+        "Organizational structure": "organizationStructure",
+        // "Employee management": "employeeManagment",
+        "Documents management": "documentManagment",
+        "Payroll management": "payrollManagment",
+    };
 
-        const rightSideData: any = {
-            student: [
-                {
-                    navigation: "/provider's-my-jobs",
-                    title: "My jobs",
-                    notification: 0,
-                    isVisible: true,
-                },
-                {
-                    navigation: "/manage-quotations",
-                    title: "Manage quotation",
-                    notification: 0,
-                    isVisible: true,
-                },
-                {
-                    navigation: "/my-support-coordinator",
-                    title: "My support coordinators",
-                    notification: 0,
-                    isVisible: true,
-                },
-                {
-                    navigation: "/my-plan-managers",
-                    title: "My plan managers",
-                    notification: 0,
-                    isVisible: true,
-                },
-                {
-                    navigation: "/all-inovices",
-                    title: "Invoices",
-                    isVisible: true,
-                    notification: 0,
-                },
-            ],
-            teacher: [
-                {
-                    navigation: "/provider's-quotation",
-                    title: "Quotations",
-                    notification: 0,
-                    isVisible: true,
-                },
-                {
-                    navigation: "/plan-manager's-participant",
-                    title: "Clients",
-                    notification: 0,
-                    isVisible: true,
-                },
-                {
-                    navigation: "/provider's-my-jobs",
-                    title: "My jobs",
-                    notification:
-                        0,
-                    isVisible: true,
-                },
-                
-                // { navigation: "", title: "Templates", isVisible: true },
-            ],
-        };
+    const rightSideData: any = {
+        student: [
+            {
+                navigation: "/my-annoucenment",
+                title: "My Annoucenment",
+                notification: 0,
+                isVisible: true,
+            },
+            // {
+            //     navigation: "/manage-quotations",
+            //     title: "Manage quotation",
+            //     notification: 0,
+            //     isVisible: true,
+            // },
+            // {
+            //     navigation: "/my-support-coordinator",
+            //     title: "My support coordinators",
+            //     notification: 0,
+            //     isVisible: true,
+            // },
+            // {
+            //     navigation: "/my-plan-managers",
+            //     title: "My plan managers",
+            //     notification: 0,
+            //     isVisible: true,
+            // },
+            // {
+            //     navigation: "/all-inovices",
+            //     title: "Invoices",
+            //     isVisible: true,
+            //     notification: 0,
+            // },
+        ],
+        teacher: [
+            {
+                navigation: "/my-annoucenment",
+                title: "My Annoucenment",
+                notification: 0,
+                isVisible: true,
+            },
+           
 
-      
+            // { navigation: "", title: "Templates", isVisible: true },
+        ],
+    };
 
-        let roleData = rightSideData["student"] || [];
 
-        roleData = roleData.filter((item: any) => item.isVisible);
 
-     
-        return (
-            <div className="all-menus">
-                    <div className="">
-                        <div
-                            className="sidebar-gobal-user-details allside_shadow py-2   mb-3"
-                            style={{ width: "17.786vw" }}
-                        >
-                            <p className="font-size-16px theme-color-green  font-Poppins-Medium  px-4 flex gap-4 items-center mt-2">
-                                {" "}
-                                <img
-                                    className="lg:h-[1.3vw] md:h-[1.3vw] h-[4.3vw]"
-                                    src="https://ndisync-stage.s3.amazonaws.com/items-icon.svg"
-                                    alt=""
-                                />{" "}
-                                Care management
-                            </p>
-                            <hr className="my-2" />
+    let roleData = rightSideData["student"] || [];
 
-                            {roleData &&
-                                roleData
-                                    .filter((item: any) => item.isVisible)
-                                    .map((item: any, index: number, array: any[]) => (
-                                        <div
-                                            key={index}
-                                            className="sidebar-gobal-user-jobs-status px-4 mb-2"
-                                        >
-                                            <Link
-                                                to={ item.navigation}
-                                                className={`flex justify-between items-center  
+    roleData = roleData.filter((item: any) => item.isVisible);
+
+
+    return (
+        <div className="all-menus">
+            <div className="">
+                <div
+                    className="sidebar-gobal-user-details allside_shadow py-2   mb-3"
+                    style={{ width: "17.786vw" }}
+                >
+                    <p className="font-size-16px theme-color-green  font-Poppins-Medium  px-4 flex gap-4 items-center mt-2">
+                        {" "}
+                        <img
+                            className="lg:h-[1.3vw] md:h-[1.3vw] h-[4.3vw]"
+                            src="https://ndisync-stage.s3.amazonaws.com/items-icon.svg"
+                            alt=""
+                        />{" "}
+                        Care management
+                    </p>
+                    <hr className="my-2" />
+
+                    {roleData &&
+                        roleData
+                            .filter((item: any) => item.isVisible)
+                            .map((item: any, index: number, array: any[]) => (
+                                <div
+                                    key={index}
+                                    className="sidebar-gobal-user-jobs-status px-4 mb-2"
+                                >
+                                    <Link
+                                        to={item.navigation}
+                                        className={`flex justify-between items-center  
                                                      `}
-                                            >
-                                                <p className="font-size-16px theme-color-green font-Poppins-Medium">
-                                                    {item?.title}
-                                                </p>
-                                                <p className="font-size-16px font-Poppins-SemiBold theme-color-green count-use" />
-                                                {item?.notification > 0 && (
-                                                    <div className="bg-[#e23333] w-[3vw] h-[3vw] lg:w-[1vw] md:h-[1vw] flex items-center justify-center rounded-full">
-                                                        <p className=" w-[1vw] h-[1vw] lg:w-[.4vw] md:h-[.4vw] bg-white rounded-full"></p>
-                                                    </div>
-                                                )}
-                                            </Link>
-                                        </div>
-                                    ))}
-                        </div>
-                    </div>
-                {/* {personalData?.employeeRole &&
+                                    >
+                                        <p className="font-size-16px theme-color-green font-Poppins-Medium">
+                                            {item?.title}
+                                        </p>
+                                        <p className="font-size-16px font-Poppins-SemiBold theme-color-green count-use" />
+                                        {item?.notification > 0 && (
+                                            <div className="bg-[#e23333] w-[3vw] h-[3vw] lg:w-[1vw] md:h-[1vw] flex items-center justify-center rounded-full">
+                                                <p className=" w-[1vw] h-[1vw] lg:w-[.4vw] md:h-[.4vw] bg-white rounded-full"></p>
+                                            </div>
+                                        )}
+                                    </Link>
+                                </div>
+                            ))}
+                </div>
+            </div>
+            {/* {personalData?.employeeRole &&
 
         <div className="sidebar-gobal-user-details allside_shadow mt-2 py-3 px-4 on-hover-underline relative" style={{ width: "100%" }}>
           <button
@@ -193,13 +181,13 @@ function RightSidebarFeed({ jobSectionHide = false }) {
           >Swtich to my profile</button>
         </div>
       } */}
-         
 
 
 
-            </div>
 
-        );
-    }
+        </div>
+
+    );
+}
 
 export default RightSidebarFeed;

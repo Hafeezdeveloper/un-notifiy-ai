@@ -25,7 +25,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import BusinessIcon from '@mui/icons-material/Business';
 import { RootState } from "../Redux/store/store";
-import { PublicDataType, updateProfile } from "../Redux/slices/userProfileSlice";
+import { PublicDataType, updateImageUrl, updateProfile } from "../Redux/slices/userProfileSlice";
 import { toast } from "sonner";
 import { formDataPostApi, PostApi } from "../Helper/ApiHandle/BsApiHandle";
 import BsButton from "../Comp/BsButton";
@@ -51,6 +51,7 @@ const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = (
   const ShowData = useMemo(() => {
     return publicProfile as PublicDataType;
   }, [publicProfile]);
+  console.log("userProfile", publicProfile)
 
   const UserRole = useSelector((store: RootState) => store.userProfile.data?.role);
   const connectionStatus = useSelector((store: RootState) => store.userProfile.connectionStatus);
@@ -130,8 +131,17 @@ const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = (
     formData.append("image", BlobFile);
     const res = await formDataPostApi<any>(`/user/${isImageModal === "cover" ? "cover-image" : "profile-image"}`, formData, true);
 
+    console.log("before")
+    setIsLoader(false);
+    setIsImageModal(() => false);
+
     if (res) {
-      dispatch(updateProfile());
+      console.log("rerrea", res.data.profileImageUrl)
+      dispatch(updateImageUrl({
+        imageType: isImageModal === "cover" ? 'cover' : 'profile',
+        imageUrl: res.data.profileImageUrl // Adjust based on your API response
+      }));
+      // dispatch(updateProfile());
       setBool((prev) => !prev);
       handleCloseImageModal()
     } else {
@@ -323,11 +333,11 @@ const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = (
           // <BsButton isLoading={isLoading} label="Connect" />
           // </div>
           <ConnectionStatusButton
-          key={Math.random()}
-          status={connectionStatus}
-          uId={ShowData?._id}
-          showMessageButton={true}
-        />
+            key={Math.random()}
+            status={connectionStatus}
+            uId={ShowData?._id}
+            showMessageButton={true}
+          />
         )}
 
         <Divider sx={{ my: 2 }} />
@@ -401,7 +411,7 @@ const ProfileUserDetailDashboard: React.FC<IProfileUserDetailDashboardProps> = (
               <Typography variant="h6">
                 Edit {isImageModal} photo
               </Typography>
-              <IconButton >
+              <IconButton onClick={() => setIsImageModal(false)} >
                 <FaTimes />
               </IconButton>
             </Box>

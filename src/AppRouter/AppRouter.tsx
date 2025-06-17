@@ -23,7 +23,9 @@ import UserNotification from '../UsersScreen/UserNotification'
 import { setNotifications, SetNotificationsPayload, toogleNotificationLoader } from '../Redux/slices/notificationsSlice'
 import { initializeSocket, turnOffSocket, turnOnSocket } from '../Sockets/socket'
 import MyAnnoucenment from '../UsersScreen/MyAnnoucenment'
-import { fetchCountsStart } from '../Redux/slices/IndicatorSlice'
+import { fetchCountsFailure, fetchCountsStart, fetchCountsSuccess } from '../Redux/slices/IndicatorSlice'
+import ListAnnoucenment from '../MainScreens/ListAnnoucenment'
+import AddSocialAnnoucenment from '../MainScreens/AddSocialAnnoucenment'
 
 const AppRouter = () => {
   const { token } = useSelector((store: RootState) => store.auth); // Select authentication token from Redux store
@@ -89,24 +91,25 @@ const AppRouter = () => {
     };
   }, [token]);
 
-  // useEffect(() => {
-  //   const fetchCounts = async () => {
-  //     dispatch(fetchCountsStart());
-  //     try {
-  //       const res = await GetApi<any>(`/notifications/all?page=${notification?.currentPage}&limit=${notification?.currentPage}`);
-  //       if (res) {
-  //         dispatch(fetchCountsSuccess(res));
-  //       } else {
-  //         dispatch(fetchCountsFailure(err.message));
-  //       }
-  //     } catch (err: any) {
-  //       // dispatch(fetchCountsFailure(err.message));
-  //     }
+  useEffect(() => {
+    const fetchCounts = async () => {
+      dispatch(fetchCountsStart());
+      try {
+        const res = await GetApi<any>(`/user/user-indicator`);
+        console.log("count", res.data)
+        if (res) {
+          dispatch(fetchCountsSuccess(res.data));
+        } else {
+          // dispatch(fetchCountsFailure(res.data.message));
+        }
+      } catch (err: any) {
+        // dispatch(fetchCountsFailure(err.message));
+      }
 
 
-  //   };
-  //   fetchCounts();
-  // }, [token]);
+    };
+    fetchCounts();
+  }, [token]);
   return (
     <div>
       <BrowserRouter>
@@ -134,6 +137,8 @@ const AppRouter = () => {
           />
           <Route path='/notification' element={<PrivateRoute> <UserNotification /></PrivateRoute>} />
           <Route path='/MyAnnoucenment' element={<PrivateRoute> <MyAnnoucenment /></PrivateRoute>} />
+          <Route path='/my-annoucenment' element={<PrivateRoute> <ListAnnoucenment /></PrivateRoute>} />
+          <Route path='/add-socail-annoucenment' element={<PrivateRoute> <AddSocialAnnoucenment /></PrivateRoute>} />
           <Route
             path='/public-profile/:uid/view'
             element={

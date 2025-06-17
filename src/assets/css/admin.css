@@ -579,7 +579,7 @@ span.userReqCount {
 }
 
 .main-Admin-status-action {
-  background-image: linear-gradient(#004540, #00a297);
+  background-image: linear-gradient(180deg, #0072b5, #005a92);
   /* padding: 0 0; */
   border-radius: 6px;
 }

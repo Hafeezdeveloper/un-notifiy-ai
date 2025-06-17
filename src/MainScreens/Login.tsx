@@ -101,7 +101,7 @@ const Login = () => {
             <div>
               <BsInp label="Email" type="email" inplabel="Email" name="email" value={formData.email} onChange={handleChange} />
             </div>
-            <div>
+            <div> 
               <div style={{ display: "flex", justifyContent: "flex-end" }} className="">
                 <Link to="/forgot-password" className="text-blue-500 text-sm hover:underline">
                   Forgot Password?
