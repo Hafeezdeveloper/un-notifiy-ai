@@ -38,22 +38,21 @@ const AppRouter = () => {
     dispatch(fetchProfileSuccess(response?.data.document));
   }
   const fetchNotifications = async () => {
-    dispatch(toogleNotificationLoader(true)); // Toggle loader state for notifications
-    // const { res, err } = await httpRequest({ path: `/api/notifications/all?page=${currentPage}&pageSize=${pageSize}` });
-    const res = await GetApi<any>(`/notifications/all?page=${notification?.currentPage}&limit=${notification?.currentPage}`);
+    dispatch(toogleNotificationLoader(true));
+    const res = await GetApi<any>(`/notifications/all?page=${notification?.currentPage}&limit=${notification?.pageSize}`);
+
     if (res) {
       const payload: SetNotificationsPayload = {
-        unreadCount: res.data.unreadCount || 0, // Ensure this matches the response structure
-        Notification: res.data?.documents, // Ensure res.documents is an array of Notification
+        unreadCount: res.data.unreadCount || 0,
+        Notification: res.data?.documents,
         totalCount: res.data?.paginated?.totalItems,
-        totalPages: res.data?.paginated?.totalPages || 1, // Ensure this matches the response structure
+        totalPages: res.data?.paginated?.totalPages || 1,
       };
       dispatch(setNotifications(payload));
-      // Dispatch action to set notifications in Redux store
     } else {
-      console.error("ERROR", res); // Log error if API request fails
+      console.error("ERROR", res);
     }
-    dispatch(toogleNotificationLoader(false)); // Toggle loader state for notifications
+    dispatch(toogleNotificationLoader(false));
   };
   useEffect(() => {
     if (token) {

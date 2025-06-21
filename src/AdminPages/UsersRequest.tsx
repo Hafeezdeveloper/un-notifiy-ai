@@ -91,7 +91,6 @@ const UsersRequest = () => {
                 </p>
               </div>
               <div>
-                <BsButton label="Export" style="w-[100px]" />
               </div>
             </div>
 

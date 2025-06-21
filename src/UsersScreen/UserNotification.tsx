@@ -6,8 +6,8 @@ import { CircularProgress } from "@mui/material";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { resetUnreadNotifiation, setNotificationPage } from "../Redux/slices/notificationsSlice";
-import { PostApi } from "../Helper/ApiHandle/BsApiHandle";
+import { resetUnreadNotifiation, setNotificationPage, setNotifications, toogleNotificationLoader } from "../Redux/slices/notificationsSlice";
+import { GetApi, PostApi } from "../Helper/ApiHandle/BsApiHandle";
 import HeaderGlobal from "../MainScreens/header/HeaderGolobal";
 import { RootState } from "../Redux/store/store";
 import { toast } from "sonner";
@@ -32,8 +32,33 @@ function UserNotification() {
     const allNotifications = useSelector((state: RootState) => state.notification.allNotifications);
     const currentPage = useSelector((state: RootState) => state.notification.currentPage);
     const totalPage = useSelector((state: RootState) => state.notification.totalPage);
+    const pageSize = useSelector((state: RootState) => state.notification.pageSize);
 
-
+    useEffect(() => {
+        if (currentPage > 1) { // Don't fetch on initial load (handled elsewhere)
+            fetchMoreNotifications();
+        }
+    }, [currentPage]);
+    const fetchMoreNotifications = async () => {
+        dispatch(toogleNotificationLoader(true));
+        try {
+            const res = await GetApi<any>(`/notifications/all?page=${currentPage}&limit=${pageSize}`);
+            if (res) {
+                // UserNotification.tsx
+                const payload = {
+                    unreadCount: res.data.unreadCount || 0,
+                    Notification: res.data?.documents || [],
+                    totalCount: res.data?.paginated?.totalItems || 0, // Add this
+                    totalPages: res.data?.paginated?.totalPages || 1,
+                };
+                dispatch(setNotifications(payload));
+            }
+        } catch (error) {
+            toast.error("Error loading more notifications");
+        } finally {
+            dispatch(toogleNotificationLoader(false));
+        }
+    };
     const personalData = useSelector((store: RootState) => store.userProfile.data);
 
     const handlePageChange = (_page: number) => {
@@ -43,8 +68,8 @@ function UserNotification() {
     const navigateToRoute = (item: NotificationItem) => {
         const { notificationRoute, routeId } = item;
         switch (notificationRoute) {
-            case 'profile':
-                return `/public-profile/${routeId}/view`;
+            case 'annoucenment':
+                return `/MyAnnoucenment`;
             case 'news-feed':
                 return `/feed-detail/${routeId}/view`;
             default:
@@ -59,7 +84,7 @@ function UserNotification() {
         // If the route is for external domain (chat), use window.location.href instead of Link
 
         return (
-            <Link to={route as string} key={index} style={{textDecoration:"none", }} className="noti-spec-main mb-4 shadow-lg text-dark">
+            <Link to={route as string} key={index} style={{ textDecoration: "none", }} className="noti-spec-main mb-4 shadow-lg text-dark">
                 <div className="noti-spec">
                     <img className="" src={`${item?.imageUrl}`} />
                     {/* <img className="" src={`${process.env.REACT_APP_BASE_URL_IMAGE}${item?.imageUrl}`} /> */}
@@ -85,6 +110,8 @@ function UserNotification() {
         const res = await PostApi<any>(`notifications/mark-as-read`, {});
         if (res) {
             dispatch(resetUnreadNotifiation());
+            dispatch(toogleNotificationLoader(false));
+
         } else {
             toast.error("error");
         }
@@ -120,7 +147,7 @@ function UserNotification() {
                                             }
                                         }}
                                         hasMore={currentPage < totalPage}
-                                        loader={<CircularProgress />}
+                                        loader={notificationLoader ? <CircularProgress /> : null}
                                         endMessage={<p style={{ textAlign: "center" }}>No more notifications to show</p>}
                                     >
                                         {allNotifications?.length > 0

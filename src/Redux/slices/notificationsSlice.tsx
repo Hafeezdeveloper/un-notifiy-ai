@@ -25,16 +25,15 @@ interface NotificationsState {
 export interface SetNotificationsPayload {
     unreadCount: number;
     Notification: Notification[];
-    totalCount: number;
-    totalPages: number; // Added totalPages here
-
+    totalCount?: number;  // Made optional
+    totalPages: number;
     [key: string]: any;
 }
 
 const initialState: NotificationsState = {
     notificationLoader: false,
     currentPage: 1,
-    pageSize: 20,
+    pageSize: 10,
     unReadNotifications: 0,
     allNotifications: [],
     totalPage: 1,
