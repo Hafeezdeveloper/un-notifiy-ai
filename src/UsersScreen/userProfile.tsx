@@ -8,6 +8,7 @@ import { toast } from 'sonner';
 import HeaderGlobal from '../MainScreens/header/HeaderGolobal';
 import ProfileUserDetailDashboard from './ProfileUserDetailDashboard';
 import { removePublicProfile, setPublicProfile } from '../Redux/slices/userProfileSlice';
+import Aboutme from '../Comp/Aboutme';
 
 interface ApiResponse {
     success: boolean;
@@ -113,7 +114,7 @@ const UserProfile: React.FC = () => {
 
                         // />
                     )} */}
-                    {/* {uid === userId ?
+                  {uid === personalData?.data?._id ?
 
                         (
                             <Aboutme />
@@ -122,14 +123,14 @@ const UserProfile: React.FC = () => {
                         :
 
                         (
-                            ((publicData?.profileDescription) &&
+                            ((personalData?.data?.profileDescription) &&
                                 <Aboutme />
                             )
                         )
                     }
 
 
-                    {publicData?.activitySection &&
+                    {/*blicData?.activitySection &&
                         <PostActivity
                             uId={uid}
                         />

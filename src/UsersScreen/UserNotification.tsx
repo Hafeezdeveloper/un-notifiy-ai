@@ -70,8 +70,8 @@ function UserNotification() {
         switch (notificationRoute) {
             case 'annoucenment':
                 return `/MyAnnoucenment`;
-            case 'news-feed':
-                return `/feed-detail/${routeId}/view`;
+            case 'my_network':
+                return `/my-connection`;
             default:
                 return "/notification";
         }

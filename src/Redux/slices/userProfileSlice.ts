@@ -24,6 +24,9 @@ interface UpdateImagePayload {
   imageType: 'profile' | 'cover';
   imageUrl: string;
 }
+interface UpdateprofileDescription {
+  profileDescription: string;
+}
 
 interface UserProfile {
   _id: string;
@@ -45,7 +48,9 @@ interface UserProfile {
   batch: Batch | null;
   profileImageUrl: string;
   connectionStatus: string;
-  profileSummary?: string | null
+  profileSummary?: string | null;
+  totalConnections?: string | null;
+  profileDescription?: string | null
 }
 
 interface UserProfileState {
@@ -105,6 +110,9 @@ export const userProfileSlice = createSlice({
       state.data = action.payload;
       state.loading = false;
     },
+    fetchProfileLoeader(state) {
+      state.loading = false;
+    },
     fetchProfileFailure(state, action: PayloadAction<string>) {
       state.error = action.payload;
       state.loading = false;
@@ -131,7 +139,7 @@ export const userProfileSlice = createSlice({
       console.log(action.payload, "action.payloadaction.payloadaction.payload")
       state.connectionStatus = action.payload;
     },
-    updateImageUrl(state:any, action: PayloadAction<UpdateImagePayload>) {
+    updateImageUrl(state: any, action: PayloadAction<UpdateImagePayload>) {
       const { imageType, imageUrl } = action.payload;
       if (imageType === 'profile') {
         state.profile.profileImageUrl = imageUrl;
@@ -139,6 +147,11 @@ export const userProfileSlice = createSlice({
         state.profile.coverImageUrl = imageUrl;
       }
     },
+    updateProfileDescription(state, action: PayloadAction<UpdateprofileDescription>) {
+      if (state.data) {
+        state.data.profileDescription = action.payload.profileDescription;
+      }
+    }
   }
 });
 
@@ -151,7 +164,9 @@ export const {
   fetchProfileFailure,
   updateProfile,
   clearProfile,
-  updateImageUrl
+  updateImageUrl,
+  updateProfileDescription,
+  fetchProfileLoeader
 } = userProfileSlice.actions;
 
 export default userProfileSlice.reducer;

@@ -120,7 +120,7 @@ const HeaderGlobal: React.FC = () => {
                         >
                             <img src={Netwrok} className="header_icon w-6 h-6" alt="Community" />
                             <span className="font-Poppins-Medium text-xs block header-notifi-text">
-                                Community forum
+                                Messaging
                             </span>
                         </Link>
                         <Link

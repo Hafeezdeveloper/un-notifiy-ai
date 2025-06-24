@@ -58,6 +58,13 @@ const PutApi = <T>(
     return apiHandle.put<T>(`${endPoint}/${id}`, body);
 };
 
+const PutApiToken = <T>(
+    endPoint: string,
+    body: unknown,
+): Promise<AxiosResponse<T>> => {
+    return apiHandle.put<T>(`${endPoint}`, body);
+};
+
 // DELETE request with typed response
 const DeleteApi = <T>(
     endPoint: string,
@@ -85,5 +92,6 @@ export {
     PutApi,
     DeleteApi,
     GetApiForSingle,
-    formDataPostApi
+    formDataPostApi,
+    PutApiToken
 };

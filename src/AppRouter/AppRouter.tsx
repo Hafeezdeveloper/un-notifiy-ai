@@ -26,6 +26,10 @@ import MyAnnoucenment from '../UsersScreen/MyAnnoucenment'
 import { fetchCountsFailure, fetchCountsStart, fetchCountsSuccess } from '../Redux/slices/IndicatorSlice'
 import ListAnnoucenment from '../MainScreens/ListAnnoucenment'
 import AddSocialAnnoucenment from '../MainScreens/AddSocialAnnoucenment'
+import JobPost from '../UsersScreen/JobPost'
+import AIScreen from '../UsersScreen/AIScreen'
+import AllConnections from '../UsersScreen/AllConnections'
+import ProfileUserDetailEdit from '../Comp/ProfileUserDetailEdit'
 
 const AppRouter = () => {
   const { token } = useSelector((store: RootState) => store.auth); // Select authentication token from Redux store
@@ -138,11 +142,22 @@ const AppRouter = () => {
           <Route path='/MyAnnoucenment' element={<PrivateRoute> <MyAnnoucenment /></PrivateRoute>} />
           <Route path='/my-annoucenment' element={<PrivateRoute> <ListAnnoucenment /></PrivateRoute>} />
           <Route path='/add-socail-annoucenment' element={<PrivateRoute> <AddSocialAnnoucenment /></PrivateRoute>} />
+          <Route path='/job-Post' element={<PrivateRoute> <JobPost /></PrivateRoute>} />
+          <Route path='/my-ai' element={<PrivateRoute> <AIScreen /></PrivateRoute>} />
+          <Route path='/my-connection' element={<PrivateRoute> <AllConnections /></PrivateRoute>} />
           <Route
             path='/public-profile/:uid/view'
             element={
               <PrivateRoute>
                 <UserProfile />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='/user-profile-edit'
+            element={
+              <PrivateRoute>
+                <ProfileUserDetailEdit />
               </PrivateRoute>
             }
           />

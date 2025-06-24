@@ -16,6 +16,19 @@ export const PortalRoleOptions = [
   { key: 'faculty', name: 'Faculty' },
 ];
 
+export const EmployementType = [
+  { key: 'Full-time', name: 'Full-time' },           // 👈 Add this line
+  { key: 'Part-time', name: 'Part-time' },
+  { key: 'Contract', name: 'Contract' },
+  { key: 'Internship', name: 'Internship' },
+];
+
+export const JobType = [
+  { key: 'On-site', name: 'On-site' },           // 👈 Add this line
+  { key: 'Remote', name: 'Remote' },
+  { key: 'Hybrid', name: 'Hybrid' },
+];
+
 export const isNotEmpty = (data: any): boolean => {
   if (Array.isArray(data)) {
     return data.length > 0;

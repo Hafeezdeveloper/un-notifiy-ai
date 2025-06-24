@@ -69,7 +69,6 @@ const SendAnnouncement = () => {
             setIsLoading(false);
         }
     };
-    console.log(formData)
     return (
         <div className="min-h-screen bg-[#f2f7fb] p-6">
             <Toaster position="top-right" richColors />

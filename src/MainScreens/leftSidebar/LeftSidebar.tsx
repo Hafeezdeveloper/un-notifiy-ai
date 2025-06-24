@@ -139,7 +139,7 @@ function LeftSidebar() {
                     </>
                     {/* role */}
                     <p className="font-size-16px theme-color-green font-Poppins-Regular  text-center">
-                        awdawd
+                        {personalData?.data?.profileDescription || ""}
                     </p>{" "}
                     {/* profile summary */}
                     <div className="flex justify-center items-center mt-2">
@@ -169,10 +169,10 @@ function LeftSidebar() {
                     <div className="px-4 ">
                         <div className="flex justify-between items-center mb-3">
                             <p className="font-size-16px theme-color-green  font-Poppins-Medium  ">
-                                Jobs completed
+                                Jobs Posted
                             </p>
                             <p className="font-size-16px font-Poppins-SemiBold theme-color-green count-use">
-                                {0}
+                                0
                             </p>
                         </div>
                         {/* completed jobs */}
@@ -184,7 +184,7 @@ function LeftSidebar() {
                                 Connections
                             </p>
                             <p className="font-size-16px font-Poppins-SemiBold theme-color-green count-use">
-                                {0}
+                                {personalData?.data?.totalConnections ? personalData?.data?.totalConnections : 0}
                             </p>
                         </Link>{" "}
                         {/* connection length */}

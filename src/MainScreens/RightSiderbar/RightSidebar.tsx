@@ -15,6 +15,8 @@ import { WindowSharp } from "@mui/icons-material";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import "../../assets/css/responsive.css"
+import { decodeToken } from "../../Helper/ApiHandle/BsApiHandle";
+import { RootState } from "../../Redux/store/store";
 interface ResponseData {
     promotionalStatus: boolean;
 }
@@ -24,7 +26,11 @@ function RightSidebarFeed({ jobSectionHide = false }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [myEmployers, setMyEmployers] = useState<any>([]);
     const dispatch = useDispatch();
+    const personalData = useSelector((store: RootState) => store.userProfile);
 
+    const token = localStorage.getItem("authToken");
+    const decodeUser = decodeToken(token)
+    console.log("awdawdawdwadaw", decodeUser)
     const [promotionalStatus, setPromotionalStatus] = useState<boolean>(false);
 
     // Check the cookie and show the modal only for the first-time user
@@ -73,8 +79,14 @@ function RightSidebarFeed({ jobSectionHide = false }) {
     const rightSideData: any = {
         student: [
             {
-                navigation: "/my-annoucenment",
-                title: "My Annoucenment",
+                navigation: "/job-Post",
+                title: "Jobs Section",
+                notification: 0,
+                isVisible: true,
+            },
+            {
+                navigation: "/my-ai",
+                title: "AI Assistant",
                 notification: 0,
                 isVisible: true,
             },
@@ -110,15 +122,45 @@ function RightSidebarFeed({ jobSectionHide = false }) {
                 notification: 0,
                 isVisible: true,
             },
-           
-
+            {
+                navigation: "/job-Post",
+                title: "Jobs Section",
+                notification: 0,
+                isVisible: true,
+            },
+            {
+                navigation: "/my-ai",
+                title: "AI Assistant",
+                notification: 0,
+                isVisible: true,
+            },
+            // { navigation: "", title: "Templates", isVisible: true },
+        ],
+        faculty: [
+            {
+                navigation: "/my-annoucenment",
+                title: "My Annoucenment",
+                notification: 0,
+                isVisible: true,
+            },
+            {
+                navigation: "/job-Post",
+                title: "Jobs Section",
+                notification: 0,
+                isVisible: true,
+            },
+            {
+                navigation: "/my-ai",
+                title: "AI Assistant",
+                notification: 0,
+                isVisible: true,
+            },
             // { navigation: "", title: "Templates", isVisible: true },
         ],
     };
 
 
-
-    let roleData = rightSideData["student"] || [];
+    let roleData = rightSideData[decodeUser.role] || [];
 
     roleData = roleData.filter((item: any) => item.isVisible);
 
