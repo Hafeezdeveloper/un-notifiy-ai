@@ -30,6 +30,7 @@ import JobPost from '../UsersScreen/JobPost'
 import AIScreen from '../UsersScreen/AIScreen'
 import AllConnections from '../UsersScreen/AllConnections'
 import ProfileUserDetailEdit from '../Comp/ProfileUserDetailEdit'
+import Alljobs from '../UsersScreen/Alljobs'
 
 const AppRouter = () => {
   const { token } = useSelector((store: RootState) => store.auth); // Select authentication token from Redux store
@@ -145,6 +146,7 @@ const AppRouter = () => {
           <Route path='/job-Post' element={<PrivateRoute> <JobPost /></PrivateRoute>} />
           <Route path='/my-ai' element={<PrivateRoute> <AIScreen /></PrivateRoute>} />
           <Route path='/my-connection' element={<PrivateRoute> <AllConnections /></PrivateRoute>} />
+          <Route path='/all-jobs' element={<PrivateRoute> <Alljobs /></PrivateRoute>} />
           <Route
             path='/public-profile/:uid/view'
             element={

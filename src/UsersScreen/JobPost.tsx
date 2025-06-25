@@ -55,19 +55,30 @@ const JobPost = () => {
       toast.error("Job description is required!");
       return;
     }
-
+    const payload = {
+      jobTitle: formData.title,
+      companyName: formData.company,
+      employmentType: formData.employmentType,
+      location: formData.location,
+      workplaceType: formData.workplaceType,
+      jobDescription: formData.description,
+      responsibilities: formData.responsibilities,
+      qualifications: formData.qualifications,
+    };
     try {
       setIsLoading(true);
-      const response = await PostApi<any>('/jobs/create', formData);
-
-      if (response) {
+      const response = await PostApi<any>('/job-posts/create', payload);
+      setIsLoading(false);
+      
+      if (response?.data?.success) {
         toast.success('Job posted successfully');
-        navigate('/jobs');
+        navigate('/all-jobs');
       }
     } catch (error: any) {
       toast.error(
         error.response?.data?.message || 'Failed to post job'
       );
+      setIsLoading(false);
     } finally {
       setIsLoading(false);
     }
@@ -137,8 +148,8 @@ const JobPost = () => {
 
                 <div>
                   <BsLabel label="Employment Type*" />
-                  <BsSelect style={"w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"} 
-                  name="employmentType" value={formData.employmentType} onChange={handleChange} data={EmployementType} />
+                  <BsSelect style={"w-full border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"}
+                    name="employmentType" value={formData.employmentType} onChange={handleChange} data={EmployementType} />
                 </div>
 
                 <div>
